@@ -52,6 +52,14 @@
 
 \subsection{Machine Learning algorithms}	 % level 2
 
+\subsubsection{Learning methods} % level 3
+
+\paragraph{Supervised Training Methods} % level 4
+Obtain the information from "Artificial Neural Networks An introduction Kevin L. Priddy and Paul E. Keller" Chapter 2.1
+
+\paragraph{Unsupervised Training Methods} % level 4
+Obtain the information from "Artificial Neural Networks An introduction Kevin L. Priddy and Paul E. Keller" Chapter 2.2
+
 \subsubsection{Stop condition} % level 3
 
 \subsubsection{Epoch} % level 3
@@ -75,22 +83,6 @@ Self-Organizing Maps differ from from other artificial neuronal networks as they
 
 \paragraph{Learning Function} % level 4
 
-\subsubsection{Algorithm} % level 3
-1) Initialize the map using random input vectors of fixed dimension .
-
-2) Searching for the winner neuron.
-
-Select an input vector x randomly from the the training data set.
-Search for the neuron ???? which is associated to the closest vector ???? to x which minimize the quantization error |x ? m|.
-
-3) Updating the winner neuron and its neighboring units.
-For the winner neuron ???? and its neighbor U ? w, update the features vector using the following equation:
-????=????+?????? ×?× ???????
-where ???? ?? is neighborhood function which is the decreasing function of distance d between ???? and ?????
-and ? is the learning rate.
-
-4) Repeat Step 2, Step 3 with decreasing neighborhood function ???? ?? and learning rate ? until the quantization error converges enough or during the pre-defined iterations
-
 \subsection{Redes de Computadoras} % level 2
 
 \subsubsection{Local Area Network (LAN)} % level 2	
@@ -108,6 +100,22 @@ and ? is the learning rate.
 
 
 \section{Desarrollo Metodológico} % level 1
+
+\subsubsection{Algorithm} % level 3
+1) Initialize the map using random input vectors of fixed dimension .
+
+2) Searching for the winner neuron.
+
+Select an input vector x randomly from the the training data set.
+Search for the neuron ???? which is associated to the closest vector ???? to x which minimize the quantization error |x ? m|.
+
+3) Updating the winner neuron and its neighboring units.
+For the winner neuron ???? and its neighbor U ? w, update the features vector using the following equation:
+????=????+?????? ×?× ???????
+where ???? ?? is neighborhood function which is the decreasing function of distance d between ???? and ?????
+and ? is the learning rate.
+
+4) Repeat Step 2, Step 3 with decreasing neighborhood function ???? ?? and learning rate ? until the quantization error converges enough or during the pre-defined iterations
 
 \subsection{Experiment context} % level 2
 Experiment was carried out on a Campus Area Network (CAN) that has a 16-bit network and a Windows domain controller, using a HTTP proxy. Among campus applications web and remote apps are included.
@@ -135,7 +143,7 @@ The experiment has the goal of verifying if the behavior of an user in the netwo
 \subsubsection{Data collecting} % level 3
 During two labor weeks,  network traffic was captured from each user's computer, it's important to say that only the owner has access to the computer. Before starting to capture, we checked that no computers had any malicious software installed. The average size of the captured traffic is 3 gigabytes per user, involving more than four million packets. Each network connection is characterized by eight parameters and specified as a eight-dimensional vector, organized as follows: way, origin IP, destination IP, used protocol, local used port, remote used port, total transmitted bytes and timestamp.
 
-\subsubsection{User activity processing into data chunks for dataset creation} % level 3
+\subsubsection{Data Set creation} % level 3
 Using packet as the unit for data evaluation is not an option due the great volume, and time consuming for processing \textbf{citation}, instead data is divided equally in three different types of datasets, one for building, other for training and the last for evaluation and then processed into data chunks. Fig 3 shows dataset creation.
 
 \begin{center}\includegraphics[scale=0.2]{fig-three} \end{center}
@@ -155,10 +163,13 @@ Comparison between different lattices of multiple users
 
 \section{Results and Discussion} % level 1
 Results presentation, how the results are interpreted, and what we can do with data
+The results will explain, how the user is able to recognize itself in the organization map.
 
 \section{Conclusions} % level 1
 
 \subsection{Future work} % level 2
+SOM current implementation is generating user patterns only with ten epochs due a hardware limitation, it would be great to repeat the experiment with one thousands epochs.
+Also formulas are not completely following the standard of a gaussian function so a new implementation would be great.
 
 
 
