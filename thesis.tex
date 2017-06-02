@@ -67,10 +67,10 @@ Obtain the information from "Artificial Neural Networks An introduction Kevin L.
 \subsubsection{Gaussian function} % level 3
 
 \subsection{Self-organizing Maps} % level 2
-The concept, design, and implementation techniques of Self-Organizing Maps are described in detail in [25]. The Self-Organizing Map algorithm performs a nonlinear, ordered, smooth mapping of high-dimensional input data manifolds onto the elements of a regular, low-dimensional array [25]. The algorithm converts non-linear statistical relationships between data elements in a high-dimensional space into geometrical relationships between elements in a two-dimensional map (lattice), called the Self-Organizing Map (SOM)[1]. A SOM can then be used to visualize the clusters, of an input space. Each element at SOM is a neuron, and is a representation of a multidimensional vector with a cartographic position denoted with \textit{x} and \textit{y}. If elements in the input space are characterized using \textit{k} parameters and represented by \textit{k}-dimensional vectors, each neuron in the SOM lattice is also specified as \textit{k}-dimensional vector.
+The concept, design, and implementation techniques of Self-Organizing Maps are described in detail in [25]. The Self-Organizing Map algorithm performs a nonlinear, ordered, smooth mapping of high-dimensional input data manifolds onto the elements of a regular, low-dimensional array [25]. The algorithm converts non-linear statistical relationships between data elements in a high-dimensional space into geometrical relationships between elements in a two-dimensional map (lattice), called the Self-Organizing Map (SOM)[1]. A SOM can then be used to visualize the clusters, of an input space. Each element at SOM is a neuron, and is a representation of a multidimensional vector with a cartographic position denoted with x and y. If elements in the input space are characterized using k parameters and represented by k-dimensional vectors, each neuron in the SOM lattice is also specified as k-dimensional vector.
 
 \subsubsection{Learning} % level 3
-In the learning or training phase, the neurons in SOM try to model the input space. This phase has two important parts.
+In the learning or training phase, the neurons in SOM try to model the input space. 
 Self-Organizing Maps differ from from other artificial neuronal networks as they apply competitive learning as opposed to error-correction learning, such as back propagation with gradient descent, also apply a cooperative schema, using a neighborhood function to preserve topological properties of the input space.
 
 \paragraph{Competitive} % level 4
@@ -126,13 +126,13 @@ Five full-time professors (hereafter denoted as users) were selected for the exp
 \subsection{Explanation} % level 2
 As explained on section 3.3, Self Organized MapSOM) algorithm works as an unsupervised learning clustering approach, where training is entirely data-driven and no target results for the input data vectors are provided, it also provides a topology to preserve mapping from high dimensional space to nodes (neurons) that form a two-dimensional lattice, in which each neuron is grouped by it's features values similarity.
 Each neuron has a specific topological position in the lattice and contains a features vector of the same dimension as the input vector [8].
-In a \textit{k}-dimensional space the SOM neurons appear as points. During the train phase, the neurons "move" along the \textit{k}-dimensional space to characterize the received input vector as closely as possible.
-A SOM is processed for each user. Four user SOMs with it's respective data sets are selected to create an \textbf{\textit{organization map}} Fig. 1 shows an example.  Selected SOMs are joined in a lattice of 2 x 2, one sample vector is obtained from one of the evaluation sets, presented to the organization map and it's winner neuron obtained. If the winner neuron of the organization pattern belongs to the presented user it can be flagged as a correct user match.
+In a k-dimensional space the SOM neurons appear as points. During the train phase, the neurons "move" along the k-dimensional space to characterize the received input vector as closely as possible.
+A SOM is processed for each user. Four user SOMs with it's respective data sets are selected to create an organization map Fig. 1 shows an example.  Selected SOMs are joined in a lattice of 2 x 2, one sample vector is obtained from one of the evaluation sets, presented to the organization map and it's winner neuron obtained. If the winner neuron of the organization pattern belongs to the presented user it can be flagged as a correct user match.
 
 \begin{center}\includegraphics[scale=0.5]{fig-one} \end{center}
 
 \subsubsection{SOM implementation} % level 3
-For SOM implementation one layer square matrix of 100 x 100 neurons is used. As explained on section 4.0.1 each neuron has an individual feature vector, with specific weights. Our selected vector is conformed by three features, which summarize the total information sent in a range of time \textbf{\textit{$\Delta$t}} over the network. For winner neuron evaluation euclidean distance is used. Winner and neighbor neurons weights are updated by a gaussian function.
+For SOM implementation one layer square matrix of 100 x 100 neurons is used. As explained on section 4.0.1 each neuron has an individual feature vector, with specific weights. Our selected vector is conformed by three features, which summarize the total information sent in a range of time $\Delta$t over the network. For winner neuron evaluation euclidean distance is used. Winner and neighbor neurons weights are updated by a gaussian function.
 using random initialization
 
 \subsection{Experiment execution} % level 2
@@ -148,7 +148,7 @@ Using packet as the unit for data evaluation is not an option due the great volu
 
 \begin{center}\includegraphics[scale=0.2]{fig-three} \end{center}
 
-Each data set is created by 1...N data chunks. A data chunk has a set of continuous captured packages P1... P(N) which represents a fixed time window \textbf{\textit{tw}} of five minutes measured by the packet timestamp, in which three metrics are obtained: a) TCP/UDP metric, represents the ratio between total bytes sent through both protocols and total bytes sent in the chunk b) bytes to Internal IP metric, represents the ratio between total bytes sent to CAN proxy ip and total bytes sent in the chunk and c) web traffic metric, represents the ratio between data sent through web ports, and and total bytes sent in the chunk. This metrics will be the features which SOM algorithm will arrange the clusters. After \textbf{\textit{tw}} is processed, a time interval \textbf{\textit{ti}} of 10 seconds is given to start the data chunk process creation until no more packages are available. Each dataset is conformed by XXX data chunks.
+Each data set is created by 1...N data chunks. A data chunk has a set of continuous captured packages P1... P(N) which represents a fixed time window tw of five minutes measured by the packet timestamp, in which three metrics are obtained: a) TCP/UDP metric, represents the ratio between total bytes sent through both protocols and total bytes sent in the chunk b) bytes to Internal IP metric, represents the ratio between total bytes sent to CAN proxy ip and total bytes sent in the chunk and c) web traffic metric, represents the ratio between data sent through web ports, and and total bytes sent in the chunk. This metrics will be the features which SOM algorithm will arrange the clusters. After tw is processed, a time interval ti of 10 seconds is given to start the data chunk process creation until no more packages are available. Each dataset is conformed by XXX data chunks.
 
 \subsubsection{SOM training} % level 3
 This phase creates a user network pattern that represents its behavior in the network. Many pattern instances could be created from the user build dataset, as elements for creating it are randomly selected. Each neuron of the lattice is represented by an element of the Build Data Set, in which features are the three mentioned metrics in section 5.3.2. The lattice is has an arrange of 100 x 100 neurons, and a stop condition if 10 epochs.
@@ -168,7 +168,7 @@ The results will explain, how the user is able to recognize itself in the organi
 \section{Conclusions} % level 1
 
 \subsection{Future work} % level 2
-SOM current implementation is generating user patterns only with ten epochs due a hardware limitation, it would be great to repeat the experiment with one thousands epochs.
+Due hardware limitation, SOM training is done with ten epochs. A much longer training of about one thousand epochs would give a more precise user pattern, helping in a better user detection in the organization map.
 Also formulas are not completely following the standard of a gaussian function so a new implementation would be great.
 
 
