@@ -21,8 +21,9 @@
 \maketitle
 
 \section{Introduction} % level 1
+Inbounds
 
-\subsection{Antecedentes} % level 2
+\subsection{Background} % level 2
 
 \subsection{Justification} % level 2
 
@@ -32,21 +33,21 @@
 
 \subsection{Objectives} % level 2
 
-\subsubsection{General} % level 3
+\subsubsection{General Objectives} % level 3
 
-\subsubsection{Particular} % level 3
+\subsubsection{Particular Objectives} % level 3
 
 
 
 \section{State of the Art} % level 1
 
-\subsection{Machine Learning Algorithms y Seguridad Informática} % level 2
+\subsection{Machine Learning Algorithms and Computer Security} % level 2
 
-\subsection{Profiling / User classification} % level 12
+\subsection{Profiling  and User classification} % level 12
 
 
 
-\section{Marco Teórico} % level 1
+\section{Theorical framework} % level 1
 
 \subsection{Proxy} % level 2
 
@@ -58,26 +59,34 @@
 Obtain the information from "Artificial Neural Networks An introduction Kevin L. Priddy and Paul E. Keller" Chapter 2.1
 
 \paragraph{Unsupervised Training Methods} % level 4
-Obtain the information from "Artificial Neural Networks An introduction Kevin L. Priddy and Paul E. Keller" Chapter 2.2
-
-\subsubsection{Stop condition} % level 3
-
-\subsubsection{Epoch} % level 3
-
-\subsubsection{Gaussian function} % level 3
+Obtain the information from "Artificial Neural Networks An introduction Kevin L. Priddy and Paul E. Keller" Chapter 2.3
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          \subsubsection{Gaussian function} % level 3
 
 \subsection{Self-organizing Maps} % level 2
 The concept, design, and implementation techniques of Self-Organizing Maps are described in detail in [25]. The Self-Organizing Map algorithm performs a nonlinear, ordered, smooth mapping of high-dimensional input data manifolds onto the elements of a regular, low-dimensional array [25]. The algorithm converts non-linear statistical relationships between data elements in a high-dimensional space into geometrical relationships between elements in a two-dimensional map (lattice), called the Self-Organizing Map (SOM)[1]. A SOM can then be used to visualize the clusters, of an input space. Each element at SOM is a neuron, and is a representation of a multidimensional vector with a cartographic position denoted with x and y. If elements in the input space are characterized using k parameters and represented by k-dimensional vectors, each neuron in the SOM lattice is also specified as k-dimensional vector.
 
 \subsubsection{Learning} % level 3
 In the learning or training phase, the neurons in SOM try to model the input space. 
-Self-Organizing Maps differ from from other artificial neuronal networks as they apply competitive learning as opposed to error-correction learning, such as back propagation with gradient descent, also apply a cooperative schema, using a neighborhood function to preserve topological properties of the input space.
+Self-Organizing Maps differ from from other artificial neuronal networks as they apply competitive learning as opposed to error-correction learning, such as back propagation with gradient descent, also apply a cooperative schema, using a neighborhood function to preserve topological properties of the input sp33rfface.
 
 \paragraph{Competitive} % level 4
+Each element of the train data set is shown to every neuron in the SOM lattice. Each neuron has a response, to the shown element, the neuron that gives the best response is called the "winning" neuron, and takes it's k dimensional values adjusted so in the future it responds better to a similar input.
 
 \paragraph{Cooperative} % level 4
+Once the winning neuron has adjusted it's k dimensional values, it's neighborhood is calculated, and all neurons that are in the vicinity  of the winning neuron adjust their k dimensional values so in the future they respond better  to a similar input.
 
 \paragraph{Distance Measure} % level 4
+Suitable distance measure should be stablished in order to find the winner neuron. Two common used distance measures are dot-product measure and euclidean distance.
+
+In order to use dot-product measure lattice neurons and train element vectors should be normalized. Normalization of a vector $V(v_1, v_2, v_3,...,v_n)$ is a process of transforming it's components into
+$(\frac{v_1}{\sqrt{v_1^2+v_2^2+...+v_n^2}},
+\frac{v_2}{\sqrt{v_1^2+v_2^2+...+v_n^2}},
+...,
+\frac{v_n}{\sqrt{v_1^2+v_2^2+...+v_n^2}}
+)$
+ so that the modules of the normalized vector is unity. The dot-product of the input vector is calculated against all the neurons in the lattice, where dot-product of two vectors $Y(x_1, x_2, x_3,..., x_n)$ and $Z(z_1, z_2, z_3,..., z_n)$ is defined to be $x_1 \cdot z_1 + x_2 \cdot z_2 + x_3 \cdot z_3 + ... + x_n \cdot z_n$. Using this measure means that the winner neuron is the one that gives the maximum dot-product value.
+
+In the other hand euclidean distance measure does not need vector normalization and the winner neuron is defined for the minimum obtained distance. For two vectors $Y(y_1,y_2,...,y_n)$ and $Z(z_1,z_2,...,z_n)$ euclidean distance is given by $\sqrt{(z_1-y_1)^2 + (z_2-y_2)^2 + ... + (z_n-y_n)^2}$.
 
 \paragraph{Neighborhood Function} % level 4
 
@@ -99,7 +108,7 @@ Self-Organizing Maps differ from from other artificial neuronal networks as they
 
 
 
-\section{Desarrollo Metodológico} % level 1
+\section{Methodological Development} % level 1
 
 \subsubsection{Algorithm} % level 3
 1) Initialize the map using random input vectors of fixed dimension .
@@ -162,7 +171,7 @@ Comparison between different lattices of multiple users
 
 
 \section{Results and Discussion} % level 1
-Results presentation, how the results are interpreted, and what we can do with data
+Results presentation, how the results are interpreted, and what we can do with data.
 The results will explain, how the user is able to recognize itself in the organization map.
 
 \section{Conclusions} % level 1
