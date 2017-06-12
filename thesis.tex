@@ -20,6 +20,11 @@
 
 \maketitle
 
+
+
+
+
+
 \section{Introduction} % level 1
 Inbounds
 
@@ -39,11 +44,18 @@ Inbounds
 
 
 
+
+
+
+
 \section{State of the Art} % level 1
 
 \subsection{Machine Learning Algorithms and Computer Security} % level 2
 
-\subsection{Profiling  and User classification} % level 12
+\subsection{Profiling  and User classification} % level 2
+
+
+
 
 
 
@@ -67,7 +79,7 @@ The concept, design, and implementation techniques of Self-Organizing Maps are d
 
 \subsubsection{Learning} % level 3
 In the learning or training phase, the neurons in SOM try to model the input space. 
-Self-Organizing Maps differ from from other artificial neuronal networks as they apply competitive learning as opposed to error-correction learning, such as back propagation with gradient descent, also apply a cooperative schema, using a neighborhood function to preserve topological properties of the input sp33rfface.
+Self-Organizing Maps differ from from other artificial neuronal networks as they apply competitive learning as opposed to error-correction learning, such as back propagation with gradient descent, also apply a cooperative schema, using a neighborhood function to preserve topological properties of the input surfface.
 
 \paragraph{Competitive} % level 4
 Each element of the train data set is shown to every neuron in the SOM lattice. Each neuron has a response, to the shown element, the neuron that gives the best response is called the "winning" neuron, and takes it's k dimensional values adjusted so in the future it responds better to a similar input.
@@ -94,7 +106,7 @@ In the other hand euclidean distance measure does not need vector normalization 
 
 \subsection{Redes de Computadoras} % level 2
 
-\subsubsection{Local Area Network (LAN)} % level 2	
+\subsubsection{Local Area Network (LAN)} % level 3
 
 \subsubsection{Campus Area Network(CAN)} % level 3
 
@@ -108,9 +120,89 @@ In the other hand euclidean distance measure does not need vector normalization 
 
 
 
+
+
+
 \section{Methodological Development} % level 1
 
-\subsubsection{Algorithm} % level 3
+
+
+
+
+
+\subsection{Experiment context} % level 2
+Experiment was carried out on a Campus Area Network (CAN) that has a 16-bit network and a Windows domain controller, using a HTTP proxy. Among campus applications web and remote apps are included.
+Email service is provided by Microsoft Exchange Server which is hosted outside the campus network.
+The target users were full-time professors who had a computer with a static IP address and a wireless access with a dynamic IP address.
+Five full-time professors (hereafter denoted as users) were selected for the experiment. For each one, real usage traffic was captured (inside and outside campus activities) during a two labor weeks, and then processed.
+
+
+
+
+
+
+\subsection{Explanation} % level 2
+In this work Self Organizing Maps algorithm is used to create an user pattern inside a Campus Area Network. Experiment is divided in three phases: network data capture, data processing and pattern evaluation.
+For network data capture phase a set of raw packages is obtained for each user through tcpdump library, process is explained in [Parres, XX].
+For data processing phase each set of raw packages is arbitrary divided in build, train and evaluate sets.
+Each set is processed to compress raw packages into chunks of a five minutes window $(t)$ represented by three metrics that involve communication protocol, origin and destination ip and total transmitted bytes.
+From obtained build dat set, a fixed number of elements $(n)$ is randomly selected, this number defines the size of the Self Organizing Map lattice $(n x n)$.
+For lattice training, a fixed number of elements $(e)$ is randomly selected from train data set. After ten epochs training Self Organizing Map is considered to be fully trained, as a result an user network behavior pattern is obtained.
+Evaluation phase is done by joining different user network behavior patterns in one lattice, similar to a blanket filled of patches in which each patch is represented by an user network behavior pattern, creating what we define as the organization pattern. An organization evaluation set is build by all the user evaluation sets that belong to each user that conforms the organizational pattern. Each element of the organization evaluation set is shown to the organization pattern, resulting best matching unit is compared against the original user of the shown element to the lattice. Correct match of the user attribute of the shown element and user attribute of the best matching verifies that the shown element is able to recognize it's original user among others. Fig. 1 shows an schema of the complete process.
+
+	\begin{center}\includegraphics[scale=0.2]{fig-two} \end{center}
+
+For each phase in the process one or more modules were build, each module's output is used as an input for the next the phase corresponding module.
+
+
+
+
+
+
+\subsubsection{Network data capture} % level 3
+Network data capture phase duration was of two labor weeks,  in which network traffic was captured from each user's computer, it's important to say that only the owner has access to the computer and that before starting to capture, we checked that no computers had any malicious software installed.
+Capture module was build using jNetPcap, which works as a client application that once installed enables to capture continuously user network data in an IP packet format and save it in files of twenty megabytes each, naming them with file's creation timestamp. Average size of complete raw captured traffic for each user is three gigabytes, involving more than four million packages. Each register contains the characterization of a network connection by eight parameters organized as follows: way, origin IP, destination IP, used protocol, local used port, remote used port, total transmitted bytes and timestamp.
+
+
+
+
+
+
+\subsubsection{Data processing} % level 3
+Data processing phase is divided in four stages: a) divide raw data, b) data set creation, c) Self Organizing Map algorithm implementation and d) User network behavior pattern creation. Two modules were build for it, data set and train module. Data set module involves "divide raw data" and "data set creation" stages and Train module involves "Self Organizing Map algorithm implementation" and "User network behavior pattern creation".
+
+
+
+\paragraph{Divide raw data} % level 4
+As explained in section 3.3 Self Organizing Map algorithm is a not supervised algorithm due this different information is needed en each phase of the algorithm. Complete user raw captured data ($\alpha$) is divided in three subsets: build package set ($\beta$), train package set ($\gamma$), and evaluation package set ($\phi$). As data captured is divided in files containing continuous user network data, dividing the complete raw data set in subsets, enables having en each subset different days of user behavior. Complete raw data set is divided equally between each subset $\beta \cup \gamma \cup \phi = \alpha$.
+
+
+
+\paragraph{Data set creation} % level 4
+Using TCP package as the working unit is not possible due the great volume of packages, and time consuming for processing [Reference, XX] each one, instead packages are processed and turned into chunks that will conform a data set. Fig 2 shows the process of dataset creation.
+
+	\begin{center}\includegraphics[scale=0.2]{fig-three} \end{center}
+	
+Each package set ($\beta,\gamma,\phi$) is processed into chunks. A chunk is defined as set of packages with a continuity in their timestamp field $P(p_1,p_2,...,p_n)$ that represent a time window $(t)$ of a fixed time $t_1$. Processing packages as a chunk allows getting a summary of the information sent in a $t_n$ period of time, such as: total bytes sent, total bytes sent through TCP and UDP protocol, total bytes sent for web traffic destination along 80, 443 and 3128 ports and as we are working inside and Campus Area Network total bytes sent to internal destination (same backbone ip, our case 189.230.4.163). This data is condensed into three metrics: a) TCP-UDP metric, represents the ratio between total bytes sent through both protocols and total bytes sent in the chunk , b) Internal IP metric, represents the ratio between total bytes sent to CAN proxy ip and total bytes sent in the chunk and c) Web traffic metric, represents the ratio between data sent through web ports, and and total bytes sent in the chunk.
+
+**** Por trabajar
+Para que usamos despues estas metricas
+El intervalo entre cada chunk
+Data as total bytes sent,  in the $t_1$ time, are obtained,from which collected data is processed and three metrics are obtained and defined as follows: a) TCP-UDP metric
+Each data set is created by 1...N data chunks. A data chunk has a set of continuous captured packages P1... P(N) which represents a fixed time window tw of five minutes measured by the packet timestamp, in which three metrics are obtained:
+ a) TCP/UDP metric, represents the ratio between total bytes sent through both protocols and total bytes sent in the chunk
+ b) bytes to Internal IP metric, represents the ratio between total bytes sent to CAN proxy ip and total bytes sent in the chunk and 
+ c) web traffic metric, represents the ratio between data sent through web ports, and and total bytes sent in the chunk. This metrics will be the features which SOM algorithm will arrange the clusters. After tw is processed, a time interval ti of 10 seconds is given to start the data chunk process creation until no more packages are available. Each dataset is conformed by XXX data chunks.
+Due the big amount of captured packages and the complexity of processing each packaged as unit in the Self Organizing Map processing packages was needed
+**** Por trabajar
+
+
+
+\paragraph{Self Organizing Map algorithm implementation} % level 4
+For SOM implementation one layer square matrix of 100 x 100 neurons is used. As explained on section 4.0.1 each neuron has an individual feature vector, with specific weights. Our selected vector is conformed by three features, which summarize the total information sent in a range of time $\Delta$t over the network. For winner neuron evaluation euclidean distance is used. Winner and neighbor neurons weights are updated by a gaussian function.
+using random initialization
+
+
 1) Initialize the map using random input vectors of fixed dimension .
 
 2) Searching for the winner neuron.
@@ -126,47 +218,28 @@ and ? is the learning rate.
 
 4) Repeat Step 2, Step 3 with decreasing neighborhood function ???? ?? and learning rate ? until the quantization error converges enough or during the pre-defined iterations
 
-\subsection{Experiment context} % level 2
-Experiment was carried out on a Campus Area Network (CAN) that has a 16-bit network and a Windows domain controller, using a HTTP proxy. Among campus applications web and remote apps are included.
-Email service is provided by Microsoft Exchange Server which is hosted outside the campus network.
-The target users were full-time professors who had a computer with a static IP address and a wireless access with a dynamic IP address.
-Five full-time professors (hereafter denoted as users) were selected for the experiment. For each one, real usage traffic was captured (inside and outside campus activities) during a two labor weeks, and then processed.
 
-\subsection{Explanation} % level 2
-As explained on section 3.3, Self Organized MapSOM) algorithm works as an unsupervised learning clustering approach, where training is entirely data-driven and no target results for the input data vectors are provided, it also provides a topology to preserve mapping from high dimensional space to nodes (neurons) that form a two-dimensional lattice, in which each neuron is grouped by it's features values similarity.
-Each neuron has a specific topological position in the lattice and contains a features vector of the same dimension as the input vector [8].
-In a k-dimensional space the SOM neurons appear as points. During the train phase, the neurons "move" along the k-dimensional space to characterize the received input vector as closely as possible.
-A SOM is processed for each user. Four user SOMs with it's respective data sets are selected to create an organization map Fig. 1 shows an example.  Selected SOMs are joined in a lattice of 2 x 2, one sample vector is obtained from one of the evaluation sets, presented to the organization map and it's winner neuron obtained. If the winner neuron of the organization pattern belongs to the presented user it can be flagged as a correct user match.
 
-\begin{center}\includegraphics[scale=0.5]{fig-one} \end{center}
 
-\subsubsection{SOM implementation} % level 3
-For SOM implementation one layer square matrix of 100 x 100 neurons is used. As explained on section 4.0.1 each neuron has an individual feature vector, with specific weights. Our selected vector is conformed by three features, which summarize the total information sent in a range of time $\Delta$t over the network. For winner neuron evaluation euclidean distance is used. Winner and neighbor neurons weights are updated by a gaussian function.
-using random initialization
-
-\subsection{Experiment execution} % level 2
-The experiment has the goal of verifying if the behavior of an user in the network can be addressed as a pattern, and use it to determine if the activity in the network belongs to it, or not. Experiment is divided in four parts: data collecting, user activity processing into data chunks for data set creation, lattice training through SOM algorithm and obtained pattern evaluation. Fig. 2 shows the complete process.
-
-\begin{center}\includegraphics[scale=0.2]{fig-two} \end{center}
-
-\subsubsection{Data collecting} % level 3
-During two labor weeks,  network traffic was captured from each user's computer, it's important to say that only the owner has access to the computer. Before starting to capture, we checked that no computers had any malicious software installed. The average size of the captured traffic is 3 gigabytes per user, involving more than four million packets. Each network connection is characterized by eight parameters and specified as a eight-dimensional vector, organized as follows: way, origin IP, destination IP, used protocol, local used port, remote used port, total transmitted bytes and timestamp.
-
-\subsubsection{Data Set creation} % level 3
-Using packet as the unit for data evaluation is not an option due the great volume, and time consuming for processing \textbf{citation}, instead data is divided equally in three different types of datasets, one for building, other for training and the last for evaluation and then processed into data chunks. Fig 3 shows dataset creation.
-
-\begin{center}\includegraphics[scale=0.2]{fig-three} \end{center}
-
-Each data set is created by 1...N data chunks. A data chunk has a set of continuous captured packages P1... P(N) which represents a fixed time window tw of five minutes measured by the packet timestamp, in which three metrics are obtained: a) TCP/UDP metric, represents the ratio between total bytes sent through both protocols and total bytes sent in the chunk b) bytes to Internal IP metric, represents the ratio between total bytes sent to CAN proxy ip and total bytes sent in the chunk and c) web traffic metric, represents the ratio between data sent through web ports, and and total bytes sent in the chunk. This metrics will be the features which SOM algorithm will arrange the clusters. After tw is processed, a time interval ti of 10 seconds is given to start the data chunk process creation until no more packages are available. Each dataset is conformed by XXX data chunks.
-
-\subsubsection{SOM training} % level 3
+\paragraph{User network behavior pattern creation} % level 4
 This phase creates a user network pattern that represents its behavior in the network. Many pattern instances could be created from the user build dataset, as elements for creating it are randomly selected. Each neuron of the lattice is represented by an element of the Build Data Set, in which features are the three mentioned metrics in section 5.3.2. The lattice is has an arrange of 100 x 100 neurons, and a stop condition if 10 epochs.
 
 ---{Paper [1] ANDSOM Module - Training}
 
-\subsubsection{Obtained pattern evaluation} % level 3
+
+
+
+
+
+\subsubsection{Pattern evaluation} % level 3
 Comparison between two different lattices of the same user
+
 Comparison between different lattices of multiple users
+
+	\begin{center}\includegraphics[scale=0.5]{fig-one} \end{center}
+
+
+
 
 
 
@@ -174,11 +247,19 @@ Comparison between different lattices of multiple users
 Results presentation, how the results are interpreted, and what we can do with data.
 The results will explain, how the user is able to recognize itself in the organization map.
 
+
+
+
+
+
 \section{Conclusions} % level 1
 
 \subsection{Future work} % level 2
 Due hardware limitation, SOM training is done with ten epochs. A much longer training of about one thousand epochs would give a more precise user pattern, helping in a better user detection in the organization map.
 Also formulas are not completely following the standard of a gaussian function so a new implementation would be great.
+
+
+
 
 
 
