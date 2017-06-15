@@ -6,6 +6,7 @@
 \usepackage{biblatex}
 \usepackage{csquotes}
 \usepackage{graphicx}
+\usepackage[]{algorithm2e}
 
 \setcounter{tocdepth}{5}
 %\setcounter{secnumdepth}{5}
@@ -79,12 +80,18 @@ The Self-Organizing Map algorithm performs a nonlinear, ordered, smooth mapping 
 
 \subsubsection{Learning} % level 3
 In the learning or training phase, the neurons in SOM algorithm try to model the input space. 
-SOM algorithm differ from from other artificial neuronal networks as they apply competitive learning and use a cooperative schema. 
+SOM algorithm differ from other artificial neuronal networks as they apply competitive learning and use a cooperative schema. 
 
-Opposed to error-correction learning, in which each element $s_n$ in the training dataset $S$ is evaluated by the neuronal network connections $W(w_1, w_2,...,w_n)$ and the result $r$ is compared against a predefined threshold to decide if the result matches the expected output and an adjustment to $W$ is needed, in competitive learning each element $e_n$ of the training data set $E$ is shown to every neuron $N(n_1,n_2,...,n_n)$ in the SOM lattice, each neuron $n_n$ calculates a response $h$ to the shown element, based on a preselected distance measure. The neuron that gives the best response is called the winning neuron or best matching unit (BMU).
+--- OPTION 1 ---
+Opposed to error-correction learning, in which each element $s_n$ in the training dataset $S$ is evaluated by the neuronal network connections $W(w_1, w_2,...,w_n)$ and the result $r$ is compared against a predefined threshold to decide if the result matches the expected output and an adjustment to $W$ is needed, in competitive learning each element $e_n$ of the training data set $E$ is shown to every neuron $N(n_1,n_2,...,n_n)$ in the SOM lattice Each neuron $n_n$ calculates a response $h$ to the shown element, based on a preselected distance measure. The neuron that gives the best response is called the winning neuron or best matching unit (BMU).
+--- FINISHES OPTION 1 ---
+
+--- OPTION 2 ---
+Opposed to error-correction learning, in which the evaluation result of an element in the training dataset may result in the complete adjustment of the neuronal network connections, in competitive learning each element $e_n$ int the training data set $E$ is shown to every neuron $N(n_1,n_2,...,n_n)$ in the SOM lattice, the response is calculated through a preselected distance measure, the neuron that gives the best response is called the winning neuron or best matching unit (BMU) and gets it's vector values updated.
+--- FINISHES OPTION 2 ---
 
 Suitable distance measure should be stablished in order to find the BMU. Two common used distance measures are dot-product measure and euclidean distance.
-In order to use dot-product measure, lattice neurons $N$ and training elements $E$ should be normalized. Normalization of a vector $V(v_1, v_2, v_3,...,v_n)$ is a process of transforming it's components into
+For using dot-product measure, lattice neurons $N$ and training elements $E$ should be normalized. Normalization of a vector $V(v_1, v_2, v_3,...,v_n)$ is a process of transforming it's components into
 $(\frac{v_1}{\sqrt{v_1^2+v_2^2+...+v_n^2}},
 \frac{v_2}{\sqrt{v_1^2+v_2^2+...+v_n^2}},
 ...,
@@ -98,10 +105,12 @@ X \cdot Z = (x_1 \cdot z_1 + x_2 \cdot z_2 + x_3 \cdot z_3 + ... + x_n \cdot z_n
 \end{equation}
  
  
- Using this measure means that BMU is the one that gives the maximum dot-product value. In the other hand euclidean distance measure does not need vector normalization and the BMU is defined for the minimum obtained distance. For two vectors $Y(y_1,y_2,...,y_n)$ and $Z(z_1,z_2,...,z_n)$ euclidean distance is given by:
+ Using this measure means that BMU is the one that gives the maximum dot-product value.
+ 
+ In the other hand, euclidean distance measure does not need vector normalization and the BMU is defined for the minimum obtained distance. For two vectors $Y(y_1,y_2,...,y_n)$ and $Z(z_1,z_2,...,z_n)$ euclidean distance is given by:
  
 \begin{equation}
-\sqrt{(z_1-y_1)^2 + (z_2-y_2)^2 + ... + (z_n-y_n)^2}
+D = \sqrt{(z_1-y_1)^2 + (z_2-y_2)^2 + ... + (z_n-y_n)^2}
 \end{equation}
 
  Once a BMU is obtained, it's $k$-dimensional values are adjusted so in the future it responds better to a similar input $e_n$.
@@ -134,15 +143,11 @@ As SOM algorithm is not just a classification algorithm but also a clustering al
 \section{Methodological Development} % level 1
 
 
-
-
-
-
 \subsection{Experiment context} % level 2
 Experiment was carried out on a Campus Area Network (CAN) that has a 16-bit network and a Windows domain controller, using a HTTP proxy. Among campus applications web and remote apps are included.
 Email service is provided by Microsoft Exchange Server which is hosted outside the campus network.
 The target users were full-time professors who had a computer with a static IP address and a wireless access with a dynamic IP address.
-Five full-time professors (hereafter denoted as users) were selected for the experiment. For each one, real usage traffic was captured (inside and outside campus activities) during a two labor weeks, and then processed.
+Five full-time professors (hereafter denoted as users) were selected for the experiment. For each one, real usage traffic was captured for inside and outside campus activities during a two labor weeks, and then processed.
 
 
 
@@ -150,59 +155,67 @@ Five full-time professors (hereafter denoted as users) were selected for the exp
 
 
 \subsection{Explanation} % level 2
-In this work Self Organizing Maps algorithm is used to create an user pattern inside a Campus Area Network. Experiment is divided in three phases: network data capture, data processing and pattern evaluation.
-For network data capture phase a set of raw packages is obtained for each user through tcpdump library, process is explained in [Parres, XX].
-For data processing phase each set of raw packages is arbitrary divided in build, train and evaluate sets.
-Each set is processed to compress raw packages into chunks of a five minutes window $(t)$ represented by three metrics that involve communication protocol, origin and destination ip and total transmitted bytes.
-From obtained build dat set, a fixed number of elements $(n)$ is randomly selected, this number defines the size of the Self Organizing Map lattice $(n x n)$.
-For lattice training, a fixed number of elements $(e)$ is randomly selected from train data set. After ten epochs training Self Organizing Map is considered to be fully trained, as a result an user network behavior pattern is obtained.
-Evaluation phase is done by joining different user network behavior patterns in one lattice, similar to a blanket filled of patches in which each patch is represented by an user network behavior pattern, creating what we define as the organization pattern. An organization evaluation set is build by all the user evaluation sets that belong to each user that conforms the organizational pattern. Each element of the organization evaluation set is shown to the organization pattern, resulting best matching unit is compared against the original user of the shown element to the lattice. Correct match of the user attribute of the shown element and user attribute of the best matching verifies that the shown element is able to recognize it's original user among others. Fig. 1 shows an schema of the complete process.
+In this work Self Organizing Maps algorithm is used to create an user pattern inside a Campus Area Network. Experiments are divided in three phases: network data capture, data processing and pattern evaluation.
+
+For network data capture phase, a set of raw packages is obtained for each user through tcpdump library, process is explained in [Parres, XX].
+
+For data processing phase, each set of raw packages is arbitrary divided in build, train and evaluate sets.
+Each set is processed to compress raw packages into chunks of a five minutes window $t$ represented by three metrics that involve communication protocol, origin and destination ip and total transmitted bytes.
+From the obtained build data set, a fixed number of elements $n$ is randomly selected, this number defines the size of the Self Organizing Map lattice $(n x n)$.
+For lattice training, a fixed number of elements $e$ is randomly selected from train data set. Self Organizing Map is considered to be fully trained, after a cycle of ten epochs, as a result of this phase an user network behavior pattern is obtained.
+
+Evaluation phase is done by joining different user network behavior patterns in one lattice, similar to a blanket filled of patches in which each patch is represented by an user network behavior pattern, creating what we define as the organization pattern. An organization evaluation set is build by all the user evaluation sets that belong to each user that conforms the organizational pattern. Each element of the organization evaluation set is shown to the organization pattern, resulting best matching unit is compared against the original user of the shown element to the lattice. Correct match of the user attribute of the shown element and user attribute of the best matching verifies that the shown element is able to recognize it's original user among others. The complete process of an experiments is shown in Fig. 1.
 
 	\begin{center}\includegraphics[scale=0.2]{fig-two} \end{center}
 
-For each phase in the process one or more modules were build, each module's output is used as an input for the next the phase corresponding module.
-
-
-
-
+For each phase in the process one or more modules were build, each module's output is used as an input for the next phase corresponding module.
 
 
 \subsubsection{Network data capture} % level 3
-Network data capture phase duration was of two labor weeks,  in which network traffic was captured from each user's computer, it's important to say that only the owner has access to the computer and that before starting to capture, we checked that no computers had any malicious software installed.
-Capture module was build using jNetPcap, which works as a client application that once installed enables to capture continuously user network data in an IP packet format and save it in files of twenty megabytes each, naming them with file's creation timestamp. Average size of complete raw captured traffic for each user is three gigabytes, involving more than four million packages. Each register contains the characterization of a network connection by eight parameters organized as follows: way, origin IP, destination IP, used protocol, local used port, remote used port, total transmitted bytes and timestamp.
-
-
-
+Network data capture phase duration was at least of two labor weeks,  in which network traffic was captured from each user's computer.
+Capture module was build using jNetPcap, which works as a client application that once installed enables to capture continuously user network data in an IP packet format and save it in files of twenty megabytes each, naming them with file's creation timestamp. Average size of complete raw captured traffic for each user is three gigabytes, involving more than four million packages. Each register contains the characterization of a network connection by eight parameters: origin IP, destination IP, used protocol, local used port, remote used port, total transmitted bytes in the package, timestamp and the connection-way which establishes if the package is coming from local to remote (out), or from remote to local (in).
 
 
 
 \subsubsection{Data processing} % level 3
-Data processing phase is divided in four stages: a) divide raw data, b) data set creation, c) Self Organizing Map algorithm implementation and d) User network behavior pattern creation. Two modules were build for it, data set and train module. Data set module involves "divide raw data" and "data set creation" stages and Train module involves "Self Organizing Map algorithm implementation" and "User network behavior pattern creation".
+Data processing phase is divided in four stages: a) Raw data partition, b) Data sets creation, c) Self Organizing Map algorithm implementation and d) User network behavior pattern creation. Two modules were build for this phase, data set and train module. Data set module involves Raw data partition and Data set creation stages and Train module involves Self Organizing Map algorithm implementation and User network behavior pattern creation.
 
 
 
-\paragraph{Divide raw data} % level 4
-As explained in section 3.3 Self Organizing Map algorithm is a not supervised algorithm due this different information is needed en each phase of the algorithm. Complete user raw captured data ($\alpha$) is divided in three subsets: build package set ($\beta$), train package set ($\gamma$), and evaluation package set ($\phi$). As data captured is divided in files containing continuous user network data, dividing the complete raw data set in subsets, enables having en each subset different days of user behavior. Complete raw data set is divided equally between each subset $\beta \cup \gamma \cup \phi = \alpha$.
+
+\paragraph{Raw data partition} % level 4
+As explained in section 3.3 Self Organizing Map algorithm is a not supervised algorithm due different information is needed en each phase of the algorithm. Complete user raw captured data $\alpha$ is divided in three subsets: build package set $\beta$, train package set $\gamma$, and evaluation package set $\phi$. As data captured is divided in files containing continuous user network data, dividing the complete raw data set in subsets, enables having en each subset different days of user behavior. Complete raw data set is divided equally between each subset.
+
+\begin{equation}
+\alpha = \beta \cup \gamma \cup \phi
+\end{equation}
+
 
 
 
 \paragraph{Data set creation} % level 4
-Using TCP package as the working unit is not possible due the great volume of packages, and time consuming for processing [Reference, XX] each one, instead packages are processed and turned into chunks that will conform a data set. Fig 2 shows the process of dataset creation.
+Using TCP package as the working unit is not possible due the great volume of packages, and time consuming for processing each one individually [Reference, XX].
+
+Instead, package sets $[\beta,\gamma,\phi]$ are individually processed and turned into chunks. The obtained chunks are the the working units and conform the different data sets, Build data set $\beta_1$, the Train data set $\gamma_1$ and the Evaluation data set $\phi_1$ respectively. Fig 2 shows the process of dataset creation.
 
 	\begin{center}\includegraphics[scale=0.2]{fig-three} \end{center}
 	
-Each package set ($\beta,\gamma,\phi$) is processed into chunks. A chunk is defined as set of packages with a continuity in their timestamp field $P(p_1,p_2,...,p_n)$ that represent a time window $(t)$ of a fixed time $t_1$. Processing packages as a chunk allows getting a summary of the information sent in a $t_n$ period of time, such as: total bytes sent, total bytes sent through TCP and UDP protocol, total bytes sent for web traffic destination along 80, 443 and 3128 ports and as we are working inside and Campus Area Network total bytes sent to internal destination (same backbone ip, our case 189.230.4.163). This data is condensed into three metrics: a) TCP-UDP metric, represents the ratio between total bytes sent through both protocols and total bytes sent in the chunk , b) Internal IP metric, represents the ratio between total bytes sent to CAN proxy ip and total bytes sent in the chunk and c) Web traffic metric, represents the ratio between data sent through web ports, and and total bytes sent in the chunk.
+Each chunk $C$ is defined with the following characteristics: a) It is conformed by one or more packages $C_n(p_1, p_2,...,p_n)$ that have a continuity in their timestamp field, b) It has a fixed time window $w$ but does not have a fixed number of packages, c) The difference between $p_n$ timestamp and $p_1$ timestamp is less or equal to the fixed time window $w$ and d) The difference between start timestamps of consecutive chunks is a fixed time $h$ .
 
-**** Por trabajar
-Para que usamos despues estas metricas
-El intervalo entre cada chunk
-Data as total bytes sent,  in the $t_1$ time, are obtained,from which collected data is processed and three metrics are obtained and defined as follows: a) TCP-UDP metric
-Each data set is created by 1...N data chunks. A data chunk has a set of continuous captured packages P1... P(N) which represents a fixed time window tw of five minutes measured by the packet timestamp, in which three metrics are obtained:
- a) TCP/UDP metric, represents the ratio between total bytes sent through both protocols and total bytes sent in the chunk
- b) bytes to Internal IP metric, represents the ratio between total bytes sent to CAN proxy ip and total bytes sent in the chunk and 
- c) web traffic metric, represents the ratio between data sent through web ports, and and total bytes sent in the chunk. This metrics will be the features which SOM algorithm will arrange the clusters. After tw is processed, a time interval ti of 10 seconds is given to start the data chunk process creation until no more packages are available. Each dataset is conformed by XXX data chunks.
-Due the big amount of captured packages and the complexity of processing each packaged as unit in the Self Organizing Map processing packages was needed
-**** Por trabajar
+The elements in a package set are processed one by one, as follows:
+
+\begin{enumerate}
+  \item Total packages in the package set is obtained and assigned to $n$, the index of the element that is being processed is assigned to $i$ and a global index that holds the package index in which the chunk $C_n$ start is assigned to $g$.
+  \item First chunk $C_1$ start timestamp $t_1$ is set with the timestamp of $p_1$ and finish timestamp $t_2$ is calculated ($t_1 + w$).
+  \item While $i$ < $n$ and $p_n$ timestamp is less than $t_2$, $p_n$ is added to the package chunk's collection and $i$ is assigned to the next element in the set, otherwise the $p_n$ is not added to the package chunk's collection, and the chunk is complete.
+  \item $C_1$ is added to the chunks data set's collection.
+  \item New start timestamp is calculated $t_1 + h$ and assigned to the new chunk $C_n$.
+\end{enumerate}
+Steps 2 to 5 are repeated while $g$ < $n$.
+
+Processing packages as a chunk allows getting a summary of the information sent in a $w$ period of time, such as: total bytes sent, total bytes sent through TCP and UDP protocol, total bytes sent for web traffic destination along 80, 443 and 3128 ports and as we are working inside and Campus Area Network total bytes sent to internal destination (same backbone ip, our case 148.201.X.X). This data is condensed into three metrics: a) TCP-UDP metric, represents the ratio between total bytes sent through both protocols and total bytes sent in the chunk , b) Internal IP metric, represents the ratio between total bytes sent to CAN proxy ip and total bytes sent in the chunk and c) Web traffic metric, represents the ratio between data sent through web ports, and and total bytes sent in the chunk.
+Obtained metrics are the $k$-values of the neurons in the Self Organizing Map lattice.
+
 
 
 
