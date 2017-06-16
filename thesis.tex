@@ -15,7 +15,7 @@
 
 \author{Nelson Victor Cruz Hern\'andez }
 
-\date{May 2017}
+\date{June 2017}
 
 \begin{document}
 
@@ -220,24 +220,26 @@ Obtained metrics are the $k$-values of the neurons in the Self Organizing Map la
 
 
 \paragraph{Self Organizing Map algorithm implementation} % level 4
-For SOM implementation one layer square matrix of 100 x 100 neurons is used. As explained on section 4.0.1 each neuron has an individual feature vector, with specific weights. Our selected vector is conformed by three features, which summarize the total information sent in a range of time $\Delta$t over the network. For winner neuron evaluation euclidean distance is used. Winner and neighbor neurons weights are updated by a gaussian function.
-using random initialization
+Self Organizing Map basic algorithm is defined as follows.
+\begin{enumerate}
+\item Initialization. Choose random elements for the initial weight vectors $w_j$
+\item Sampling. Select a sample training input vector $x$ from the input space.
+\item Matching. Find the winning neuron $L(x)$, that has it's weight vector closest to the input vector $x$
+\item Updating. Apply the weight update equation $\Delta w_j=\eta(t) \times \kappa(t) \times (x_i - w_j)$; where $\eta(t)$ is a gaussian neighborhood function and $\kappa(t)$ is the learning rate.
+\item Continuation. Keep returning to step 2 until the feature map stops changing.
+\end{enumerate}
+
+To define the the size $n$ of the lattice, experiments were done with 50, 75, 100 and 125 elements. Table 1. shows the time needed to train the lattices. As it can be seen as more elements in the lattice, time increases, but the results in when comparing against other users are very similar. The lattice used for our experiments is build using XX elements.
+
+As recommended in [Reference, XX] the learning rate starts in 0.1 and decreases by the gaussian formula:
+
+\begin{equation}
+The magic formula
+\end{equation}
+
+The 
 
 
-1) Initialize the map using random input vectors of fixed dimension .
-
-2) Searching for the winner neuron.
-
-Select an input vector x randomly from the the training data set.
-Search for the neuron ???? which is associated to the closest vector ???? to x which minimize the quantization error |x ? m|.
-
-3) Updating the winner neuron and its neighboring units.
-For the winner neuron ???? and its neighbor U ? w, update the features vector using the following equation:
-????=????+?????? ×?× ???????
-where ???? ?? is neighborhood function which is the decreasing function of distance d between ???? and ?????
-and ? is the learning rate.
-
-4) Repeat Step 2, Step 3 with decreasing neighborhood function ???? ?? and learning rate ? until the quantization error converges enough or during the pre-defined iterations
 
 
 
