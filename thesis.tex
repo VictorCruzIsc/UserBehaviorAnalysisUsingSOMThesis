@@ -200,7 +200,7 @@ Instead, package sets $[\beta,\gamma,\phi]$ are individually processed and turne
 
 	\begin{center}\includegraphics[scale=0.2]{fig-three} \end{center}
 	
-Each chunk $C$ is defined with the following characteristics: a) It is conformed by one or more packages $C_n(p_1, p_2,...,p_n)$ that have a continuity in their timestamp field, b) It has a fixed time window $w$ but does not have a fixed number of packages, c) The difference between $p_n$ timestamp and $p_1$ timestamp is less or equal to the fixed time window $w$ and d) The difference between start timestamps of consecutive chunks is a fixed time $h$ .
+Each chunk $C$ is defined with the following characteristics: a) It is conformed by one or more packages $C_n(p_1, p_2,...,p_n)$ that have a continuity in their timestamp field, b) It has a fixed time window $w$ but does not have a fixed number of packages, c) The difference between $p_n$ timestamp and $p_1$ timestamp is less or equal to the fixed time window $w$ and d) The difference between start timestamps of consecutive chunks is a fixed time $h$.
 
 The elements in a package set are processed one by one, as follows:
 
@@ -222,47 +222,43 @@ Obtained metrics are the $k$-values of the neurons in the Self Organizing Map la
 \paragraph{Self Organizing Map algorithm implementation} % level 4
 Self Organizing Map basic algorithm is defined as follows.
 \begin{enumerate}
-\item Initialization. Choose random elements for the initial weight vectors $w_j$
-\item Sampling. Select a sample training input vector $x$ from the input space.
-\item Matching. Find the winning neuron $L(x)$, that has it's weight vector closest to the input vector $x$
+\item Initialization. Choose random elements for the initial weight vectors $w_j$.
+\item Sampling. Select a sample training input vector $x_n$ from the input space.
+\item Matching. Find the winning neuron $L(x)$, that has it's weight vector closest to the input vector $x$.
 \item Updating. Apply the weight update equation $\Delta w_j=\eta(t) \times \kappa(t) \times (x_i - w_j)$; where $\eta(t)$ is a gaussian neighborhood function and $\kappa(t)$ is the learning rate.
 \item Continuation. Keep returning to step 2 until the feature map stops changing.
 \end{enumerate}
 
-To define the the size $n$ of the lattice, experiments were done with 50, 75, 100 and 125 elements. Table 1. shows the time needed to train the lattices. As it can be seen as more elements in the lattice, time increases, but the results in when comparing against other users are very similar. The lattice used for our experiments is build using XX elements.
+Each element in the SOM lattice has a weights vector $V(v_1, v_2,..., v_n)$ of three elements, $v_1$ represents the TCP/UDP metric, $v_2$ represents the Internal IP metric and $v_3$ represents the Web traffic metric.
 
-As recommended in [Reference, XX] the learning rate starts in 0.1 and decreases by the gaussian formula:
+To define the the size $n$ of the lattice, experiments were done with 50, 75, 100 and 125 elements. Table 1. shows the time needed to train the lattices. As it can be seen as more elements in the lattice, time increases, but the results when comparing the obtained patterns against other users are very similar.The lattices used for the experiments were build using XX elements,  obtained randomly from the Build data set $\beta_1$ and ordered in a square distribution.
 
-\begin{equation}
-The magic formula
-\end{equation}
+For the evaluation phase, a new set based on the Training data set $\gamma_1$ was obtained. The average number of elements on the train data set of each user was 56,496 elements, the created data set, was conformed by 100,000 elements, guaranteeing that each element was evaluated at least one time.
 
-The 
-
-
+Best matching unit evaluation was obtained using Euclidean distance. The gaussian neighborhood function was used with an initial neighborhood radius of ($\frac{n}{2}$), decreasing linearly to 1 at the end of the training. The learning rate was chosen to be 1 and reduced to 0 at the end of the training.
 
 
 
 
 \paragraph{User network behavior pattern creation} % level 4
-This phase creates a user network pattern that represents its behavior in the network. Many pattern instances could be created from the user build dataset, as elements for creating it are randomly selected. Each neuron of the lattice is represented by an element of the Build Data Set, in which features are the three mentioned metrics in section 5.3.2. The lattice is has an arrange of 100 x 100 neurons, and a stop condition if 10 epochs.
+The train module implements the SOM-based approach for user characterization. In the training phase 10 epochs are used to process the lattice. After this phase, an user network behavior pattern is obtained. This pattern may differ between patterns obtained from the same user, because of the random selection of the build elements. Fig 3 shows lattice training during it's initial phases until it get's completely trained.
 
----{Paper [1] ANDSOM Module - Training}
-
+\begin{center}\includegraphics[scale=0.2]{fig-training} \end{center}
 
 
 
 
 
 \subsubsection{Pattern evaluation} % level 3
-Comparison between two different lattices of the same user
+When SOM lattice is completely trained, the elements with the same characteristics in their weights vector are grouped in the same area, denoting clusters of elements and a inherent classification. This obtained distribution of the elements along the SOM lattice, allows to classify easily new vectors, even if them were not in the the build or the train dataset [Reference, XX].
 
-Comparison between different lattices of multiple users
+The pattern evaluation module use the capacity of the SOM lattice, of matching new input vectors to their similar ones, not for classifying a new element, but for deciding if an user behavior can be identified among others. To perform this evaluation, new elements are needed: a) an organizational pattern and b) an organization evaluation dataset. An organizational pattern is defined as a matrix of user patterns $P$, which represent an user with it's own behavior in an environment where different users with common or completely different behaviors are present. The organization evaluation pattern is a collection of evaluation data sets $\phi_1$ of the users that conform the organizational pattern, acting as a labeled evaluation data set.
+
+Evaluation is done by showing each element of the organization evaluation data set to the organizational pattern, resulting best matching units are processed by obtaining the user pattern they belong to and compare it against the expected result. Fig 4. shows an organizational pattern of 4 users, and Fig 5. shows an organizational pattern after the evaluation.
 
 	\begin{center}\includegraphics[scale=0.5]{fig-one} \end{center}
-
-
-
+	
+	\begin{center}\includegraphics[scale=0.5]{fig-one} \end{center}
 
 
 
