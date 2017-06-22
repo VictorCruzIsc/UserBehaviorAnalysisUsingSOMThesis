@@ -178,7 +178,7 @@ Capture module was build using jNetPcap, which works as a client application tha
 
 
 \subsubsection{Data processing} % level 3
-Data processing phase is divided in four stages: a) Raw data partition, b) Data sets creation, c) Self Organizing Map algorithm implementation and d) User network behavior pattern creation. Two modules were build for this phase, data set and train module. Data set module involves Raw data partition and Data set creation stages and Train module involves Self Organizing Map algorithm implementation and User network behavior pattern creation.
+Data processing phase is divided in four stages: a) Raw data partition, b) Data sets creation, c) Self Organizing Map algorithm implementation and d) User network behavior pattern creation. Two modules were build for this phase, data set and train module. Data set module involves Raw data partition and Data set creation stages and Train module involves Self Organizing Map algorithm implementation and User network behavior pattern creation. Fig 2 shows how the data set module is working.
 
 
 
@@ -196,7 +196,7 @@ As explained in section 3.3 Self Organizing Map algorithm is a not supervised al
 \paragraph{Data set creation} % level 4
 Using TCP package as the working unit is not possible due the great volume of packages, and time consuming for processing each one individually [Reference, XX].
 
-Instead, package sets $[\beta,\gamma,\phi]$ are individually processed and turned into chunks. The obtained chunks are the the working units and conform the different data sets, Build data set $\beta_1$, the Train data set $\gamma_1$ and the Evaluation data set $\phi_1$ respectively. Fig 2 shows the process of dataset creation.
+Instead, package sets $[\beta,\gamma,\phi]$ are individually processed and turned into chunks. The obtained chunks are the the working units and conform the different data sets, Build data set $\beta_1$, the Train data set $\gamma_1$ and the Evaluation data set $\phi_1$ respectively.
 
 	\begin{center}\includegraphics[scale=0.2]{fig-three} \end{center}
 	
@@ -254,13 +254,9 @@ When SOM lattice is completely trained, the elements with the same characteristi
 
 The pattern evaluation module use the capacity of the SOM lattice, of matching new input vectors to their similar ones, not for classifying a new element, but for deciding if an user behavior can be identified among others. To perform this evaluation, new elements are needed: a) an organizational pattern and b) an organization evaluation dataset. An organizational pattern is defined as a matrix of user patterns $P$, which represent an user with it's own behavior in an environment where different users with common or completely different behaviors are present. The organization evaluation pattern is a collection of evaluation data sets $\phi_1$ of the users that conform the organizational pattern, acting as a labeled evaluation data set.
 
-Evaluation is done by showing each element of the organization evaluation data set to the organizational pattern, resulting best matching units are processed by obtaining the user pattern they belong to and compare it against the expected result. Fig 4. shows an organizational pattern of 4 users, and Fig 5. shows an organizational pattern after the evaluation.
+Evaluation is done by showing each element of the organization evaluation data set to the organizational pattern, resulting best matching units are processed by obtaining the user pattern they belong to and compare it against the expected result. Fig 4. shows how an organizational pattern is conformed and how it is evaluated.
 
-	\begin{center}\includegraphics[scale=0.5]{fig-one} \end{center}
-	
-	\begin{center}\includegraphics[scale=0.5]{fig-one} \end{center}
-
-
+	\begin{center}\includegraphics[scale=0.3]{evaluation} \end{center}
 
 \section{Results and Discussion} % level 1
 Results presentation, how the results are interpreted, and what we can do with data.
