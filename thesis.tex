@@ -8,8 +8,8 @@
 \usepackage{graphicx}
 \usepackage[]{algorithm2e}
 
-\setcounter{tocdepth}{5}
-%\setcounter{secnumdepth}{5}
+%\setcounter{tocdepth}{5}
+\setcounter{secnumdepth}{5}
 
 \title{User Behavior Analysis in Campus Area Networks through Kohonen Self Organizing Feature Maps}
 
@@ -76,21 +76,15 @@ Obtain the information from "Artificial Neural Networks An introduction Kevin L.
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           \subsubsection{Gaussian function} % level 3
 
 \subsection{Self-organizing Maps} % level 2
-The Self-Organizing Map algorithm performs a nonlinear, ordered, smooth mapping of high-dimensional input data manifolds onto the elements of a regular, low-dimensional array [25]. The algorithm converts non-linear statistical relationships between data elements in a high-dimensional space into geometrical relationships between elements in a two-dimensional map (lattice), called the Self-Organizing Map (SOM)[1]. A SOM can then be used to visualize the clusters, of an input space. Each element at SOM is a neuron, and is a representation of a multidimensional vector with a cartographic position denoted with x and y. If elements in the input space are characterized using k parameters and represented by k-dimensional vectors, each neuron in the SOM lattice is also specified as k-dimensional vector.
+The Self-Organizing Map algorithm performs a nonlinear, ordered, smooth mapping of high-dimensional input data manifolds onto the elements of a regular, low-dimensional array [25]. The algorithm converts non-linear statistical relationships between data elements in a high-dimensional space into geometrical relationships between elements in a two-dimensional map (lattice), called the Self-Organizing Map (SOM)[1]. A SOM can then be used to visualize the clusters, of an input space. Each element at SOM is a neuron, and is a representation of a multidimensional vector with a cartographic position denoted with x and y. If elements in the input space are characterized using $k$ parameters and represented by $k$-dimensional vectors, each neuron in the SOM lattice is also specified as $k$-dimensional vector.
 
 \subsubsection{Learning} % level 3
 In the learning or training phase, the neurons in SOM algorithm try to model the input space. 
 SOM algorithm differ from other artificial neuronal networks as they apply competitive learning and use a cooperative schema. 
 
---- OPTION 1 ---
 Opposed to error-correction learning, in which each element $s_n$ in the training dataset $S$ is evaluated by the neuronal network connections $W(w_1, w_2,...,w_n)$ and the result $r$ is compared against a predefined threshold to decide if the result matches the expected output and an adjustment to $W$ is needed, in competitive learning each element $e_n$ of the training data set $E$ is shown to every neuron $N(n_1,n_2,...,n_n)$ in the SOM lattice Each neuron $n_n$ calculates a response $h$ to the shown element, based on a preselected distance measure. The neuron that gives the best response is called the winning neuron or best matching unit (BMU).
---- FINISHES OPTION 1 ---
 
---- OPTION 2 ---
-Opposed to error-correction learning, in which the evaluation result of an element in the training dataset may result in the complete adjustment of the neuronal network connections, in competitive learning each element $e_n$ int the training data set $E$ is shown to every neuron $N(n_1,n_2,...,n_n)$ in the SOM lattice, the response is calculated through a preselected distance measure, the neuron that gives the best response is called the winning neuron or best matching unit (BMU) and gets it's vector values updated.
---- FINISHES OPTION 2 ---
-
-Suitable distance measure should be stablished in order to find the BMU. Two common used distance measures are dot-product measure and euclidean distance.
+Suitable distance measure should be stablished in order to find the BMU. Two common used distance measures are 1) dot-product measure and 2) euclidean distance.
 For using dot-product measure, lattice neurons $N$ and training elements $E$ should be normalized. Normalization of a vector $V(v_1, v_2, v_3,...,v_n)$ is a process of transforming it's components into
 $(\frac{v_1}{\sqrt{v_1^2+v_2^2+...+v_n^2}},
 \frac{v_2}{\sqrt{v_1^2+v_2^2+...+v_n^2}},
@@ -103,17 +97,14 @@ $(\frac{v_1}{\sqrt{v_1^2+v_2^2+...+v_n^2}},
 \begin{equation}
 X \cdot Z = (x_1 \cdot z_1 + x_2 \cdot z_2 + x_3 \cdot z_3 + ... + x_n \cdot z_n)
 \end{equation}
- 
- 
- Using this measure means that BMU is the one that gives the maximum dot-product value.
+using this measure means that BMU is the one that gives the maximum dot-product value.
  
  In the other hand, euclidean distance measure does not need vector normalization and the BMU is defined for the minimum obtained distance. For two vectors $Y(y_1,y_2,...,y_n)$ and $Z(z_1,z_2,...,z_n)$ euclidean distance is given by:
  
 \begin{equation}
 D = \sqrt{(z_1-y_1)^2 + (z_2-y_2)^2 + ... + (z_n-y_n)^2}
 \end{equation}
-
- Once a BMU is obtained, it's $k$-dimensional values are adjusted so in the future it responds better to a similar input $e_n$.
+once a BMU is obtained, it's $k$-dimensional values are adjusted so in the future it responds better to a similar input $e_n$.
 
 As SOM algorithm is not just a classification algorithm but also a clustering algorithm, a way of maintaining the dimensional relationships between elements in the same geometrical area is to get their $k$-dimensional values updated at the same time as the BMU does. This update is known as a cooperative schema, and it only works on neurons that are in the vicinity of the BMU defined by a neighborhood function.
 
@@ -129,7 +120,65 @@ As SOM algorithm is not just a classification algorithm but also a clustering al
 
 \subsubsection{Network topology} % level 3
 
-\subsubsection{OSI Model / TCPIP} % level 3
+\subsubsection{OSI Model} % level 3
+% --- References ---
+% https://support.microsoft.com/en-us/help/103884/the-osi-model-s-seven-layers-defined-and-functions-explained
+% https://www.os3.nl/_media/2014-2015/info/5_osi_model.pdf
+% https://www.pluralsight.com/blog/it-ops/networking-basics-tcp-udp-tcpip-osi-models
+% https://www.reddit.com/r/explainlikeimfive/comments/mk75a/can_anyone_please_explain_tcpip_and_its_layers_to/
+% http://k-12.pisd.edu/currinst/network/if2_2st.pdf
+% https://www.sans.org/reading-room/whitepapers/protocols/understanding-security-osi-model-377
+% http://www.codeguru.com/cpp/sample_chapter/article.php/c12219/Introduction-to-Network-Protocols.htm
+%https://ielm.ust.hk/dfaculty/ajay/courses/alp/ieem110/lecs/comm/comm.html
+
+%http://www.cs.virginia.edu/~cs458/material/Redbook-ibm-tcpip-Chp5.pdf
+% --- References ---
+The Open Systems Interconnection (OSI), is an ISO standard for worldwide communications, that defines networking in terms of a vertical stack of seven layers. Control is passed from one layer to the next.
+
+Starting at the application layer in one host, proceeding to the bottom layer, over the channel to the next station and back up in the hierarchy[2]. What this means is that starting at the top layer, information is passed to the lower layer until it reaches the bottom, once the information reaches the bottom (the physical medium), the information make its way to the destination. Just after the information reaches its destination, it travels up each layer until it reaches the appropriate level for translation. During data transmission among the layers, relevant information of that layer is attached (encapsulation), binding this information allows each layer to communicate with its relevant layer at destination. Fig 1 illustrates the information flow.
+
+	\begin{center}\includegraphics[scale=0.4]{osi} \end{center}
+OSI layers are designed to communicate with only one layer above and below it, and are developed independently, allowing flexibility and modularity. As mentioned before there are seven layers in the OSI model 1) Physical, 2) Data Link, 3) Network, 4) Transport, 5) Session, 6) Presentation and 7) Application. A brief explanation of what is done, the process of communication, and the used protocols on each layer will be explained above.
+
+\paragraph{Physical layer} % level 4
+Baker [4] describes the Physical layer as the properties of the network, such as voltage levels, cable types, and interface pins. In other way the physical layer describes the electric and optical signals used for communicating between two hosts, is concerned with the transmission and reception of the unstructured raw bit stream over the physical medium, and carries those signals to for all the higher layers.
+
+Physical layer protocols specify the following:
+--- Option 1 ---
+a) Electrical signals (for example, +1V), b)Connector shapes (for example, V.35), c) Media type (twisted pair, coaxial cable, optical fiber, etc.), d) Modulation (for example, FM, PM, etc.), e) Coding (for example, RZ, NRZ, etc.), and f) Synchronization (synchronous and asynchronous communication, time source, and so on).
+
+--- Option 2 ---
+a) Electrical signals, b)Connector shapes, c) Media type, d) Modulation, e) Coding, and f) Synchronization.
+
+\paragraph{Data Link layer} % level 4
+This layer takes care of the verification that bit sequences are passed correctly between two nodes, If errors occur, this level request the retransmission of the corrupted sequence, providing the upper layers an error free transmission over the link. To do this, data link layer provides: a) link control, in which logical establishment and termination between nodes is done, b) frame control, which defines the transmission rate, establish the sequence of the received data, verifies data integrity and c) determines when the node is allowed to use the physical medium.
+
+\paragraph{Network layer} % level 4
+Network layer ensures the data transfer between two remote computers within a particular Wide Area Network (WAN), by setting up a complete path. Datagrams are encapsulated in frames which are send over the network containing the next step in the transmission, when a frame arrives to its destination, it is unwrapped and new information with the following destination is attached to it by a new wrap.
+
+\paragraph{Transport layer} % level 4
+A definition of Transport Layer is: In the Open Systems Interconnection (OSI) communications model, the Transport layer ensures the reliable arrival of messages and provides error checking mechanisms and data flow controls. The Transport layer provides services for both "connection-mode" transmissions and for "connectionless-mode" transmissions. For connection-mode transmissions, a transmission may be sent or arrive in the form of packets that need to be reconstructed into a complete message at the other end [4].
+
+One way of ensuring there is reliability and error checking is through the Transfer Control Protocol (TCP). another used protocol on the layer is UDP (User Datagram Protocol), TCP and UDP are individually described as: 
+
+\paragraph{TCP} % level 5
+Transfer Control Protocol was written in 1980 within RFC 761 by Information Sciences Institute University of Southern California. It was originally produced for the United States Department of Defense. TCP is described as: The Transmission Control Protocol (TCP) is intended for use as a highly reliable host-to-host protocol between hosts in packet-switched computer communication networks, and especially in interconnected systems of such networks.
+
+\paragraph{UDP} % level 5
+UDP (User Datagram Protocol) is a communications protocol that offers a limited amount of service when messages are exchanged between computers in a network that uses the Internet Protocol). [6] 
+Mainly information that does not need reliability uses UDP protocol. Streaming activities such as playing music or video, in which if a package is lost, it will not be critical. UDP is a trade of accuracy for speed.
+
+\paragraph{Session layer} % level 4
+
+\paragraph{Presentation layer} % level 4
+
+\paragraph{Application layer} % level 4
+
+--- TBD ---
+In which layer we are really working?
+Is it layer 4 or 2 where sniffing packages occur?
+
+I think it's important to define the layer we are working the most and explain why and for waht we are usign it?
 
 \subsubsection{Network Security} % level 3
 
@@ -155,7 +204,7 @@ Five full-time professors (hereafter denoted as users) were selected for the exp
 
 
 \subsection{Explanation} % level 2
-In this work Self Organizing Maps algorithm is used to create an user pattern inside a Campus Area Network. Experiments are divided in three phases: network data capture, data processing and pattern evaluation.
+In this work Self Organizing Maps algorithm is used to create an user pattern inside a Campus Area Network. Experiments are divided in three phases: 1) network data capture, 2) data processing and 3) pattern evaluation.
 
 For network data capture phase, a set of raw packages is obtained for each user through tcpdump library, process is explained in [Parres, XX].
 
@@ -172,13 +221,13 @@ For each phase in the process one or more modules were build, each module's outp
 
 
 \subsubsection{Network data capture} % level 3
-Network data capture phase duration was at least of two labor weeks,  in which network traffic was captured from each user's computer.
+Network data capture phase duration was at least two labor weeks,  in which network traffic was captured from each user's computer.
 Capture module was build using jNetPcap, which works as a client application that once installed enables to capture continuously user network data in an IP packet format and save it in files of twenty megabytes each, naming them with file's creation timestamp. Average size of complete raw captured traffic for each user is three gigabytes, involving more than four million packages. Each register contains the characterization of a network connection by eight parameters: origin IP, destination IP, used protocol, local used port, remote used port, total transmitted bytes in the package, timestamp and the connection-way which establishes if the package is coming from local to remote (out), or from remote to local (in).
 
 
 
 \subsubsection{Data processing} % level 3
-Data processing phase is divided in four stages: a) Raw data partition, b) Data sets creation, c) Self Organizing Map algorithm implementation and d) User network behavior pattern creation. Two modules were build for this phase, data set and train module. Data set module involves Raw data partition and Data set creation stages and Train module involves Self Organizing Map algorithm implementation and User network behavior pattern creation. Fig 2 shows how the data set module is working.
+Data processing phase is divided in four stages: 1) Raw data partition, 2) Data sets creation, 3) Self Organizing Map algorithm implementation and 4) User network behavior pattern creation. Two modules were build for this phase, data set and train module. Data set module involves Raw data partition and Data set creation stages and Train module involves Self Organizing Map algorithm implementation and User network behavior pattern creation. Fig 2 shows how the data set module is working.
 
 
 
@@ -280,6 +329,11 @@ Also formulas are not completely following the standard of a gaussian function s
 
 \section{Bibliography} % level 1
 [1] Ramadas, M., Ostermann, S.,  Tjaden, B. Detecting Anomalous Network Traffic with Self-organizing Maps.
+[2] ?OSI? http://www.webopedia.com/TERM/O/OSI.html.
+[3] Baker, David W. ?Communications and Networking? Using Java 1.1, Third Edition
+[4] http://searchnetworking.techtarget.com/definition/Transport-layer
+[5] https://www.rfc-es.org/rfc/rfc0793-es.txt
+[6] https://www.ietf.org/rfc/rfc768.txt
 [8] Dozono, H., Itou, S., and Nakakuni, M. (2007). Comparison of the adaptive authentication systems for behavior biometrics using the variations of self organizing maps. International Journal of Computers and Communications, 1(4), 108-116.
 [25] T.Kohonen. Self Organizing Maps. Springer, third edition, 2001.
 
