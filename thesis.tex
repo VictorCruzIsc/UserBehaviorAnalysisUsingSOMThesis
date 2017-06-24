@@ -121,76 +121,39 @@ As SOM algorithm is not just a classification algorithm but also a clustering al
 \subsubsection{Network topology} % level 3
 
 \subsubsection{OSI Model} % level 3
-% --- References ---
-% https://support.microsoft.com/en-us/help/103884/the-osi-model-s-seven-layers-defined-and-functions-explained
-% https://www.os3.nl/_media/2014-2015/info/5_osi_model.pdf
-% https://www.pluralsight.com/blog/it-ops/networking-basics-tcp-udp-tcpip-osi-models
-% https://www.reddit.com/r/explainlikeimfive/comments/mk75a/can_anyone_please_explain_tcpip_and_its_layers_to/
-% http://k-12.pisd.edu/currinst/network/if2_2st.pdf
-% https://www.sans.org/reading-room/whitepapers/protocols/understanding-security-osi-model-377
-% http://www.codeguru.com/cpp/sample_chapter/article.php/c12219/Introduction-to-Network-Protocols.htm
-%https://ielm.ust.hk/dfaculty/ajay/courses/alp/ieem110/lecs/comm/comm.html
-
-%http://www.cs.virginia.edu/~cs458/material/Redbook-ibm-tcpip-Chp5.pdf
-% --- References ---
 The Open Systems Interconnection (OSI), is an ISO standard for worldwide communications, that defines networking in terms of a vertical stack of seven layers. Control is passed from one layer to the next.
 
-Starting at the application layer in one host, proceeding to the bottom layer, over the channel to the next station and back up in the hierarchy[2]. What this means is that starting at the top layer, information is passed to the lower layer until it reaches the bottom, once the information reaches the bottom (the physical medium), the information make its way to the destination. Just after the information reaches its destination, it travels up each layer until it reaches the appropriate level for translation. During data transmission among the layers, relevant information of that layer is attached (encapsulation), binding this information allows each layer to communicate with its relevant layer at destination. Fig 1 illustrates the information flow.
+Starting at the top layer, information is passed to the lower layer until it reaches the bottom, once the information reaches the bottom (the physical medium), the information make its way to the destination. Just after the information reaches its destination, it travels up each layer until it reaches the appropriate level for translation. During data transmission among the layers, relevant information of that layer is attached (encapsulation), binding this information allows each layer to communicate with its relevant layer at destination. Fig 1 illustrates the information flow.
 
 	\begin{center}\includegraphics[scale=0.4]{osi} \end{center}
 OSI layers are designed to communicate with only one layer above and below it, and are developed independently, allowing flexibility and modularity. As mentioned before there are seven layers in the OSI model 1) Physical, 2) Data Link, 3) Network, 4) Transport, 5) Session, 6) Presentation and 7) Application. A brief explanation of what is done, the process of communication, and the used protocols on each layer will be explained above.
 
 \paragraph{Physical layer} % level 4
-Baker [4] describes the Physical layer as the properties of the network, such as voltage levels, cable types, and interface pins. In other way the physical layer describes the electric and optical signals used for communicating between two hosts, is concerned with the transmission and reception of the unstructured raw bit stream over the physical medium, and carries those signals to for all the higher layers.
-
-Physical layer protocols specify the following:
---- Option 1 ---
-a) Electrical signals (for example, +1V), b)Connector shapes (for example, V.35), c) Media type (twisted pair, coaxial cable, optical fiber, etc.), d) Modulation (for example, FM, PM, etc.), e) Coding (for example, RZ, NRZ, etc.), and f) Synchronization (synchronous and asynchronous communication, time source, and so on).
-
---- Option 2 ---
-a) Electrical signals, b)Connector shapes, c) Media type, d) Modulation, e) Coding, and f) Synchronization.
+The physical layer describes the electric and optical signals used for communicating between two hosts, is concerned with the transmission and reception of the unstructured raw bit stream over the physical medium, and carries those signals to for all the higher layers.
 
 \paragraph{Data Link layer} % level 4
-This layer takes care of the verification that bit sequences are passed correctly between two nodes, If errors occur, this level request the retransmission of the corrupted sequence, providing the upper layers an error free transmission over the link. To do this, data link layer provides: a) link control, in which logical establishment and termination between nodes is done, b) frame control, which defines the transmission rate, establish the sequence of the received data, verifies data integrity and c) determines when the node is allowed to use the physical medium.
+This layer takes care of the verification that bit sequences are passed correctly between two nodes, If errors occur, this level request the retransmission of the corrupted sequence, providing the upper layers an error free transmission over the link. To do this, data link layer provides: a) link control, in which logical establishment and termination between nodes is done, b) frame control, which defines the transmission rate, establish the sequence of the received data, verifies data integrity and c) determines when the node is allowed to use the physical medium. Common protocols of this layer are: HDCL for point to point and point to multipoint connections, and IEEE 802 for local networks [7]. 
 
 \paragraph{Network layer} % level 4
-Network layer ensures the data transfer between two remote computers within a particular Wide Area Network (WAN), by setting up a complete path. Datagrams are encapsulated in frames which are send over the network containing the next step in the transmission, when a frame arrives to its destination, it is unwrapped and new information with the following destination is attached to it by a new wrap.
+Network layer role is to deliver a packet form one logical address (in the case of an IP, an IP) to another. Router devices use the generated frames to send packets through the network, depending on several key field of the datagram header such as: the source and destination IP address, Time To Live counter (TTL), and the checksum [9].
 
 \paragraph{Transport layer} % level 4
-A definition of Transport Layer is: In the Open Systems Interconnection (OSI) communications model, the Transport layer ensures the reliable arrival of messages and provides error checking mechanisms and data flow controls. The Transport layer provides services for both "connection-mode" transmissions and for "connectionless-mode" transmissions. For connection-mode transmissions, a transmission may be sent or arrive in the form of packets that need to be reconstructed into a complete message at the other end [4].
-
-One way of ensuring there is reliability and error checking is through the Transfer Control Protocol (TCP). another used protocol on the layer is UDP (User Datagram Protocol), TCP and UDP are individually described as: 
-
-\paragraph{TCP} % level 5
-Transfer Control Protocol was written in 1980 within RFC 761 by Information Sciences Institute University of Southern California. It was originally produced for the United States Department of Defense. TCP is described as: The Transmission Control Protocol (TCP) is intended for use as a highly reliable host-to-host protocol between hosts in packet-switched computer communication networks, and especially in interconnected systems of such networks.
-
-\paragraph{UDP} % level 5
-UDP (User Datagram Protocol) is a communications protocol that offers a limited amount of service when messages are exchanged between computers in a network that uses the Internet Protocol). [6] 
-Mainly information that does not need reliability uses UDP protocol. Streaming activities such as playing music or video, in which if a package is lost, it will not be critical. UDP is a trade of accuracy for speed.
+According to [4] In the Open Systems Interconnection (OSI) communications model, the Transport layer ensures the reliable arrival of messages and provides error checking mechanisms and data flow controls. The Transport layer provides services for both connection-mode transmissions and for connectionless-mode transmissions. Two transport protocols are used over the internet: TCP [5] and UDP [6]. TCP ensures the delivery of the packages due the implementation of re transmission mechanisms such as error checking and numbering for check the sequence of the packages, however UDP is more often used for network transmissions where the lost of any package is not critical.
 
 \paragraph{Session layer} % level 4
+Session layer facilitates the exchange of data between applications, by organizing and structuring the the processes among them. The basic unit of this layer is the protocol data unit (PDU) [7].
 
 \paragraph{Presentation layer} % level 4
+The presentation layer is in charge of formatting the data to be presented to the application layer. this layer acts as a translator, changing from a custom format used by the application to a common format used in the receiver station [7].
 
 \paragraph{Application layer} % level 4
-
---- TBD ---
-In which layer we are really working?
-Is it layer 4 or 2 where sniffing packages occur?
-
-I think it's important to define the layer we are working the most and explain why and for waht we are usign it?
+This layer is used as window to network services by users and application processes through network applications and application protocols. Some common protocols in this model are HTTP, FTP, DNS, and SMTP.
 
 \subsubsection{Network Security} % level 3
 
 \subsubsection{Intrusion Detection Systems} % level 3
 
-
-
-
-
-
 \section{Methodological Development} % level 1
-
 
 \subsection{Experiment context} % level 2
 Experiment was carried out on a Campus Area Network (CAN) that has a 16-bit network and a Windows domain controller, using a HTTP proxy. Among campus applications web and remote apps are included.
@@ -334,7 +297,9 @@ Also formulas are not completely following the standard of a gaussian function s
 [4] http://searchnetworking.techtarget.com/definition/Transport-layer
 [5] https://www.rfc-es.org/rfc/rfc0793-es.txt
 [6] https://www.ietf.org/rfc/rfc768.txt
+[7] Zimmermann, Hubert. 1990. «OSI Reference Model - The ISO Model of Architecture for Open Systems Interconnection.» IEEE Transactions 425-432.
 [8] Dozono, H., Itou, S., and Nakakuni, M. (2007). Comparison of the adaptive authentication systems for behavior biometrics using the variations of self organizing maps. International Journal of Computers and Communications, 1(4), 108-116.
+[9]Kurose, James, y Keith Ross. 2012. Computer Networking: a top down approach. NewJersey: Pearon.
 [25] T.Kohonen. Self Organizing Maps. Springer, third edition, 2001.
 
 
