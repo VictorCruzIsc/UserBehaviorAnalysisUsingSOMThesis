@@ -27,22 +27,69 @@
 
 
 \section{Introduction} % level 1
-Inbounds
+
+
+
 
 \subsection{Background} % level 2
+En base al reporte de seguridad de Cisco publicado en 2015 [1] los usuarios y los equipos de Tecnologías de información se han vuelto clave en la seguridad informática dado que estos comprometen la seguridad de forma inconsciente a través del uso indiscriminado de los navegadores y la participación en campañas de publicidad [1], principales medios para la distribución de malware.
+
+Las técnicas actuales de seguridad en redes de computadoras trabajan principalmente en la frontera de la red, buscando prevenir los ataques que son ejecutados desde el exterior descuidando en mayor forma las amenazas que se originan en el interior. 
+
+Se han desarrollados diversos trabajos buscando prevenir y contener los ataques por parte de usuarios internos con diferentes propuestas como son; técnicas de Machine Learning y Sistemas de Detección de Intrusos (IDS por sus siglas en inglés) [2] [3], algoritmos de clustering [2, 4, 5], generación de infraestructuras de cloud computing y minería de datos [4]. 
+Dentro de las propuestas de nuevas técnicas de IDS existe la problemática de los altos índices de falsos positivos, una tasa de detección que varía en base al tipo de ataque, y una dependencia completa a la creación de firmas que muchas veces pueden nos ser optimas en el ambiente de producción o sus tiempo de creación es demasiado largo, siendo las principales razones de esto la extensa cantidad de información que debe ser analizada, el poco tiempo que se tiene para su análisis, el uso incorrecto de las técnicas de procesamiento aplicadas o el tiempo que se debe invertir para la creación de firmas para el ambiente vulnerable.
+
+Tian [3] propone que es posible hacer uso de selección de variables, para  reducir el conjunto de información a analizar lo que impacta directamente en el tiempo que se toma el análisis y es posible analizar de forma más detallada la información. Por su parte Kamarularin [2] explora la eficiencia de los procesos.
+
+Por su lado Yamada [5] y Kamarularin [2] ejecutan diferentes algoritmos de machine learning cuyos resultados permitan conocer y comparar resultados en la detección de ataques y la retroalimentación para la generación de firmas de forma automatizada.
+
+Es posible observar que existe un campo de estudio enfocado a los IDS, utilizando técnicas de machine learning con un alto nivel fiabilidad, por lo que su aplicación permitiría combatir de forma efectiva la brecha de seguridad en redes causada por los mismos usuarios
+
+
+
 
 \subsection{Justification} % level 2
+Current security network solutions neglect  the internal monitoring of users activity, as they assume that inner user interaction is secure and will not harm any asset of the network [10] However the lack of supervision and monitoring arise two new kind of network vulnerabilities: 1) an inner user attacks the network with full knowledge of what he is doing and 2) an inner user is a victim of an attacker, unconsciently causing attacks to the network or networks where it is has any activity. In both scenarios, the user is taking advantage of its unsupervised position.
+
+In the first case, when the user is aware of its not authorized actions, its possible to find two different profiles: 1) basic users and 2) intermediate-advance users.
+Basic malicious users are forced to explode known system vulnerabilities, depending on missing security patches in the operating systems and to use code (snippets and scripts) written by experienced users, as they have a lack of technical formation, making its network behavior similar to a \textit{scriptkiddie}. On the other hand, intermediate-advance users may use new specialized software or tools to break into the network and damage valuable information.
+
+In the case where the host is being used by an attacker, both previously behaviors could be detected over the network.
+
+As normal inner users and anomalous users interact in the same network, characterization of both behaviors could provide the required information to detect anomalous users.
+
+
 
 \subsection{Problem} % level 2
+Identifying network attacks has been addressed in two different ways: 1) [CONCEPT1], known attack firms are provided to security network devices such as firewalls, antivirus or intrusion detection systems to check if the current network traffic matches any of them and 2) [CONCEPT2], use the artificial intelligence or machine learning algorithms to detect anomalous behavior.
+
+In [CONCEPT1] network devices, are able to detect anomalous behavior that completely matches any of the firms in the known attacks database (KAD), missing by far corner cases such as variations, or improvements of the same attack. Besides this, novel attacks are completely ignored as they do not match any firm in KAD. Both scenarios make keeping up with security updates is tedious, time consuming and has a high economic impact.
+
+In [CONCEPT2], in order to avoid firms classification which implies spending time and human resources, firms are obtained from general datasets such as KDCUPP99 or ANOTHERDATASET [REFERENCES, XX, XX, XX], causing a big rate of false-positives, making the system not as reliable as it should be.
+
+Attack firms usage is not a viable meanwhile its process of creation is too long, experienced human resources are limited or expensive and updates are not always available due they not exist or are very expensive.
+
+
 
 \subsection{Hypothesis} % level 2
+As we form our own criteria, our environment, actions and thoughts start to model how we behave and respond to different stimulus in our day to day situations, in the same way, with the usage of internet in every aspect of our life, a network behavior pattern could be obtained from our digital interaction.
+
+In this work, we state that an user has a defined behavior in a network. This behavior could be obtained by the processing user's network activity into an user network behavior pattern (UNBP), allowing us to identify an specific user among others.
+
+
+
 
 \subsection{Objectives} % level 2
-
 \subsubsection{General Objectives} % level 3
+Prevenir problemas de seguridad interna en campus area networks (CAN) a través del perfilado de usuarios de la red, mediante técnicas de clustering y machine learning, haciendo posible la detección de ataques de usuarios internos en un periodo corto de tiempo, y la reducción de falsos positivos.
 
 \subsubsection{Particular Objectives} % level 3
-
+Para poder lograr el objetivo general es necesario desarrollar las siguientes fases:
+Implementar un algoritmo de clustering cuyo resultado nos permita identificar grupos de usuarios con comportamientos similares.
+Hacer uso de los clusters obtenidos para definir patrones de comportamiento normal dentro de la red, con el fin de establecer el perfil de un usuario normal y recurrente de la red.
+Identificar un usuario anómalo, basado en la comparación del clúster y el perfil de un usuario normal en la red.
+Clasificar el nivel de conocimiento de un usuario malicioso en: 1) básico, aquel usuario cuya actividad en la red sea para investigación referente a seguridad en redes de computadoras, descarga de scripts y ejecución de estos, o manejo de sistemas operativos enfocados a pen testing 2) intermedio o 3) avanzado
+Retroalimentar el set de clusters existentes con el comportamiento de algún usuario anómalo, con el objetivo de actualizar los clusters existentes con la nueva información o crear un nuevo clúster con un comportamiento propio definido.
 
 
 
@@ -50,8 +97,24 @@ Inbounds
 
 
 \section{State of the Art} % level 1
+Chaudhari y Prasad [4] establecen los principales problemas que se presentan actualmente en los IDS que son: 1) El origen de los datos con los que un IDS trabaja y el recorrido que estos deben hacer previo a su análisis, lo que causa que en repetidas ocasiones se haga una mala interpretación de los datos debido a la falta de contexto de la información; 2) el exceso de uso de recursos extras para su funcionamiento continuo; y, 3) la dependencia de los IDS hacia otros módulos de que pueden ser susceptibles a ataques y por lo tanto dejar temporalmente o de forma definitiva inhabilitado el sistema.
+Autores como Kamarularin [2], Chaudhari [4], Xu [6] y Muda[7], abordan diferentes técnicas de machine learning, mientras Pilabutr [8], Tian [3] y Al-Jarrah [9] se enfocan en la selección de variables, adicionalmente Yamada [5] nos presenta metodologías para la generación de datasets de entrenamiento y pruebas.
+
+
+
 
 \subsection{Machine Learning Algorithms and Computer Security} % level 2
+Kamarularin [2] propone evaluar el desempeño del algoritmo de árboles de decisión y compararlo con los algoritmos de redes neuronales y SVM con el objetivo de evaluar que algoritmo de estos es  más efectivo para la detección de ataques. Utilizando para esto cuatro criterios a evaluar: 1) la precisión en la detección; 2) la tasa de detección; 3) los falsos positivos que presento cada uno de los algoritmos; 4) la precisión para clasificar los ataques en su correspondiente categoría: Probe, Denial of Service (DoS), User to root (U2R), Remote to local (R2L). Basado en esto el algoritmo que mejor se desempeña es Arboles de Decisión, mostrando una tase de detección del 98.55%. 
+Xu, Wang y Gu [6] proponen una nueva forma de hacer un perfilamiento del tráfico de red identificando y analizando clusters de hosts y aplicaciones que tienen un comportamiento similar, reduciendo significativamente el costo del análisis del tráfico. Dicho análisis se logra en cuatros fases: 
+1) Creación de grafos bipartitos para modelar el tráfico de red y representar patrones de comunicación entre hosts origen y hosts destinos.
+2) Generación de one-mode projections a partir de los grafos bipartitos, con el fin de descubrir de forma eficiente relaciones ocultas entre nodos con los mismos vértices y descubrir comportamientos similares.
+3) Construcción de matrices de similitud basados en las proyecciones previamente obtenidas, donde la caracterización de estas, está basada en el número de host destinos, y hosts orígenes comparten.
+4) Aplicación de un algoritmo de clustering, para agrupar comportamientos similares basados en la caracterización que poseen las matrices, donde cada clúster consiste en host orígenes que se comunican con hosts destinos con los mismos prefijos de red, servidores, o inclusive clientes. 
+Con el análisis anterior es posible encontrar un número finito de clusters con un comportamiento definido, que es más fácil de analizar comparado a un análisis de tráfico de hosts individuales, además de que permite encontrar el comportamiento de un grupo de hosts en el mismo prefijo de red. Xu et. al [6] Logran mostrar que mediante su técnica de perfilamiento es posible crear clusters con comportamientos e intercambio de información diferentes que son consistentes en el tiempo.
+Debido a la alta tasa de falsos positivos que los algoritmos de machine learning arrojan, Muda [8] propone crear un método hibrido de detección de intrusos basado en K-Means y la técnica de clasificación OneR, dicho algoritmo funciona a través de la agrupación de datos, basado en el comportamiento que presentan (comportamiento normal y comportamiento malicioso) a través del algoritmo de clustering K-means, una vez agrupados, el algoritmo de clasificación OneR permite identificar las diferentes clases de ataques que están presentes. El desempeño del algoritmo es comparado con otros algoritmos: k-NN, Hierarchical Clustering + SVM y ESC-IDS, mostrando una reducción en la tasa de falsos positivos del 4.56% respecto a los demás algoritmos. 
+Chaudhari  [4] y Tian W. [3] presentan la propuesta de hacer uso del algoritmo de Particle Swarm Optimization (PSO), una técnica heurística de optimización cuya funcionalidad está basada en el comportamiento social que tienen las aves cuando vuelan o los peces cuando necesitan protección de depredadores más grandes. En este algoritmo cada partícula o elemento intenta buscar la mejor posición basado en la posición de sus compañeros alrededor. Chaudhari y Tian W. aprovechan las características del algoritmo de auto aprendizaje y rápida convergencia para aprender patrones típicos de un ataque a la red. 
+
+
 
 \subsection{Profiling  and User classification} % level 2
 
@@ -62,9 +125,16 @@ Inbounds
 
 \section{Theorical framework} % level 1
 
+
+
+
 \subsection{Proxy} % level 2
 
+
+
+
 \subsection{Machine Learning algorithms}	 % level 2
+
 
 \subsubsection{Learning methods} % level 3
 
@@ -73,10 +143,13 @@ Obtain the information from "Artificial Neural Networks An introduction Kevin L.
 
 \paragraph{Unsupervised Training Methods} % level 4
 Obtain the information from "Artificial Neural Networks An introduction Kevin L. Priddy and Paul E. Keller" Chapter 2.3
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          \subsubsection{Gaussian function} % level 3
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        \subsubsection{Gaussian function} % level 3
+
 
 \subsection{Self-organizing Maps} % level 2
 The Self-Organizing Map algorithm performs a nonlinear, ordered, smooth mapping of high-dimensional input data manifolds onto the elements of a regular, low-dimensional array [25]. The algorithm converts non-linear statistical relationships between data elements in a high-dimensional space into geometrical relationships between elements in a two-dimensional map (lattice), called the Self-Organizing Map (SOM)[1]. A SOM can then be used to visualize the clusters, of an input space. Each element at SOM is a neuron, and is a representation of a multidimensional vector with a cartographic position denoted with x and y. If elements in the input space are characterized using $k$ parameters and represented by $k$-dimensional vectors, each neuron in the SOM lattice is also specified as $k$-dimensional vector.
+
 
 \subsubsection{Learning} % level 3
 In the learning or training phase, the neurons in SOM algorithm try to model the input space. 
@@ -92,8 +165,7 @@ $(\frac{v_1}{\sqrt{v_1^2+v_2^2+...+v_n^2}},
 \frac{v_n}{\sqrt{v_1^2+v_2^2+...+v_n^2}}
 )$
  so that the modules of the normalized vector is unity. The dot-product of the input vector is calculated against all the neurons in the lattice, where dot-product of two vectors $Y(x_1, x_2, x_3,..., x_n)$ and $Z(z_1, z_2, z_3,..., z_n)$ is defined by: 
- 
- 
+  
 \begin{equation}
 X \cdot Z = (x_1 \cdot z_1 + x_2 \cdot z_2 + x_3 \cdot z_3 + ... + x_n \cdot z_n)
 \end{equation}
@@ -112,13 +184,18 @@ As SOM algorithm is not just a classification algorithm but also a clustering al
 
 \paragraph{Learning Function} % level 4
 
+
 \subsection{Redes de Computadoras} % level 2
+
 
 \subsubsection{Local Area Network (LAN)} % level 3
 
+
 \subsubsection{Campus Area Network(CAN)} % level 3
 
+
 \subsubsection{Network topology} % level 3
+
 
 \subsubsection{OSI Model} % level 3
 The Open Systems Interconnection (OSI), is an ISO standard for worldwide communications, that defines networking in terms of a vertical stack of seven layers. Control is passed from one layer to the next.
@@ -292,15 +369,61 @@ Also formulas are not completely following the standard of a gaussian function s
 
 \section{Bibliography} % level 1
 [1] Ramadas, M., Ostermann, S.,  Tjaden, B. Detecting Anomalous Network Traffic with Self-organizing Maps.
+
 [2] ?OSI? http://www.webopedia.com/TERM/O/OSI.html.
+
 [3] Baker, David W. ?Communications and Networking? Using Java 1.1, Third Edition
+
 [4] http://searchnetworking.techtarget.com/definition/Transport-layer
+
 [5] https://www.rfc-es.org/rfc/rfc0793-es.txt
+
 [6] https://www.ietf.org/rfc/rfc768.txt
+
 [7] Zimmermann, Hubert. 1990. «OSI Reference Model - The ISO Model of Architecture for Open Systems Interconnection.» IEEE Transactions 425-432.
-[8] Dozono, H., Itou, S., and Nakakuni, M. (2007). Comparison of the adaptive authentication systems for behavior biometrics using the variations of self organizing maps. International Journal of Computers and Communications, 1(4), 108-116.
-[9]Kurose, James, y Keith Ross. 2012. Computer Networking: a top down approach. NewJersey: Pearon.
+
+[8] Dozono, H., Itou, S., and Nakakuni, M. (2007). Comparison of the adaptive authentication systems for behavior biometrics using the variations of self organizing maps. International 
+Journal of Computers and Communications, 1(4), 108-116.
+
+[9]Kurose, James, y Keith Ross. 2012. Computer Networking: a top down approach. New
+Jersey: Pearon.
+
+[10] CISCO, "Annual Security Report," 2015.
+
+[11] L. Zhe, S. Weiqing and W. Lingfeng, "A neural network based distributed intrusion detection system on cloud platform," IEEE 2nd International Conference on Cloud Computing and Intelligence Systems, vol. 1, pp. 75-79, 2012. 
+
 [25] T.Kohonen. Self Organizing Maps. Springer, third edition, 2001.
+
+
+
+
+
+[2] K. A. Jalil and N. M. Masrek, "Comparison of Machine Learning Algorithms Performance in Detecting Network," 2010 International Conference on Networking and Information Technology , p. 6, 2010. 
+
+[3] Al-Jarrah, Siddiqui, Elsalamouny, Yoo, Muhaidat and Kim, "Machine-Learning-Based Feature Selection Techniques for LargeScale," 2014 IEEE 34th International Conference on Distributed Computing Systems Workshops, p. 5, 2014. 
+
+[4] B. Chaudhari and R. Prasad, "Particle Swarm Optimization Based Intrusion Detection for Mobile," 9th International Conference on Computer Engineering and Applications, p. 6, 2015. 
+
+[5] CISCO, "Annual Security Report," 2015.
+
+
+
+[7] K. Al-Jarrah, "Machine-learning-based feature selection techniques for large-scale network intrusion detection," IEEE 34th International Conference on Distributed Computing Systems Workshops (ICDCSW), pp. 177-181, 2014. 
+
+[8] S. Pilabutr, "Integrated soft computing for Intrusion Detection on computer network security," Computer Applications and Industrial Electronics (ICCAIE), 2011 IEEE International Conference, pp. 559-563, 2011. 
+
+[9] W.L. J. Tian, A new network intrusion detection identification model research., Informatics in Control, Automation and Robotics (CAR), 2010 2nd International Asia Conference, vol. 2, pp. 9-12, 2010. 
+
+[10] T. Yamada, Intrusion detection system to detect variant attacks using learning algorithms with automatic generation of training data, International Conference on Information Technology: Coding and Computing (ITCC'05)-Volume II, vol. 1, pp. 650-655, 2005. 
+
+[11] S. Chaudhari, Particle Swarm Optimization Based Intrusion Detection for Mobile Ad-hoc Networks
+
+
+
+
+
+
+
 
 
 
