@@ -61,11 +61,11 @@ As normal inner users and anomalous users interact in the same network, characte
 
 
 \subsection{Problem} % level 2
-Identifying network attacks has been addressed in two different ways: 1) [CONCEPT1], known attack firms are provided to security network devices such as firewalls, antivirus or intrusion detection systems to check if the current network traffic matches any of them and 2) [CONCEPT2], use the artificial intelligence or machine learning algorithms to detect anomalous behavior.
+Identifying network attacks has been addressed in two different ways: 1) Signature Based Intrusion Detection Systems, known attack firms are provided to security network devices such as firewalls, antivirus or intrusion detection systems to check if the current network traffic matches any of them and 2) Anomalies-based Intrusion Detection Systems, use the artificial intelligence or machine learning algorithms to detect anomalous behavior.
 
-In [CONCEPT1] network devices, are able to detect anomalous behavior that completely matches any of the firms in the known attacks database (KAD), missing by far corner cases such as variations, or improvements of the same attack. Besides this, novel attacks are completely ignored as they do not match any firm in KAD. Both scenarios make keeping up with security updates is tedious, time consuming and has a high economic impact.
+In Signature Based IDS, network devices are able to detect anomalous behavior that completely matches any of the firms in the known attacks database (KAD), missing by far corner cases such as variations, or improvements of the same attack. Besides this, novel attacks are completely ignored as they do not match any firm in KAD. Both scenarios make keeping up with security updates is tedious, time consuming and has a high economic impact.
 
-In [CONCEPT2], in order to avoid firms classification which implies spending time and human resources, firms are obtained from general datasets such as KDCUPP99 or ANOTHERDATASET [REFERENCES, XX, XX, XX], causing a big rate of false-positives, making the system not as reliable as it should be.
+In Anomalies-based IDS, in order to avoid firms classification which implies spending time and human resources, firms are obtained from general datasets such as KDCUPP99 or ANOTHERDATASET [REFERENCES, XX, XX, XX], causing a big rate of false-positives, making the system not as reliable as it should be.
 
 Attack firms usage is not a viable meanwhile its process of creation is too long, experienced human resources are limited or expensive and updates are not always available due they not exist or are very expensive.
 
@@ -123,6 +123,19 @@ Chaudhari  [4] y Tian W. [3] presentan la propuesta de hacer uso del algoritmo d
 
 
 \subsection{Profiling  and User classification} % level 2
+Using network profiling as the base for creating novel implementations of intrusion detection systems has been part of the research in network security area [17].
+
+Badea [18] address this problem by creating a Security Information Event Management (SIEM) divided in two modules: 1) Security Information Management (SIM), in charge of long storage and data analysis, and 2)  Security Event Manager(SEM) which process and manages all the anomalous events.
+
+Packets are evaluated by the network firewall rules, if an event is triggered, it is passed to the OSSIM custom implementation, in charge of collect, normalize and correlate security events occurring within the local network.
+
+Another approach for profiling traffic behavior is used by Kuai [19] and Qin[20], in which clusters of information are created based on the used communication protocols.
+
+Kuai [19], identifies and analyzes clusters of hosts or applications that exhibit similar communication patterns. Network traffic is modeled by bipartite graphs to obtain one-mode projections. Projections are used to represent source host(s) that communicate with the same destination host(s) and to connect destination hosts that communicate with the same source host(s). Obtained One-mode projection graphs are used as base for building similarity matrices of internet end-host. Simple spectral clustering algorithm is applied over the matrices to discover inherent end-host behavior cluster. 
+
+Kuai [19] concluded that it was possible to detect anomalous traffic behavior through network traffic prefixes, as the end hosts tend to stay in the same cluster over time, and the number of behavior cluster was not correlated to the number of observed hosts.
+
+For Qin's implementation [20] the algorithm is implemented using the traffic at port 80 (HTTP protocol) and integrating the destination URL, not only the IP address. As Kuai, Qin also concluded that at least 93\% of the hosts remain on the same behavior cluster.
 
 \section{Theorical framework} % level 1
 
@@ -188,14 +201,13 @@ w_s(t + 1) = w_s(t) + \omega h(r,s)(v(t) -w_s(t))
 \end{equation}
 Where $\omega$ is the learning step width and its value is a constant $(0 < \omega \ll 1)$. The function $h(r,s)$ is the neighborhood function, which determines the size and the nature of the neighborhood around the BMU. $h(r,s)$ is illustrated in Fig. 1. For most applications it has the maximum value of one when $s = r$ and decreases when the distance between $s$ and $r$ increment.
 
-\subsection{Redes de Computadoras} % level 2
+\subsection{Computer networks} % level 2
 
 
-\subsubsection{Local Area Network (LAN)} % level 3
+\subsubsection{Networks classification} % level 3
+Traditional authors like Stalling [15] defines three types of network: Local Area Network (LAN), Metropolitan Area Networks (MAN) and Wide Area Networks (WAN); based on the geographical scope of the network.
 
-
-\subsubsection{Campus Area Network(CAN)} % level 3
-
+Modern authors like Edwards Wade [16] defines new types of network like the Campus Area Network(CAN), which is defined as a group of LAN Segments interconnected within a building or group of buildings that form one network. Typically, the company owns the entire network, including the wiring between buildings, in contrast to Metropolitan Area Networks.
 
 \subsubsection{Network topology} % level 3
 
@@ -287,7 +299,7 @@ As explained in section 3.3 Self Organizing Map algorithm is a not supervised al
 
 
 \paragraph{Data set creation} % level 4
-Using TCP package as the working unit is not possible due the great volume of packages, and time consuming for processing each one individually [Reference, XX].
+Using TCP package as the working unit is not possible due the great volume of packages, and time consuming for processing each one individually [14].
 
 Instead, package sets $[\beta,\gamma,\phi]$ are individually processed and turned into chunks. The obtained chunks are the the working units and conform the different data sets, Build data set $\beta_1$, the Train data set $\gamma_1$ and the Evaluation data set $\phi_1$ respectively.
 
@@ -400,7 +412,30 @@ Jersey: Pearon.
 
 [13] Kevin L. Priddy, ?Paul E. Keller - Artificial Neural Networks: An Introduction 2005 Chapter 2.3
 
+[14] Lakhina, A., Crovella, M., and Diot, C. (2004, October). Characterization of network-wide anomalies in traffic flows. In Proceedings of the 4th ACM SIGCOMM conference on Internet measurement (pp. 201-206). ACM.
+
+[15] W. Stallings, Data and Computer Communications, International Ed. Pearson Education Limited, 2015.
+
+[16] W. Edwards, T. Jack, T. Lammle, T. Skandier, R. Padjen, A. Pfund, and C. Timm, CCNP Complete Study Guide: Exams 642-801, 642-811, 642-821, 642-831. John Wiley and Sons, 2006.
+
+[17] Anderson, D., Lunt, T. F., Javitz, H., Tamaru, A., and Valdes, A. (1995). Detecting Unusual Program Behavior Using the Statistical Component of the Next-generation Intrusion Detection Expert Systems (NIDES). SRI International. Computer Science Laboratory.
+
+[18] Badea, A., Croitoru, V., and Gheorghic?, D. (2015, May). Computer networks security based on the detection of user's behavior. In Advanced Topics in Electrical Engineering (ATEE), 2015 9th International Symposium on (pp. 55-60). IEEE.
+
+[19] Xu, K., Wang, F., and Gu, L. (2014). Behavior analysis of internet traffic via bipartite graphs and one-mode projections. IEEE/ACM Transactions on Networking (TON), 22(3), 931-942.
+
+[20] Qin, T., Guan, X., Wang, C., and Liu, Z. (2015). MUCM: multilevel user cluster mining based on behavior profiles for network monitoring. IEEE Systems Journal, 9(4), 1322-1333.
+
 [25] T.Kohonen. Self Organizing Maps. Springer, third edition, 2001.
+
+
+
+
+
+
+
+
+
 
 
 

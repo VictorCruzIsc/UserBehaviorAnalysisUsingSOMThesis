@@ -1,0 +1,130 @@
+===========> Machine Learning
+{
+	
+	- [2] D. Anderson, TF. Lunt, H. Javits, A. Tamaru, A. Valdes, Detecting Unusual Program Behavior Using the Statistical Component of
+	the Next-Generation Intrusion Detection, SRI-CSL-95-06, Computer Science Laboratory, SRI International, Menlo Park, CA, 1995
+	- [7] B.D.J. Cabrera, B. Ravichandran, Raman K. Mehra, Statistical traffic modeling for network intrusion detection, in: Proc. the 8th
+	International Symposium on Modeling, Analysis and Simulation of Computer and Telecommunication Systems, San Francisco, CA,
+	2000, pp. 466–473.
+	- [26] W. Lee, D. Xiang, Information-theoretic measures for anomaly detection, in: Proc. IEEE Symposium on Security and Privacy, 2001,
+	pp. 130–143.
+	- [36] J. Ryan, M-J. Lin, R. Miikkulainen, Intrusion detection with neural networks, in: Proc. Workshop on AI Approaches to Fraud
+	Detection and Risk Management, AAAI Press, 1997, pp. 72–77.
+
+	The research of Anderson et al. [2] and Cabrera et al. [7] deal with statistical methods for intrusion detection.
+	Although the two researchers used the same method, the method was used in a different way. The work
+	of Anderson et al. [2] is a comprehensive intrusion-detection system that performs real-time monitoring of user
+	activity on multiple target systems connected via Ethernet. On the other hand, the statistical method of Cabrera
+	et al. [7] is the application of statistical traffic modeling for detecting novel attacks against computer networks.
+	Differing from the other researchers, Wenke Lee’s research [26] focuses on theoretical measures for
+	anomaly detection. His work uses several information-theoretic measures, namely, entropy, conditional
+	entropy, relative conditional entropy, information gain, and information cost for anomaly detection. Also,
+	Ryan et al. [36] uses artificial neural networks with supervised learning, based on the back-propagation neural
+	network, called Neural Network Intrusion Detector, was trained in the identification task and tests experimentally
+	on a system of 10 users.
+
+	*******
+
+	- [14] L. Ertoz, E. Eilertson, A. Lazarevic, P. Tan, J. Srivastava, V. Kumar, P. Dokas, The MINDS – Minnesota Intrusion Detection
+	System, Next Generation Data Mining, MIT Press, 2004.
+	- [15] E. Eskin, A. Arnold, M. Prerau, Leonid Portnoy and Salvatore Stolfo, A Geometric Framework for Unsupervised Anomaly
+	Detection: Detecting Intrusions in Unlabeled Data, Data Mining for Security Applications, Kluwer, 2002.
+	-[32] L. Portnoy, E. Eskin, Salvatore J. Stolfo, Intrusion detection with unlabeled data using clustering, in: Proc. ACM CSS Workshop on
+	Data Mining Applied to Security (DMSA-2001). Philadelphia, PA, 2001, pp. 5–8.
+	[33] S. Ramaswamy, R. Rastogi, K. Shim, Efficient algorithms for mining outliers from large data sets, in: Proc. the ACM SIGMOD
+	Conference, Dallas, TX, 2000, pp. 427–438.
+	- [39] S. Staniford, J. Hoagland, J. McAlerney, Practical automated detection of stealthy portscans, Journal of Computer Security 10 (2002)
+	105–136.
+
+	Among those unsupervised schemes, MINDS [14] is based on data mining and data clustering methods
+	such as Filtering/Preprocessing/Known attack detection module, Scan detector, Anomaly detection algorithms,
+	and Summarization of attacks using association pattern analysis. MINDS is still developing a suite
+	of data mining techniques to automatically detect attacks against computer networks and systems. Another
+	one of unsupervised methods, the research of Eskin et al. [15] and Portnoy et al. [32] are used to detect anomalous
+	attacks without pre-existing knowledge. In the case of Eskin’s research, data elements are mapped to a
+	feature space, which is a typically vector space, in order to process unlabelled data. Also, Portnoy presented a
+	new type of intrusion detection algorithm, which takes a set of unlabeled data as inputs and attempts to find
+	3800 T. Shon, J. Moon / Information Sciences 177 (2007) 3799–3821
+	intrusion patterns within the data. The basic idea is that since the intrusions are both not normal, and are rare,
+	they will appear as outliers in the data. Staniford [39] is the author of SPADE for anomaly-based port scan
+	detection in Snort. SPADE utilizes a statistical anomaly detection method with Bayesian probability, and uses
+	a simulated annealing method to cluster anomalous packets together into port scans using heuristics developed
+	from real scans. Ramaswamy et al. [33] uses an outlier calculation with data mining to propose a novel
+	formulation for distance-based outliers, which is based on the distance of a point from its ‘k’ and declares the
+	top ‘n’ points to be outliers in this ranking calculation.
+
+		*******
+
+	A Hybrid Approach to the Profile Creation and Intrusion Detection [4]
+
+		*******
+
+	Intrusion detection by machine learning: A review [6]
+	Tiene una super explicacion de los algortimos de machine learning. (Muy Util)
+
+	Diagnosing Network-Wide Traffic Anomalies
+	Es un algoritmo de dteccion de anomalias utilizando PCA	
+}
+
+===========> Computer Security
+{
+	- Intrusion Detection System Using Self Organizing Map Algorithms [3]
+
+	- Network Intrusion Detection [5]
+	Define widely what is network intrussion detection
+
+}
+
+===========> Profiling and User classification
+{
+	
+}
+
+===========> Other
+{
+	- Testing Network-based Intrusion Detection Signatures Using Mutant Exploits [2]
+	In addition, research has shown that if the signatures are not sufficiently robust in describing the attack conditions, then simple modifications can be made that will allow the attack to succeed.
+	
+	*******
+	
+	- A hybrid machine learning approach to network anomaly detection [1]
+	Besides the robustness of the signature, signature-based intrusion detection systems rely on human intervention to create, test, and deploy the signatures.	
+
+	- [1]] R. Perez, L. Glass, and R. J. Shlaer, “Development of specificity in
+	the cat visual cortex,” J. Marh. Biol., vol. 1, p. 275, 1975.
+	- [2] M. N. Nass and L. N. Cooper, “A theory for the development of
+	feature detecting cells in visual cortex,” Biolog. Cybern., vol. 19,
+	no. I, 1975.
+	- [3] S. Grossberg, “Adaptive pattern classification and universal recoding:
+	I. Parallel development and coding of neural feature detectors,”
+	Biolog. Cybern., vol. 23, p. 121, 1976.
+
+	COMPETITIVE learning is an adaptive process, in C which the cells of, say, a neural network are tuned to
+	specific features of input. The responses from the network
+	then tend to become localized [1]-[3]. 
+
+	*******
+
+	Characterization of Network-Wide Anomalies in Traffic Flows
+	Me va a ayudar a justificar el porque no se deben usar solo los paquetes
+
+	*******
+
+	Hybrid Neural Networks for Intrusion Detection System
+	Usarios de datasets como kdcupp 99
+}
+
+===========> SOM
+{
+	- [8] S.B. Cho, Ensemble of structure-adaptive self-organizing maps for high performance classification, Information Sciences 123 (2000) 103–114.
+	- [25] T. Kohonen, Self-Organizing Map, Springer, Berlin, 1995.
+	- [43] J. Vesanto, J. Himberg, E. Alhonieme, J. Parhankangas, SOFM in Matlab: SOM toolbox, 1999.
+
+	Self-Organized Feature Map (SOFM) which is capable of making clusters as seen in [8,25,43].
+
+	*******
+
+	- A hybrid machine learning approach to network anomaly detection [1]
+}
+
+

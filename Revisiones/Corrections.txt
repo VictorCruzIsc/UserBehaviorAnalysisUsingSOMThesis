@@ -1,0 +1,28 @@
+Sección 1.3
+ 
+                Yo pondría Concepto1 = Signature Based IDS
+                Concepto 2 =Anomalies-based IDS
+ 
+                Pero puedes sacar ideas de mi reporte 1 (15-20) sección 3:
+A. I. Parres-Peredo, H. I. Piza-Davila, and F. Cervantes-Alvarez, “Challenges and opportunities in computer network security,” Internal Report PhDEngScITESO-15-20-R, ITESO, Tlaquepaque, Mexico, Dec. 2015.
+ 
+ 
+Sección 2.2 Tomalp de las secciones 2 de los reportes 16-08 y 16-17 me puedes citar o copiar referencias.
+               
+A. I. Parres-Peredo, H. I. Piza-Davila, and F. Cervantes-Alvarez, “A novel user network profile based on host network traffic,” Internal Report PhDEngScITESO-16-08-R, ITESO, Tlaquepaque, Mexico, Jul. 2016.
+A.     I. Parres-Peredo, H. I. Piza-Davila, and F. Cervantes-Alvarez, “Profiling network traffic for internal security using top-k ranking similarity measures,” Internal Report PhDEngScITESO-16-17-R, ITESO, Tlaquepaque, Mexico, Dec. 2016.
+ 
+ 
+Para tu sección 3
+ 
+Traditional authors like Stalling [4] defines three types of network: Local Area Network, Metropolitan Area Networks and Wide Area Networks; based on the geographical scope of the network. Modern authors like Edwards Wade [5] defines new types of network like the Campus Area Network(CAN), which is defined as a group of LAN Segments interconnected within a building or group of buildings that form one network. Typically, the company owns the entire network, including the wiring between buildings, in contrast to Metropolitan Area Networks.
+ 
+[4]     W. Stallings, Data and Computer Communications, International Ed. Pearson Education Limited, 2015.
+
+[5]     W. Edwards, T. Jack, T. Lammle, T. Skandier, R. Padjen, A. Pfund, and C. Timm, CCNP Complete Study Guide: Exams 642-801, 642-811, 642-821, 642-831. John Wiley & Sons, 2006.
+
+ 
+                La parte de topologías de red en la tesis de David Rivera viene una sección de eso.
+ 
+ 
+Saludos.
