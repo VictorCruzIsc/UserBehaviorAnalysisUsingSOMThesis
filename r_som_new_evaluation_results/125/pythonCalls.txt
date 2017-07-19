@@ -1,0 +1,222 @@
+Results obtention finished
+Match 10:200
+Match 10:200
+Match 10:200
+Match 10:200
+Match 10:200
+Match 10:200
+Match 10:200
+Match 10:200
+Match 10:200
+Match 10:200
+Calling command: python ~/Documents/git/UserBehaviorAnalysisUsingSOM/python/GraphicsMAC.py User10-200 E0,E1,E2,E3,E4,E5,E6,E7,E8,E9 15.500000,0.000000,12.500000,0.000000,25.500000,19.000000,17.500000,16.000000,14.000000,14.000000 84.500000,100.000000,87.500000,100.000000,74.500000,81.000000,82.500000,84.000000,86.000000,86.000000
+0:99: execution error: "file:///Users/victorcruz/Documents/git/UserBehaviorAnalysisUsingSOM/User10-200.html" doesn’t understand the “open location” message. (-1708)
+70:78: execution error: Can’t get application "firefox". (-1728)
+Match 10:900
+Match 10:900
+Match 10:900
+Match 10:900
+Match 10:900
+Match 10:900
+Match 10:900
+Match 10:900
+Match 10:900
+Match 10:900
+Calling command: python ~/Documents/git/UserBehaviorAnalysisUsingSOM/python/GraphicsMAC.py User10-900 E0,E1,E2,E3,E4,E5,E6,E7,E8,E9 17.888889,19.111111,12.777778,18.222222,10.555556,8.888889,16.444444,10.000000,17.333333,17.333333 82.111111,80.888889,87.222222,81.777778,89.444444,91.111111,83.555556,90.000000,82.666667,82.666667
+0:99: execution error: "file:///Users/victorcruz/Documents/git/UserBehaviorAnalysisUsingSOM/User10-900.html" doesn’t understand the “open location” message. (-1708)
+70:78: execution error: Can’t get application "firefox". (-1728)
+Match 10:1600
+Match 10:1600
+Match 10:1600
+Match 10:1600
+Match 10:1600
+Match 10:1600
+Match 10:1600
+Match 10:1600
+Match 10:1600
+Match 10:1600
+Calling command: python ~/Documents/git/UserBehaviorAnalysisUsingSOM/python/GraphicsMAC.py User10-1600 E0,E1,E2,E3,E4,E5,E6,E7,E8,E9 15.250000,21.937500,18.625000,15.562500,9.375000,18.125000,17.562500,14.000000,10.812500,10.812500 84.750000,78.062500,81.375000,84.437500,90.625000,81.875000,82.437500,86.000000,89.187500,89.187500
+0:100: execution error: "file:///Users/victorcruz/Documents/git/UserBehaviorAnalysisUsingSOM/User10-1600.html" doesn’t understand the “open location” message. (-1708)
+70:78: execution error: Can’t get application "firefox". (-1728)
+Match 10:2300
+Match 10:2300
+Match 10:2300
+Match 10:2300
+Match 10:2300
+Match 10:2300
+Match 10:2300
+Match 10:2300
+Match 10:2300
+Match 10:2300
+Calling command: python ~/Documents/git/UserBehaviorAnalysisUsingSOM/python/GraphicsMAC.py User10-2300 E0,E1,E2,E3,E4,E5,E6,E7,E8,E9 12.869565,15.608696,17.260870,16.434783,16.739130,15.130435,15.869565,14.695652,16.956522,16.956522 87.130435,84.391304,82.739130,83.565217,83.260870,84.869565,84.130435,85.304348,83.043478,83.043478
+0:100: execution error: "file:///Users/victorcruz/Documents/git/UserBehaviorAnalysisUsingSOM/User10-2300.html" doesn’t understand the “open location” message. (-1708)
+70:78: execution error: Can’t get application "firefox". (-1728)
+Calling command: python ~/Documents/git/UserBehaviorAnalysisUsingSOM/python/GraphicsMAC.py User10AVGs Sample200,Sample900,Sample1600,Sample2300 14.522222,16.306250,16.152174,16.152174 85.477778,83.693750,83.847826,83.847826
+0:99: execution error: "file:///Users/victorcruz/Documents/git/UserBehaviorAnalysisUsingSOM/User10AVGs.html" doesn’t understand the “open location” message. (-1708)
+70:78: execution error: Can’t get application "firefox". (-1728)
+Match 4:200
+Match 4:200
+Match 4:200
+Match 4:200
+Match 4:200
+Match 4:200
+Match 4:200
+Match 4:200
+Match 4:200
+Match 4:200
+Calling command: python ~/Documents/git/UserBehaviorAnalysisUsingSOM/python/GraphicsMAC.py User4-200 E0,E1,E2,E3,E4,E5,E6,E7,E8,E9 64.000000,58.500000,60.500000,64.500000,63.500000,64.500000,74.000000,60.500000,67.000000,67.000000 36.000000,41.500000,39.500000,35.500000,36.500000,35.500000,26.000000,39.500000,33.000000,33.000000
+0:98: execution error: "file:///Users/victorcruz/Documents/git/UserBehaviorAnalysisUsingSOM/User4-200.html" doesn’t understand the “open location” message. (-1708)
+70:78: execution error: Can’t get application "firefox". (-1728)
+Match 4:900
+Match 4:900
+Match 4:900
+Match 4:900
+Match 4:900
+Match 4:900
+Match 4:900
+Match 4:900
+Match 4:900
+Match 4:900
+Calling command: python ~/Documents/git/UserBehaviorAnalysisUsingSOM/python/GraphicsMAC.py User4-900 E0,E1,E2,E3,E4,E5,E6,E7,E8,E9 64.555556,65.666667,64.111111,66.444444,62.666667,68.555556,65.222222,64.666667,65.222222,65.222222 35.444444,34.333333,35.888889,33.555556,37.333333,31.444444,34.777778,35.333333,34.777778,34.777778
+0:98: execution error: "file:///Users/victorcruz/Documents/git/UserBehaviorAnalysisUsingSOM/User4-900.html" doesn’t understand the “open location” message. (-1708)
+70:78: execution error: Can’t get application "firefox". (-1728)
+Match 4:1600
+Match 4:1600
+Match 4:1600
+Match 4:1600
+Match 4:1600
+Match 4:1600
+Match 4:1600
+Match 4:1600
+Match 4:1600
+Match 4:1600
+Calling command: python ~/Documents/git/UserBehaviorAnalysisUsingSOM/python/GraphicsMAC.py User4-1600 E0,E1,E2,E3,E4,E5,E6,E7,E8,E9 64.312500,65.750000,65.500000,64.937500,65.187500,64.812500,64.312500,65.750000,65.437500,65.437500 35.687500,34.250000,34.500000,35.062500,34.812500,35.187500,35.687500,34.250000,34.562500,34.562500
+0:99: execution error: "file:///Users/victorcruz/Documents/git/UserBehaviorAnalysisUsingSOM/User4-1600.html" doesn’t understand the “open location” message. (-1708)
+70:78: execution error: Can’t get application "firefox". (-1728)
+Match 4:2300
+Match 4:2300
+Match 4:2300
+Match 4:2300
+Match 4:2300
+Match 4:2300
+Match 4:2300
+Match 4:2300
+Match 4:2300
+Match 4:2300
+Calling command: python ~/Documents/git/UserBehaviorAnalysisUsingSOM/python/GraphicsMAC.py User4-2300 E0,E1,E2,E3,E4,E5,E6,E7,E8,E9 65.869565,65.869565,65.826087,65.391304,65.565217,65.913043,65.826087,65.695652,65.782609,65.782609 34.130435,34.130435,34.173913,34.608696,34.434783,34.086957,34.173913,34.304348,34.217391,34.217391
+0:99: execution error: "file:///Users/victorcruz/Documents/git/UserBehaviorAnalysisUsingSOM/User4-2300.html" doesn’t understand the “open location” message. (-1708)
+70:78: execution error: Can’t get application "firefox". (-1728)
+Calling command: python ~/Documents/git/UserBehaviorAnalysisUsingSOM/python/GraphicsMAC.py User4AVGs Sample200,Sample900,Sample1600,Sample2300 65.300000,65.193750,65.765217,65.765217 34.700000,34.806250,34.234783,34.234783
+0:98: execution error: "file:///Users/victorcruz/Documents/git/UserBehaviorAnalysisUsingSOM/User4AVGs.html" doesn’t understand the “open location” message. (-1708)
+70:78: execution error: Can’t get application "firefox". (-1728)
+Match 5:200
+Match 5:200
+Match 5:200
+Match 5:200
+Match 5:200
+Match 5:200
+Match 5:200
+Match 5:200
+Match 5:200
+Match 5:200
+Calling command: python ~/Documents/git/UserBehaviorAnalysisUsingSOM/python/GraphicsMAC.py User5-200 E0,E1,E2,E3,E4,E5,E6,E7,E8,E9 45.500000,44.000000,46.000000,38.000000,48.000000,48.000000,48.000000,43.500000,46.500000,46.500000 54.500000,56.000000,54.000000,62.000000,52.000000,52.000000,52.000000,56.500000,53.500000,53.500000
+0:98: execution error: "file:///Users/victorcruz/Documents/git/UserBehaviorAnalysisUsingSOM/User5-200.html" doesn’t understand the “open location” message. (-1708)
+70:78: execution error: Can’t get application "firefox". (-1728)
+Match 5:900
+Match 5:900
+Match 5:900
+Match 5:900
+Match 5:900
+Match 5:900
+Match 5:900
+Match 5:900
+Match 5:900
+Match 5:900
+Calling command: python ~/Documents/git/UserBehaviorAnalysisUsingSOM/python/GraphicsMAC.py User5-900 E0,E1,E2,E3,E4,E5,E6,E7,E8,E9 44.222222,63.111111,54.222222,45.777778,34.222222,32.888889,33.555556,57.555556,37.888889,37.888889 55.777778,36.888889,45.777778,54.222222,65.777778,67.111111,66.444444,42.444444,62.111111,62.111111
+0:98: execution error: "file:///Users/victorcruz/Documents/git/UserBehaviorAnalysisUsingSOM/User5-900.html" doesn’t understand the “open location” message. (-1708)
+70:78: execution error: Can’t get application "firefox". (-1728)
+Match 5:1600
+Match 5:1600
+Match 5:1600
+Match 5:1600
+Match 5:1600
+Match 5:1600
+Match 5:1600
+Match 5:1600
+Match 5:1600
+Match 5:1600
+Calling command: python ~/Documents/git/UserBehaviorAnalysisUsingSOM/python/GraphicsMAC.py User5-1600 E0,E1,E2,E3,E4,E5,E6,E7,E8,E9 51.812500,49.000000,47.812500,33.187500,38.625000,36.187500,49.125000,36.375000,45.312500,45.312500 48.187500,51.000000,52.187500,66.812500,61.375000,63.812500,50.875000,63.625000,54.687500,54.687500
+0:99: execution error: "file:///Users/victorcruz/Documents/git/UserBehaviorAnalysisUsingSOM/User5-1600.html" doesn’t understand the “open location” message. (-1708)
+70:78: execution error: Can’t get application "firefox". (-1728)
+Match 5:2300
+Match 5:2300
+Match 5:2300
+Match 5:2300
+Match 5:2300
+Match 5:2300
+Match 5:2300
+Match 5:2300
+Match 5:2300
+Match 5:2300
+Calling command: python ~/Documents/git/UserBehaviorAnalysisUsingSOM/python/GraphicsMAC.py User5-2300 E0,E1,E2,E3,E4,E5,E6,E7,E8,E9 49.086957,46.652174,53.086957,52.217391,43.434783,41.739130,35.217391,58.478261,42.173913,42.173913 50.913043,53.347826,46.913043,47.782609,56.565217,58.260870,64.782609,41.521739,57.826087,57.826087
+0:99: execution error: "file:///Users/victorcruz/Documents/git/UserBehaviorAnalysisUsingSOM/User5-2300.html" doesn’t understand the “open location” message. (-1708)
+70:78: execution error: Can’t get application "firefox". (-1728)
+Calling command: python ~/Documents/git/UserBehaviorAnalysisUsingSOM/python/GraphicsMAC.py User5AVGs Sample200,Sample900,Sample1600,Sample2300 46.244444,42.943750,46.608696,46.608696 53.755556,57.056250,53.391304,53.391304
+0:98: execution error: "file:///Users/victorcruz/Documents/git/UserBehaviorAnalysisUsingSOM/User5AVGs.html" doesn’t understand the “open location” message. (-1708)
+70:78: execution error: Can’t get application "firefox". (-1728)
+Match 9:200
+Match 9:200
+Match 9:200
+Match 9:200
+Match 9:200
+Match 9:200
+Match 9:200
+Match 9:200
+Match 9:200
+Match 9:200
+Calling command: python ~/Documents/git/UserBehaviorAnalysisUsingSOM/python/GraphicsMAC.py User9-200 E0,E1,E2,E3,E4,E5,E6,E7,E8,E9 3.500000,8.000000,14.500000,0.000000,9.500000,0.000000,3.000000,0.000000,6.500000,6.500000 96.500000,92.000000,85.500000,100.000000,90.500000,100.000000,97.000000,100.000000,93.500000,93.500000
+0:98: execution error: "file:///Users/victorcruz/Documents/git/UserBehaviorAnalysisUsingSOM/User9-200.html" doesn’t understand the “open location” message. (-1708)
+70:78: execution error: Can’t get application "firefox". (-1728)
+Match 9:900
+Match 9:900
+Match 9:900
+Match 9:900
+Match 9:900
+Match 9:900
+Match 9:900
+Match 9:900
+Match 9:900
+Match 9:900
+Calling command: python ~/Documents/git/UserBehaviorAnalysisUsingSOM/python/GraphicsMAC.py User9-900 E0,E1,E2,E3,E4,E5,E6,E7,E8,E9 3.777778,6.111111,5.000000,1.888889,2.555556,5.000000,4.444444,1.666667,4.555556,4.555556 96.222222,93.888889,95.000000,98.111111,97.444444,95.000000,95.555556,98.333333,95.444444,95.444444
+0:98: execution error: "file:///Users/victorcruz/Documents/git/UserBehaviorAnalysisUsingSOM/User9-900.html" doesn’t understand the “open location” message. (-1708)
+70:78: execution error: Can’t get application "firefox". (-1728)
+Match 9:1600
+Match 9:1600
+Match 9:1600
+Match 9:1600
+Match 9:1600
+Match 9:1600
+Match 9:1600
+Match 9:1600
+Match 9:1600
+Match 9:1600
+Calling command: python ~/Documents/git/UserBehaviorAnalysisUsingSOM/python/GraphicsMAC.py User9-1600 E0,E1,E2,E3,E4,E5,E6,E7,E8,E9 5.062500,7.625000,6.375000,7.687500,2.250000,7.312500,5.937500,4.812500,5.312500,5.312500 94.937500,92.375000,93.625000,92.312500,97.750000,92.687500,94.062500,95.187500,94.687500,94.687500
+0:99: execution error: "file:///Users/victorcruz/Documents/git/UserBehaviorAnalysisUsingSOM/User9-1600.html" doesn’t understand the “open location” message. (-1708)
+70:78: execution error: Can’t get application "firefox". (-1728)
+Match 9:2300
+Match 9:2300
+Match 9:2300
+Match 9:2300
+Match 9:2300
+Match 9:2300
+Match 9:2300
+Match 9:2300
+Match 9:2300
+Match 9:2300
+Calling command: python ~/Documents/git/UserBehaviorAnalysisUsingSOM/python/GraphicsMAC.py User9-2300 E0,E1,E2,E3,E4,E5,E6,E7,E8,E9 5.173913,3.739130,6.956522,4.782609,5.130435,6.043478,6.173913,3.826087,6.000000,6.000000 94.826087,96.260870,93.043478,95.217391,94.869565,93.956522,93.826087,96.173913,94.000000,94.000000
+0:99: execution error: "file:///Users/victorcruz/Documents/git/UserBehaviorAnalysisUsingSOM/User9-2300.html" doesn’t understand the “open location” message. (-1708)
+70:78: execution error: Can’t get application "firefox". (-1728)
+Calling command: python ~/Documents/git/UserBehaviorAnalysisUsingSOM/python/GraphicsMAC.py User9AVGs Sample200,Sample900,Sample1600,Sample2300 4.322222,5.831250,5.173913,5.173913 95.677778,94.168750,94.826087,94.826087
+0:98: execution error: "file:///Users/victorcruz/Documents/git/UserBehaviorAnalysisUsingSOM/User9AVGs.html" doesn’t understand the “open location” message. (-1708)
+70:78: execution error: Can’t get application "firefox". (-1728)
+
