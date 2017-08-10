@@ -49,23 +49,23 @@ Es posible observar que existe un campo de estudio enfocado a los IDS, utilizand
 
 
 \subsection{Justification} % level 2
-Current security network solutions neglect  the internal monitoring of users activity, as they assume that inner user interaction is secure and will not harm any asset of the network [10] However the lack of supervision and monitoring arise two new kind of network vulnerabilities: 1) an inner user attacks the network with full knowledge of what he is doing and 2) an inner user is a victim of an attacker, unconsciently causing attacks to the network, or networks, where it is has any activity. In both scenarios, the user is taking advantage of its unsupervised position.
+Current security network solutions neglect  the internal monitoring of users activity, as they assume that inner user interaction is secure and will not harm any asset of the network [10]. However the lack of supervision and monitoring arise two new kind of network vulnerabilities: 1) an inner user attacks the network with full knowledge of what he is doing, while in the other hand 2) an inner user, is victim of an attacker, unconsciently causing attacks to the network, or networks, where it is has any activity. In both scenarios, the user is taking advantage of its unsupervised position.
 
-In the first case, when the user is aware of its not authorized actions, its possible to find two different profiles: 1) basic users and 2) intermediate-advance users.
+In the first case, when the user is aware of its not authorized actions, its possible to find two different profiles: 1) basic users and 2) intermediate-advance users [REFERENCE].
 Basic malicious users are forced to explode known system vulnerabilities, depending on missing security patches in the operating systems and to use code (snippets and scripts) written by experienced users, as they have a lack of technical formation, making its network behavior similar to a \textit{scriptkiddie}. On the other hand, intermediate-advance users may use new specialized software or tools to break into the network and damage valuable information.
 
-In the case where the host has been compromised and it's being used to generate an attack, both previously explained behaviors can be detected over the network.
+In the case where the host has been compromised and it's being used to generate an attack, both previously explained behaviors can be detected over the network [REFERENCE].
 
 As normal inner users and anomalous users interact in the same network, characterization of both behaviors can provide the required information to detect anomalous users.
 
 \subsection{Problem} % level 2
-Identifying network attacks has been addressed in two different ways: 1) Signature Based Intrusion Detection Systems, known attack firms are provided to security network devices such as firewalls, antivirus or intrusion detection systems to check if the current network traffic matches any of them and 2) Anomalies-based Intrusion Detection Systems, use the artificial intelligence or machine learning algorithms to detect anomalous behavior.
+Identifying network attacks has been addressed in two different ways: 1) Using Signature Based Intrusion Detection Systems (IDS), in which the firms of known attacks are provided to security network devices such as firewalls, antivirus or intrusion detection systems to check if the current network traffic matches any of them the other case are 2) Anomalies-based Intrusion Detection Systems, that make use of artificial intelligence or machine learning algorithms to detect anomalous behavior.
 
-In Signature Based IDS, network devices are able to detect anomalous behavior that completely matches any of the firms in the known attacks database (KAD), missing by far corner cases such as variations, or improvements of the same attack. Besides this, novel attacks are completely ignored as they do not match any firm in KAD. Both scenarios make keeping up with security updates is tedious, time consuming and has a high economic impact.
+In Signature Based IDS, network devices are able to detect anomalous behavior that completely matches any of the firms in the known attacks database (KAD), missing by far, corner cases such as variations, or improvements of the same attack. Besides this, novel attacks are completely ignored as they do not match any firm in KAD. Both scenarios make keeping up with security updates tedious, time consuming and expensive.
 
-In Anomalies-based IDS, in order to avoid firms classification which implies spending time and human resources, firms are obtained from general datasets as KDCUPP99 [29-32], causing a big rate of false-positives, making the system not as reliable as it should be.
+In Anomalies-based IDS, in order to avoid firms classification which implies spending time and human resources, firms are obtained from general datasets such as KDCUPP99 [29-32], causing a big rate of false-positives, making the system not as reliable as it should be.
 
-Attack firms usage is not a viable solution because its process of creation takes a lot of time, experienced human resources are limited or expensive, and software updates are not always available due they do not exist or are very expensive.
+Attack firms usage is not a viable solution because its process of creation takes a lot of time, experienced human resources are limited or expensive, and software updates are not always available due they do not exist or are expensive.
 
 \subsection{Hypothesis} % level 2
 As we form our own criteria, our environment, actions and thoughts start to model how we behave and respond to different stimulus in our day to day situations, in the same way, with the usage of internet in every aspect of our life, a network behavior pattern could be obtained from our digital interaction.
@@ -84,7 +84,7 @@ In this work we demonstrate that it is possible to identify a network user, with
 \subsubsection{Particular Objectives} % level 3
 User characterization will be done through the creation of an user network pattern, this pattern will be created by a non-supervised clustering algorithm.
 
-This work, address to cover [CONCEPT]: 1) user characterization and 2) project scalability and maintainability.
+This work, address to cover 1) user characterization and 2) project scalability and maintainability.
 
 \paragraph{User characterization} % level 4
 A Kohonen Self-organizing map (SOM) algorithm was chosen as the clustering algorithm, due its characteristics of non supervised training, and easy implementation. Trained SOM will allow to identify users inside the network by matching their top features.
@@ -381,14 +381,13 @@ Self Organizing Map basic algorithm is defined as follows.
 
 Each element in the SOM lattice has a weights vector $V(v_1, v_2,..., v_n)$ of three elements, $v_1$ represents the TCP/UDP metric, $v_2$ represents the Internal IP metric and $v_3$ represents the Web traffic metric.
 
-To define the the size $n$ of the lattice, experiments were done with 50, 75, 100 and 125 elements. Table 1. shows the time needed to train the lattices. As it can be seen as more elements in the lattice, time increases, but the results when comparing the obtained patterns against other users are very similar.The lattices used for the experiments were build using XX elements,  obtained randomly from the Build data set $\beta_1$ and ordered in a square distribution.
+To define the the size $n\times n$ of the lattice, ten experiments were evaluated with 50, 75, 100, 125 and 150 neurons. Graphic 1. Shows the average of the results by user.
 
-For the evaluation phase, a new set based on the Training data set $\gamma_1$ was obtained. The average number of elements on the train data set of each user was 56,496 elements, the created data set, was conformed by 100,000 elements, guaranteeing that each element was evaluated at least one time.
+\begin{center}\includegraphics[scale=.3]{results} \end{center}
+
+Elements for building the SOM lattice are obtained randomly form the build data set $\beta_1$ and order in a square distribution of $75\times75$ as it was the SOM lattice size that gives a better result.
 
 Best matching unit evaluation was obtained using Euclidean distance. The gaussian neighborhood function was used with an initial neighborhood radius of ($\frac{n}{2}$), decreasing linearly to 1 at the end of the training. The learning rate was chosen to be 1 and reduced to 0 at the end of the training.
-
-
-
 
 \paragraph{User network behavior pattern creation} % level 4
 The train module implements the SOM-based approach for user characterization. In the training phase 10 epochs are used to process the lattice. After this phase, an user network behavior pattern is obtained. This pattern may differ between patterns obtained from the same user, because of the random selection of the build elements. Fig 3 shows lattice training during it's initial phases until it get's completely trained.
