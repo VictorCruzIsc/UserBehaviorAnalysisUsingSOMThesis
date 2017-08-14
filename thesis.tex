@@ -7,6 +7,8 @@
 \usepackage{csquotes}
 \usepackage{graphicx}
 \usepackage[]{algorithm2e}
+\usepackage[table,xcdraw]{xcolor}
+ \usepackage{booktabs}
 
 %\setcounter{tocdepth}{5}
 \setcounter{secnumdepth}{5}
@@ -264,8 +266,6 @@ This layer is used as window to network services by users and application proces
 \subsubsection{Network Security} % level 3
 The NIST Computer Security Handbook defines the the term of computer security as: The protection afforded to an automated information system in order to attain the applicable objectives of preserving the integrity, availability and confidentiality of information system resources (includes hardware, software, firmware information/data and telecommunications) [36].
 
-TBD
-
 \subsubsection{Intrusion Detection Systems} % level 3
 According to [33] Intrusion detection is the process of monitoring the events occurring in a computer system or network and analyzing them for signs of possible incidents, which are violations or imminent threats of violation of computer security policies, acceptable use policies or standard security policies.
 
@@ -294,8 +294,7 @@ The major benefit of anomaly-based detection methods is that they can be very ef
 \section{Methodological Development} % level 1
 
 \subsection{Experiment context} % level 2
-Experiment was carried out on a Campus Area Network (CAN) that has a 16-bit network and a Windows domain controller, using a HTTP proxy. Among campus applications web and remote apps are included.
-Email service is provided by Microsoft Exchange Server which is hosted outside the campus network.
+Experiment was carried out on a Campus Area Network (CAN) that has a 16-bit network and a Windows domain controller, using a HTTP proxy. Among campus applications web and remote apps are included. Email service is provided by Microsoft Exchange Server which is hosted outside the campus network.
 The target users were full-time professors who had a computer with a static IP address and a wireless access with a dynamic IP address.
 Five full-time professors (hereafter denoted as users) were selected for the experiment. For each one, real usage traffic was captured for inside and outside campus activities during a two labor weeks, and then processed.
 
@@ -379,48 +378,70 @@ Self Organizing Map basic algorithm is defined as follows.
 \item Continuation. Keep returning to step 2 until the feature map stops changing.
 \end{enumerate}
 
-Each element in the SOM lattice has a weights vector $V(v_1, v_2,..., v_n)$ of three elements, $v_1$ represents the TCP/UDP metric, $v_2$ represents the Internal IP metric and $v_3$ represents the Web traffic metric.
+Each element in the SOM lattice has a weights vector $V(v_1, v_2,..., v_n)$ of three elements, $v_1$ represents the TCP/UDP metric, $v_2$ represents the Internal IP metric and $v_3$ represents the Web traffic metric.
 
 To define the the size $n\times n$ of the lattice, ten experiments were evaluated with 50, 75, 100, 125 and 150 neurons. Graphic 1. Shows the average of the results by user.
 
 \begin{center}\includegraphics[scale=.3]{results} \end{center}
 
-Elements for building the SOM lattice are obtained randomly form the build data set $\beta_1$ and order in a square distribution of $75\times75$ as it was the SOM lattice size that gives a better result.
-
-Best matching unit evaluation was obtained using Euclidean distance. The gaussian neighborhood function was used with an initial neighborhood radius of ($\frac{n}{2}$), decreasing linearly to 1 at the end of the training. The learning rate was chosen to be 1 and reduced to 0 at the end of the training.
+Results show that the best experiments results were obtained using lattices of $75 \times 75$.Elements for building the SOM lattice are obtained randomly form the build data set $\beta_1$ and ordered in a square distribution.
+Best matching unit evaluation is obtained using Euclidean distance. The gaussian neighborhood function was used with an initial neighborhood radius of ($\frac{n}{2}$), decreasing linearly to 1 at the end of the training. The learning rate was chosen to be 1 and reduced to 0 at the end of the training.
 
 \paragraph{User network behavior pattern creation} % level 4
 The train module implements the SOM-based approach for user characterization. In the training phase 10 epochs are used to process the lattice. After this phase, an user network behavior pattern is obtained. This pattern may differ between patterns obtained from the same user, because of the random selection of the build elements. Fig 3 shows lattice training during it's initial phases until it get's completely trained.
 
 \begin{center}\includegraphics[scale=0.2]{fig-training} \end{center}
 
-
-
-
-
 \subsubsection{Pattern evaluation} % level 3
 When SOM lattice is completely trained, the elements with the same characteristics in their weights vector are grouped in the same area, denoting clusters of elements and a inherent classification. This obtained distribution of the elements along the SOM lattice, allows to classify easily new vectors, even if them were not in the the build or the train dataset [Reference, XX].
 
-The pattern evaluation module use the capacity of the SOM lattice, of matching new input vectors to their similar ones, not for classifying a new element, but for deciding if an user behavior can be identified among others. To perform this evaluation, new elements are needed: a) an organizational pattern and b) an organization evaluation dataset. An organizational pattern is defined as a matrix of user patterns $P$, which represent an user with it's own behavior in an environment where different users with common or completely different behaviors are present. The organization evaluation pattern is a collection of evaluation data sets $\phi_1$ of the users that conform the organizational pattern, acting as a labeled evaluation data set.
+The pattern evaluation module use the capacity of the SOM lattice, of matching new input vectors to their similar ones, not for classifying a new element, but for deciding if an user behavior can be identified among others. To perform this evaluation, new elements are needed: a) an organizational pattern and b) an organization evaluation dataset. An organizational pattern is defined as a matrix of user patterns $P$, which represent an user with it's own behavior in an environment where different users with common or completely different behaviors are present. The organization evaluation pattern is a collection of evaluation data sets $\phi_n$ of the users that conform the organizational pattern, acting as a labeled evaluation data set.
 
-Evaluation is done by showing each element of the organization evaluation data set to the organizational pattern, resulting best matching units are processed by obtaining the user pattern they belong to and compare it against the expected result. Fig 4. shows how an organizational pattern is conformed and how it is evaluated.
+Evaluation is done by showing each element of the organization evaluation data set to the organizational pattern, once every element is evaluated the SOM lattice is processed in order to identify which neurons in the SOM lattice correctly match to the vector $V_n$ in the organizational dataset. As we already know the origin of the vector $V_n$, is easy to find out if the match is correct or not. Fig 4. shows how an organizational pattern is conformed and how it is evaluated.
 
-	\begin{center}\includegraphics[scale=0.3]{evaluation} \end{center}
+\begin{center}\includegraphics[scale=0.3]{evaluation} \end{center}
+
+The organizational patterns were conformed by four users, one of them representing the idle behavior. As there was a need of evaluating each of the users against others, a combination was performed, evaluating CABD, CABE, CBDE, CADE, in which each letter is the identifier of one user pattern and C represents the idle pattern. The elements that match the idle patterns were considered as correct matches for the current evaluated user.
 
 \section{Results and Discussion} % level 1
-Results presentation, how the results are interpreted, and what we can do with data.
-The results will explain, how the user is able to recognize itself in the organization map.
+As explained in section 4.2.2.3, SOM lattices of different $n$ sizes were evaluated, SOM lattice with 75 neurons denoted better user identification, using correct matches and idle matches as positive matches, bigger lattices were not used as they maintain the the correct matching percentage but increase the match with idle activity, not giving certainty of the result.
 
+\begin{table}[]
+\centering
+\caption{User average results}
+\label{my-label}
+\begin{tabular}{|
+>{\columncolor[HTML]{EFEFEF}}r |c|c|c|c|}
+\hline
+\multicolumn{1}{|l|}{\cellcolor[HTML]{C0C0C0}\textbf{}} & \cellcolor[HTML]{C0C0C0}\textbf{6459} & \cellcolor[HTML]{C0C0C0}\textbf{64510} & \cellcolor[HTML]{C0C0C0}\textbf{64910} & \cellcolor[HTML]{C0C0C0}\textbf{65910} \\ \hline
+{\color[HTML]{000000} \textbf{Correct user A}}          & 1                                     & 2                                      & 3                                      &                                        \\ \hline
+{\color[HTML]{000000} \textbf{Incorrect user A}}        & 4                                     & 5                                      & 6                                      &                                        \\ \hline
+{\color[HTML]{000000} \textbf{Correct user B}}          &                                       &                                        &                                        &                                        \\ \hline
+{\color[HTML]{000000} \textbf{Incorrect user B}}        &                                       &                                        &                                        &                                        \\ \hline
+{\color[HTML]{000000} \textbf{Correct user C}}          &                                       &                                        &                                        &                                        \\ \hline
+{\color[HTML]{000000} \textbf{Incorrect user C}}        &                                       &                                        &                                        &                                        \\ \hline
+{\color[HTML]{000000} \textbf{Correct user D}}          &                                       &                                        &                                        &                                        \\ \hline
+{\color[HTML]{000000} \textbf{Incorrect user D}}        &                                       &                                        &                                        &                                        \\ \hline
+\end{tabular}
+\end{table}
 
+Table 1 shows the average of results of every user. 
 
+Hacer notar que los resultados del usuario 4 y el usuario 9 son malos, sin embargo cuando se evaluan por separado el match de positivos aumenta
 
-
+Hacer notar los hexagonos que se van creando con el aumento de a composicion de las matrices y empezar a plantaer el problema de para caso futuro
 
 \section{Conclusions} % level 1
+Denotar que los usuarios tenian un indice de match medio/alto, y que esto era debido a que los usuarios pertenecian al mismo departamento escolar.
 
 \subsection{Future work} % level 2
-Due hardware limitation, SOM training is done with ten epochs. A much longer training of about one thousand epochs would give a more precise user pattern, helping in a better user detection in the organization map.
-Also formulas are not completely following the standard of a gaussian function so a new implementation would be great.
+Mas epochs
+
+Extender las metricas de evaluacion 
+
+Intentar una topologia diferente para las matrices de SOM (hexagonales, octagonales)
+
+Revisar si es posible obtener mas capturas de trafico de otras departmentos y compararlos contra los del departamente de ingenieria para evaluar si es posible distinguir, no solo usuarios sino grupos de usuarios.
 
 
 
