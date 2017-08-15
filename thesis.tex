@@ -438,22 +438,27 @@ User A and D are the better results that were obtained over the experiments. Use
 
 User D and B present a particular pattern when the SOM lattice dimensions change, when SOM lattices are build with 50, 100, and 125 neurons the results show a low rate of correct matches between 40\% and 50\%, but lattices build with 75,125 and 150 have a high rate of positive matches  between 65\% and 80\%, showing that these two users may have a similar behavior, but further study is needed to understand why the results vary constantly with different SOM lattices dimensions.
 
-When user A and D are compared, experiment CBDE for user D, is completely different from CABD and CADE, because correct matches raise to 80.71\%, suggesting that when user A is evaluated in the same pattern the behaviors are getting confused as they may have a similar behavior, in used services, time spend in the computer or usage schedules.
+When user A and D are compared, experiment CBDE for user D, is completely different from CABD and CADE where correct matches are 14.9\% and 20.98\% respectively and CBDE results show a raise to 80.71\%, suggesting that, when user A is evaluated in the same pattern along with user D, both behaviors are mixed, giving an incorrect match. Similar behavior could denote the use of the same services, spend time in the computer or similar usage schedules.
 
-To address this finding, experiments with different dimension of SOM lattices were performed avoiding comparing users A and D. Table 2 and 3 show results of user A and D respectively. 
+To address this finding, experiments with different dimension of SOM lattices were performed avoiding comparing users A and D at the same time. Fig. 4 shows results of user A and D respectively.
 
+\begin{center}\includegraphics[scale=0.6]{fig-four} \end{center}
 
-As it can be seen the correct match raises from 60\% to almost 80% misma compracion para el otro usuario, mete los datos de la desviacion standar.
-
+For user A, the results raise from a correct average of 63.34\% to a 73.98\% of correct match, instead for user D, the graphic shows that results are stable and constant, with a raise from 38\% to 82.66\%.
 
 User E results are not as constant as desired, because experiments CABE, CADE, and CBDE get different results each, but do not suggest any explanation of why this is happening, opening some questions like, if more experiments are needed for this user? or if the used datasets haver enough quality to be analyzed?
 
-
 \section{Conclusions} % level 1
-Denotar que los usuarios tenian un indice de match medio/alto, y que esto era debido a que los usuarios pertenecian al mismo departamento escolar.
+La necesidad de la creacion de un dataset efectivo y automatizado
+Porque es bueno SOM y porque puede apoyar a resolver esta problematica
+Discusion de los resultados
+Although many of the results do not get over 70\% of correct matching, we think think that is possible to identify an user over the network based in it's network traffic. User A and D, have given valuable information since users in real life have similar behaviors. We also think that mismatching among users is because all them work in the same area and belong to the same school department, having a high probabilities that they share many of their activities.
 
 \subsection{Future work} % level 2
-Mas epochs
+The automatic creation of a dataset which defines correctly what is the normal behavior of an user inside the network would be very helpful for organizations, since they will be capable of maintain their networks secure, at a low cost and with a very low intervention of the human factor. This works gives a approach of how this could be accomplished in three stages: 1) network data capture, 2) data processing and 3) pattern evaluation.
+
+The main improvements could be done in the data processing stage, mainly in two big areas: 1) Neurons feature vectors $V_n$ , in this work, three main features are evaluated, however [1] combines different approaches, which are also obtained from the web traffic of the user, as conversation time, specific used services and connection times, giving him more data to process into the SOM lattice and receive useful feedback from the algorithm, to improve user characterization. the second area. 2) The second opportunity area is related to the SOM algorithm implementation and experimentation, due reduced computational power, SOM algorithm was executed only with 25 epochs in the training phase, giving correct. Scaling to 1000 epochs could improve cluster definition which will define better user characteristics and idle behavior. In the same line SOM algorithm was implemented using a square lattice and a circular neighborhood function, using a different form of lattice and neighborhood function, could improve the training processing time and the convergence of the algorithm.
+
 
 Extender las metricas de evaluacion 
 
