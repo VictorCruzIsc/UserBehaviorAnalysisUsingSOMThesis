@@ -406,30 +406,48 @@ The organizational patterns were conformed by four users, one of them representi
 \section{Results and Discussion} % level 1
 As explained in section 4.2.2.3, SOM lattices of different $n$ sizes were evaluated, SOM lattice with 75 neurons denoted better user identification, using correct matches and idle matches as positive matches, bigger lattices were not used as they maintain the the correct matching percentage but increase the match with idle activity, not giving certainty of the result.
 
+% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
 \begin{table}[]
 \centering
-\caption{User average results}
+\caption{My caption}
 \label{my-label}
-\begin{tabular}{|
->{\columncolor[HTML]{EFEFEF}}r |c|c|c|c|}
+\begin{tabular}{|r|c|c|c|c|}
 \hline
-\multicolumn{1}{|l|}{\cellcolor[HTML]{C0C0C0}\textbf{}} & \cellcolor[HTML]{C0C0C0}\textbf{6459} & \cellcolor[HTML]{C0C0C0}\textbf{64510} & \cellcolor[HTML]{C0C0C0}\textbf{64910} & \cellcolor[HTML]{C0C0C0}\textbf{65910} \\ \hline
-{\color[HTML]{000000} \textbf{Correct user A}}          & 1                                     & 2                                      & 3                                      &                                        \\ \hline
-{\color[HTML]{000000} \textbf{Incorrect user A}}        & 4                                     & 5                                      & 6                                      &                                        \\ \hline
-{\color[HTML]{000000} \textbf{Correct user B}}          &                                       &                                        &                                        &                                        \\ \hline
-{\color[HTML]{000000} \textbf{Incorrect user B}}        &                                       &                                        &                                        &                                        \\ \hline
-{\color[HTML]{000000} \textbf{Correct user C}}          &                                       &                                        &                                        &                                        \\ \hline
-{\color[HTML]{000000} \textbf{Incorrect user C}}        &                                       &                                        &                                        &                                        \\ \hline
-{\color[HTML]{000000} \textbf{Correct user D}}          &                                       &                                        &                                        &                                        \\ \hline
-{\color[HTML]{000000} \textbf{Incorrect user D}}        &                                       &                                        &                                        &                                        \\ \hline
+\rowcolor[HTML]{9B9B9B} 
+\multicolumn{1}{|l|}{\cellcolor[HTML]{9B9B9B}\textbf{}}                  & \textbf{CABD}             & \textbf{CABE}             & \textbf{CADE}             & \textbf{CBDE}             \\ \hline
+\cellcolor[HTML]{C0C0C0}{\color[HTML]{000000} \textbf{Correct user A}}   & 66.6                      & 62.52                     & 60.91                     & \cellcolor[HTML]{EFEFEF}- \\ \hline
+\cellcolor[HTML]{C0C0C0}{\color[HTML]{000000} \textbf{Incorrect user A}} & 33.4                      & 37.48                     & 39.09                     & \cellcolor[HTML]{EFEFEF}- \\ \hline
+\cellcolor[HTML]{C0C0C0}{\color[HTML]{000000} \textbf{Correct user B}}   & 66.54                     & 68.32                     & \cellcolor[HTML]{EFEFEF}- & 74.54                     \\ \hline
+\cellcolor[HTML]{C0C0C0}{\color[HTML]{000000} \textbf{Incorrect user B}} & 33.46                     & 31.68                     & \cellcolor[HTML]{EFEFEF}- & 25.46                     \\ \hline
+\rowcolor[HTML]{EFEFEF} 
+\cellcolor[HTML]{C0C0C0}{\color[HTML]{000000} \textbf{Correct user C}}   & Idle                      & Idle                      & Idle                      & Idle                      \\ \hline
+\rowcolor[HTML]{EFEFEF} 
+\cellcolor[HTML]{C0C0C0}{\color[HTML]{000000} \textbf{Incorrect user C}} & Idle                      & Idle                      & Idle                      & Idle                      \\ \hline
+\cellcolor[HTML]{C0C0C0}{\color[HTML]{000000} \textbf{Correct user D}}   & 14.9                      & \cellcolor[HTML]{EFEFEF}- & 20.98                     & 80.71                     \\ \hline
+\cellcolor[HTML]{C0C0C0}{\color[HTML]{000000} \textbf{Incorrect user D}} & 85.1                      & \cellcolor[HTML]{EFEFEF}- & 79.02                     & 19.29                     \\ \hline
+\cellcolor[HTML]{C0C0C0}\textbf{Correct user E}                          & \cellcolor[HTML]{EFEFEF}- & 37.85                     & 53.48                     & 70.18                     \\ \hline
+\cellcolor[HTML]{C0C0C0}\textbf{Incorrect user E}                        & \cellcolor[HTML]{EFEFEF}- & 62.15                     & 46.52                     & 29.82                     \\ \hline
 \end{tabular}
 \end{table}
 
-Table 1 shows the average of results of every user. 
+Table 1 shows the average of results of every user. It is possible to see that results are constant over the experiments, having an average of 60\% of correct matching.
 
-Hacer notar que los resultados del usuario 4 y el usuario 9 son malos, sin embargo cuando se evaluan por separado el match de positivos aumenta
+User A and D are the better results that were obtained over the experiments. User A maintains the percentage of correct and incorrect matches over the different experiments (CABD, CABE, CADE), also  when the SOM lattice dimensions change. On the other hand user D is not completely stable but gives a lot of information when is compared against other users.
 
-Hacer notar los hexagonos que se van creando con el aumento de a composicion de las matrices y empezar a plantaer el problema de para caso futuro
+User D and B present a particular pattern when the SOM lattice dimensions change, when SOM lattices are build with 50, 100, and 125 neurons the results show a low rate of correct matches between 40\% and 50\%, but lattices build with 75,125 and 150 have a high rate of positive matches  between 65\% and 80\%, showing that these two users may have a similar behavior, but further study is needed to understand why the results vary constantly with different SOM lattices dimensions.
+
+When user A and D are compared, experiment CBDE for user D, is completely different from CABD and CADE, because correct matches raise to 80.71\%, suggesting that when user A is evaluated in the same pattern the behaviors are getting confused as they may have a similar behavior, in used services, time spend in the computer or usage schedules.
+
+To address this finding, experiments with different dimension of SOM lattices were performed avoiding comparing users A and D. Table 2 and 3 show results of user A and D respectively. 
+
+
+As it can be seen the correct match raises from 60\% to almost 80% misma compracion para el otro usuario, mete los datos de la desviacion standar.
+
+
+User E results are not as constant as desired, because experiments CABE, CADE, and CBDE get different results each, but do not suggest any explanation of why this is happening, opening some questions like, if more experiments are needed for this user? or if the used datasets haver enough quality to be analyzed?
+
 
 \section{Conclusions} % level 1
 Denotar que los usuarios tenian un indice de match medio/alto, y que esto era debido a que los usuarios pertenecian al mismo departamento escolar.
