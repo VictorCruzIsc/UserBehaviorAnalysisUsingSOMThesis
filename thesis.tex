@@ -30,26 +30,6 @@
 
 \section{Introduction} % level 1
 
-
-
-
-\subsection{Background} % level 2
-En base al reporte de seguridad de Cisco publicado en 2015 [1] los usuarios y los equipos de Tecnologías de información se han vuelto clave en la seguridad informática dado que estos comprometen la seguridad de forma inconsciente a través del uso indiscriminado de los navegadores y la participación en campañas de publicidad [1], principales medios para la distribución de malware.
-
-Las técnicas actuales de seguridad en redes de computadoras trabajan principalmente en la frontera de la red, buscando prevenir los ataques que son ejecutados desde el exterior descuidando en mayor forma las amenazas que se originan en el interior. 
-
-Se han desarrollados diversos trabajos buscando prevenir y contener los ataques por parte de usuarios internos con diferentes propuestas como son; técnicas de Machine Learning y Sistemas de Detección de Intrusos (IDS por sus siglas en inglés) [2] [3], algoritmos de clustering [2, 4, 5], generación de infraestructuras de cloud computing y minería de datos [4]. 
-Dentro de las propuestas de nuevas técnicas de IDS existe la problemática de los altos índices de falsos positivos, una tasa de detección que varía en base al tipo de ataque, y una dependencia completa a la creación de firmas que muchas veces pueden nos ser optimas en el ambiente de producción o sus tiempo de creación es demasiado largo, siendo las principales razones de esto la extensa cantidad de información que debe ser analizada, el poco tiempo que se tiene para su análisis, el uso incorrecto de las técnicas de procesamiento aplicadas o el tiempo que se debe invertir para la creación de firmas para el ambiente vulnerable.
-
-Tian [3] propone que es posible hacer uso de selección de variables, para  reducir el conjunto de información a analizar lo que impacta directamente en el tiempo que se toma el análisis y es posible analizar de forma más detallada la información. Por su parte Kamarularin [2] explora la eficiencia de los procesos.
-
-Por su lado Yamada [5] y Kamarularin [2] ejecutan diferentes algoritmos de machine learning cuyos resultados permitan conocer y comparar resultados en la detección de ataques y la retroalimentación para la generación de firmas de forma automatizada.
-
-Es posible observar que existe un campo de estudio enfocado a los IDS, utilizando técnicas de machine learning con un alto nivel fiabilidad, por lo que su aplicación permitiría combatir de forma efectiva la brecha de seguridad en redes causada por los mismos usuarios
-
-
-
-
 \subsection{Justification} % level 2
 Current security network solutions neglect  the internal monitoring of users activity, as they assume that inner user interaction is secure and will not harm any asset of the network [10]. However the lack of supervision and monitoring arise two new kind of network vulnerabilities: 1) an inner user attacks the network with full knowledge of what he is doing, while in the other hand 2) an inner user, is victim of an attacker, unconsciently causing attacks to the network, or networks, where it is has any activity. In both scenarios, the user is taking advantage of its unsupervised position.
 
@@ -449,27 +429,25 @@ For user A, the results raise from a correct average of 63.34\% to a 73.98\% of 
 User E results are not as constant as desired, because experiments CABE, CADE, and CBDE get different results each, but do not suggest any explanation of why this is happening, opening some questions like, if more experiments are needed for this user? or if the used datasets haver enough quality to be analyzed?
 
 \section{Conclusions} % level 1
-La necesidad de la creacion de un dataset efectivo y automatizado
-Porque es bueno SOM y porque puede apoyar a resolver esta problematica
-Discusion de los resultados
-Although many of the results do not get over 70\% of correct matching, we think think that is possible to identify an user over the network based in it's network traffic. User A and D, have given valuable information since users in real life have similar behaviors. We also think that mismatching among users is because all them work in the same area and belong to the same school department, having a high probabilities that they share many of their activities.
+As defined previously, [10] has found a security breach addressed by the inner users of a network due the lack of supervision. Current security systems are not able to detect this behavior as they are focusing on outside attacks and most of the time, with outdated patterns or attack firms, making very difficult to detect novel attacks that come from outside of the network and even worse for inner attacks.
+Updates information for detecting novel attacks has a high cost or is not available, creating the need of systems that can be updated continuously but without the need of a human supervision.
+This work shows an implementation of SOM algorithm, results show that based on three metrics: a) TCP-UDP, b) Internal IP metric and c) Web traffic metric, an user can be identified among others with a rate between 60\% and 70\%. SOM algorithm works based on three datasets, that are directly obtained from  user's network traffic.
+Evaluated users were part of the same department in college, however results show that when users of the same area were excluded in the evaluation results could get to 90\% of correct matching, indicating that further work is needed for selecting features to evaluate.
 
 \subsection{Future work} % level 2
 The automatic creation of a dataset which defines correctly what is the normal behavior of an user inside the network would be very helpful for organizations, since they will be capable of maintain their networks secure, at a low cost and with a very low intervention of the human factor. This works gives a approach of how this could be accomplished in three stages: 1) network data capture, 2) data processing and 3) pattern evaluation.
 
-The main improvements could be done in the data processing stage, mainly in two big areas: 1) Neurons feature vectors $V_n$ , in this work, three main features are evaluated, however [1] combines different approaches, which are also obtained from the web traffic of the user, as conversation time, specific used services and connection times, giving him more data to process into the SOM lattice and receive useful feedback from the algorithm, to improve user characterization. the second area. 2) The second opportunity area is related to the SOM algorithm implementation and experimentation, due reduced computational power, SOM algorithm was executed only with 25 epochs in the training phase, giving correct. Scaling to 1000 epochs could improve cluster definition which will define better user characteristics and idle behavior. In the same line SOM algorithm was implemented using a square lattice and a circular neighborhood function, using a different form of lattice and neighborhood function, could improve the training processing time and the convergence of the algorithm.
+The main improvements could be done in the data processing stage, mainly in three big areas: 1) Feature selection, 2) SOM algorithm implementation and experimentation and 3) Dataset improvement.
 
+\subsubsection{Feature selection} % level 3
+In this work, three main features are evaluated, however [1] combines different approaches, which are also obtained from the web traffic of the user, as conversation time, specific used services and connection times, obtaining more data to process and submit into the SOM lattice, to improve user characterization.
 
-Extender las metricas de evaluacion 
+\subsubsection{SOM algorithm implementation and experimentation} % level 3
+Due reduced computational power, SOM algorithm was executed only with 25 epochs in the training phase, giving correct matches, however scaling to 1000 epochs could improve cluster definition which will define better user characteristics and idle behavior. SOM algorithm was implemented using a square lattice and a circular neighborhood function, using a different form of lattice and neighborhood function, could improve the training processing time and the convergence of the algorithm.
 
-Intentar una topologia diferente para las matrices de SOM (hexagonales, octagonales)
-
-Revisar si es posible obtener mas capturas de trafico de otras departmentos y compararlos contra los del departamente de ingenieria para evaluar si es posible distinguir, no solo usuarios sino grupos de usuarios.
-
-
-
-
-
+\subsubsection{Dataset improvement} % level 3
+As defined in Section 4.2.1, datasets are created from at least two weeks of network traffic capture, however it can be seen that there is missing data, due  error connections, errors on host program or other not known problems. Improving the data capture could help to define better user behavior.
+The selected evaluated users, all they belong to one single department of the college, making more difficult to identify them. Capturing network traffic of different departments and compare them against each other could give new results and probably raise the correct matches results.
 
 \section{Bibliography} % level 1
 [1] Ramadas, M., Ostermann, S.,  Tjaden, B. Detecting Anomalous Network Traffic with Self-organizing Maps.
