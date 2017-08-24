@@ -80,30 +80,30 @@ With the explosive growth of the internet in the past two decades and the invent
 Researchers in the area of Anomaly-based Intrusion detection systems are exploring different approaches to address the problems of novel attacks detection and resources optimization through machine learning algorithms, statistical methods and user classifcation.
 
 \subsection{Machine Learning Algorithms and Computer Security} % level 2
-One the main problems of using anomaly-based intrusion approach is the high rate of false positives, as a consequence of the rapid evolution of volume and cyber attacks that network security devices need to process [6]. In response of this tedious and complicated process, Al-Jarrah [6] proposes a novel feature selection method based on Random Forest algorithm, with forward and backward ranking features techniques. Results show, that feature selection can improve detection rate.
+One the main problems of using anomaly-based intrusion approach is the high rate of false positives, as a consequence of the rapid evolution of volume and cyber attacks that network security devices need to process [3]. In response of this tedious and complicated process, Al-Jarrah [3] proposes a novel feature selection method based on Random Forest algorithm, with forward and backward ranking features techniques. Results show, that feature selection can improve detection rate.
 
 In the same line of resource optimization for better detection rates, Kamarudin [2] proposes to compare the performance of decision trees algorithm against artificial neural networks (ANN), and support vector machines (SVM) in order to get which of them is better. The used criteria evaluates: a) attacks detection precision, b) detection rate, c) raised false positives alerts and d) precision of each algorithm in classifying an attack in the correct category, Probe, Denial of Service (DoS), User to root (U2R) and remote to local (R2L). Obtained results show that the best performer algorithm is Decision trees with a detection rate of 98.55\%.
 
-Some of the works related to intrusion detection aim to build a custom intrusion detection system. Portnoy [8] presents a new type of intrusion detection algorithm, which takes a set of unlabeled data as inputs and attempts to find intrusion patterns within the data. The basic idea is that since the intrusions are both not normal, and are rare, they will appear as outliers in the data. Lakhina [9] uses Principal Component Analysis (PCA) to diagnose anomalies, the used method is based on the separation of a high dimensional space, which contains network traffic measurements into disjoint subspaces corresponding to normal and anomalous network conditions. The results show that it is possible to detect large volume anomalies with a very low false alarm rate.
+Some of the works related to intrusion detection aim to build a custom intrusion detection system. Portnoy [5] presents a new type of intrusion detection algorithm, which takes a set of unlabeled data as inputs and attempts to find intrusion patterns within the data. The basic idea is that since the intrusions are both not normal, and are rare, they will appear as outliers in the data. Lakhina [6] uses Principal Component Analysis (PCA) to diagnose anomalies, the used method is based on the separation of a high dimensional space, which contains network traffic measurements into disjoint subspaces corresponding to normal and anomalous network conditions. The results show that it is possible to detect large volume anomalies with a very low false alarm rate.
 
-Generally hybrid algorithms try to use different techniques in the process in order to optimize training time, obtain better results of classification or false positives. Staniford [10] is the author of SPADE (Spice anomaly detector) an anomaly-based port scan detector in Snort. SPADE utilizes a statistical anomaly detection method with Bayesian probability, and uses a simulated annealing method to cluster anomalous packets together into port scans using heuristics developed from real scans.
+Generally hybrid algorithms try to use different techniques in the process in order to optimize training time, obtain better results of classification or false positives. Staniford [7] is the author of SPADE (Spice anomaly detector) an anomaly-based port scan detector in Snort. SPADE utilizes a statistical anomaly detection method with Bayesian probability, and uses a simulated annealing method to cluster anomalous packets together into port scans using heuristics developed from real scans.
 
-Marin's approach [11] focus it's investigation in the viability of clustering users based on the percentage of commands they use in a specified period. The employed hybrid approach begins with the application of expert rules to reduce the dimensionality of the data, followed by a clustering approach using $k$-Means algorithm and Vector Quantization for fine tuning.
+Marin's approach [8] focus it's investigation in the viability of clustering users based on the percentage of commands they use in a specified period. The employed hybrid approach begins with the application of expert rules to reduce the dimensionality of the data, followed by a clustering approach using $k$-Means algorithm and Vector Quantization for fine tuning.
 
 \subsection{Profiling  and User classification} % level 2
-Using network profiling as the base for creating novel implementations of intrusion detection systems has been part of the research in network security area [12].
+Using network profiling as the base for creating novel implementations of intrusion detection systems has been part of the research in network security area [9].
 
-Badea [13] address this problem by creating a Security Information Event Management (SIEM) divided in two modules: 1) Security Information Management (SIM), in charge of long storage and data analysis, and 2)  Security Event Manager(SEM) which process and manages all the anomalous events.
+Badea [10] address this problem by creating a Security Information Event Management (SIEM) divided in two modules: 1) Security Information Management (SIM), in charge of long storage and data analysis, and 2)  Security Event Manager(SEM) which process and manages all the anomalous events.
 
 Packets are evaluated by the network firewall rules, if an event is triggered, it is passed to the OSSIM custom implementation, in charge of collect, normalize and correlate security events occurring within the local network.
 
-Another approach for profiling traffic behavior is used by Kuai [14] and Qin[15], in which clusters of information are created based on the used communication protocols.
+Another approach for profiling traffic behavior is used by Kuai [11] and Qin[12], in which clusters of information are created based on the used communication protocols.
 
-Kuai [14], identifies and analyzes clusters of hosts or applications that exhibit similar communication patterns. Network traffic is modeled by bipartite graphs to obtain one-mode projections. Projections are used to represent source host(s) that communicate with the same destination host(s) and to connect destination hosts that communicate with the same source host(s). Obtained One-mode projection graphs are used as base for building similarity matrices of internet end-host. Simple spectral clustering algorithm is applied over the matrices to discover inherent end-host behavior cluster. 
+Kuai [11], identifies and analyzes clusters of hosts or applications that exhibit similar communication patterns. Network traffic is modeled by bipartite graphs to obtain one-mode projections. Projections are used to represent source host(s) that communicate with the same destination host(s) and to connect destination hosts that communicate with the same source host(s). Obtained One-mode projection graphs are used as base for building similarity matrices of internet end-host. Simple spectral clustering algorithm is applied over the matrices to discover inherent end-host behavior cluster. 
 
-Kuai [14] concluded that it was possible to detect anomalous traffic behavior through network traffic prefixes, as the end hosts tend to stay in the same cluster over time, and the number of behavior cluster was not correlated to the number of observed hosts.
+Kuai [11] concluded that it was possible to detect anomalous traffic behavior through network traffic prefixes, as the end hosts tend to stay in the same cluster over time, and the number of behavior cluster was not correlated to the number of observed hosts.
 
-For Qin's implementation [15] the algorithm is implemented using the traffic at port 80 (HTTP protocol) and integrating the destination URL, not only the IP address. As Kuai, Qin also concluded that at least 93\% of the hosts remain on the same behavior cluster.
+For Qin's implementation [12] the algorithm is implemented using the traffic at port 80 (HTTP protocol) and integrating the destination URL, not only the IP address. As Kuai, Qin also concluded that at least 93\% of the hosts remain on the same behavior cluster.
 
 \section{Theorical framework} % level 1
 
@@ -112,7 +112,7 @@ For Qin's implementation [15] the algorithm is implemented using the traffic at 
 \subsubsection{Learning methods} % level 3
 
 \paragraph{Supervised Training Methods} % level 4
-Supervised learning algorithms make decisions based on a previous identified set of examples (labeled information) [12].
+Supervised learning algorithms make decisions based on a previous identified set of examples (labeled information) [9].
 
 A supervised learning algorithm looks for patterns in the values shown, features in the information that allows the algorithm to identify and classify new data. Each algorithm checks for those features in different ways. We can say that an algorithm is completely trained when it has found the best features which define the data.
 
@@ -120,7 +120,7 @@ After the algorithm has found the best features, it can make predictions for unl
 
 
 \paragraph{Unsupervised Training Methods} % level 4
-Against supervised learning, in unsupervised learning, the data elements presented to the algorithm do not have labels associated. The unsupervised model is established by an environment represented by a vector of multiple features, this vector is fed up to the algorithm and a response is obtained. Based on the system response and the adaption function, algorithm elements are updated. The learning process is an open loop with a set of adaption rules that govern its general behavior [16].
+Against supervised learning, in unsupervised learning, the data elements presented to the algorithm do not have labels associated. The unsupervised model is established by an environment represented by a vector of multiple features, this vector is fed up to the algorithm and a response is obtained. Based on the system response and the adaption function, algorithm elements are updated. The learning process is an open loop with a set of adaption rules that govern its general behavior [13].
 
 In other words an unsupervised algorithm organize data in some way or to find a pattern that can describe its structure. The obtained organization can be seen as a set of information clusters.
 
@@ -128,15 +128,15 @@ In other words an unsupervised algorithm organize data in some way or to find a 
 In literature many pattern classification algorithms have been used to solve the Intrusion detection problem. In those algorithms patterns are obtained from the classification of raw data into data collections with the same characteristics. Supervised and unsupervised learning approaches are used to obtain the required classification function. In the following section, an introduction to the most common used algorithms is presented.
 
 \paragraph{$k$-nearest neighbor} % level 4
-The $k$-nearest neighbor algorithm is one of the most fundamental and simple classifications methods and the best option when there is little or no prior knowledge about the distribution of the data. In the absence of prior knowledge, most $kNN$ classifiers use simple Euclidean distances to measure the dissimilarities between examples represented as vector inputs, to check which cluster the presented data belongs to [17] [18].
+The $k$-nearest neighbor algorithm is one of the most fundamental and simple classifications methods and the best option when there is little or no prior knowledge about the distribution of the data. In the absence of prior knowledge, most $kNN$ classifiers use simple Euclidean distances to measure the dissimilarities between examples represented as vector inputs, to check which cluster the presented data belongs to [14] [15].
 
 \paragraph{Support vector machines (SVM)} % level 4 
-Support vector machines algorithm is proposed by Vapnik [19], in which binary classification is performed. The algorithm checks the complete dataset for the optimal separating hyperplane between two classes by maximizing the margin between the classes closest points. Points lying on the boundaries are called support vectors, and the middle of the margin is our optimal separating hyperplane[20].
+Support vector machines algorithm is proposed by Vapnik [16], in which binary classification is performed. The algorithm checks the complete dataset for the optimal separating hyperplane between two classes by maximizing the margin between the classes closest points. Points lying on the boundaries are called support vectors, and the middle of the margin is our optimal separating hyperplane[17].
 
 \paragraph{Artificial neuronal networks (ANN)} % level 4
-In 1943, Warren S. and McCulloh, developed the first conceptual model of an artificial neural network [21] in which they describe the concept of a neuron as a single living cell in a network of cell that receives inputs, processes those inputs and generates an output.
+In 1943, Warren S. and McCulloh, developed the first conceptual model of an artificial neural network [18] in which they describe the concept of a neuron as a single living cell in a network of cell that receives inputs, processes those inputs and generates an output.
 
-Today, the basic structure of an artificial neural network involves a network of manny interconnected neurons, in which each neuron act as a simple processing element that individually handles a part of a bigger problem. A neuron computes an output using an activation function, that considers the weighted sum of its inputs [22].
+Today, the basic structure of an artificial neural network involves a network of manny interconnected neurons, in which each neuron act as a simple processing element that individually handles a part of a bigger problem. A neuron computes an output using an activation function, that considers the weighted sum of its inputs [19].
 
 An artificial neural network is adaptive due the adjustment of the weights that interconnect the neurons during the training phase, giving it the possibility of solving different problems such as: a) pattern recognition, b) time series prediction, c) signal processing, d) soft sensors, and d) anomaly detection. 
 
@@ -144,7 +144,7 @@ An artificial neural network is adaptive due the adjustment of the weights that 
 Decision trees is a non-paramtric supervised learning algorithm, used basically for classification and regression. The algorithm goes through a sequence of decisions, which the current decision defines the path to follow for the next decision. The sequence of decisiones is represented in a tree structure. Using this algorithm gives some advantages as it is simple to understand an interpret as trees can be visualized, and it can handle both numerical and categorical data.
 
 \paragraph{Genetic algorithms} % level 4
-Genetic Algorithms were invented to mimic some of the processes in natural evolution. It is known to be an ideal technique for finding solutions for optimization problems [23] [24]. To apply this process of evolution to the selected problem, it is needed to define three basic elements: individual gene presentation and initialization, evaluation function model, and a specific function of genetic operators and their parameters [26]. In each of them we will define the characteristics of our individuals, how they will be evaluated and selected as the best elements of the population and how they will be mixed among them respectively.
+Genetic Algorithms were invented to mimic some of the processes in natural evolution. It is known to be an ideal technique for finding solutions for optimization problems [20] [21]. To apply this process of evolution to the selected problem, it is needed to define three basic elements: individual gene presentation and initialization, evaluation function model, and a specific function of genetic operators and their parameters [23]. In each of them we will define the characteristics of our individuals, how they will be evaluated and selected as the best elements of the population and how they will be mixed among them respectively.
 
 In order to find the best solution in large combination problems, genetic algorithms work on a population of size $G$, in which each element $g$ is a potential solution of the problem. Population $G$ is processed through three stages: reproduction, crossover, and mutation.
 
@@ -153,15 +153,15 @@ In the reproduction stage, each element $g$ is evaluated by a fitness function $
 The complete process is repeated probabilistically moving form one generation to another, with the expectation of finding the best solution for the selected problem. Generally threshold of expected results are provided to the algorithm as stop condition, in order to avoid infinite evaluations. When the process is over the best individual selected form the final generation is the solution.
 
 \paragraph{Fuzzy logic} % level 4
-Fuzzy logic allows to treat imprecise information as: is very tall, low temperature, slowly, in terms of fuzzy sets. This sets are combined with rules to define actions [22], let's use the example of a home automation system, in which one the functions is to keep water temperature enjoyable for the people inside the house, if the water is too hot, then cold water is needed, in the opposite case, hot water is needed, but notice that hot or cold terms are not defined in Centigrades or Fahrenheit units, but in common expressions like hot, cold or warm.
+Fuzzy logic allows to treat imprecise information as: is very tall, low temperature, slowly, in terms of fuzzy sets. This sets are combined with rules to define actions [19], let's use the example of a home automation system, in which one the functions is to keep water temperature enjoyable for the people inside the house, if the water is too hot, then cold water is needed, in the opposite case, hot water is needed, but notice that hot or cold terms are not defined in Centigrades or Fahrenheit units, but in common expressions like hot, cold or warm.
 
 Fuzzy set membership of values between 0 or 1, so the degree of truth in a statement, can range between 0 and 1, and it is not constrained to to the two truth values (i.e. true or false, hot or cold, small or large) with this approach we can have options like, warm, or medium.
 
 \paragraph{Hybrid classifiers} % level 4
-The idea behind hybrid classifiers is to combine several machine learning techniques, so that the system performance can be significantly improved. More specifically, a hybrid approach typically consists of two functional components, in order to complement each other. An example of this is when cluster algorithms such as $k$-neighbor, Self organizing maps, or SVM are used in the first part of the process as optimization of the training model and the second part of the process is in charge of the prediction. [18]
+The idea behind hybrid classifiers is to combine several machine learning techniques, so that the system performance can be significantly improved. More specifically, a hybrid approach typically consists of two functional components, in order to complement each other. An example of this is when cluster algorithms such as $k$-neighbor, Self organizing maps, or SVM are used in the first part of the process as optimization of the training model and the second part of the process is in charge of the prediction. [15]
 
 \subsection{Self-organizing Maps} % level 2
-The Self-Organizing Map algorithm performs a nonlinear, ordered, and smooth mapping of high-dimensional input data manifolds onto the elements of a regular, low-dimensional array [26]. The algorithm converts non-linear statistical relationships between data elements in a high-dimensional space into geometrical relationships between elements in a two-dimensional map (lattice), called the Self-Organizing Map (SOM)[27]. A SOM can then be used to visualize the clusters, of an input space. Each element at SOM is a neuron, and is a representation of a multidimensional vector with a cartographic position denoted with x and y. If elements in the input space are characterized using $k$ parameters and represented by $k$-dimensional vectors, each neuron in the SOM lattice is also specified as $k$-dimensional vector.
+The Self-Organizing Map algorithm performs a nonlinear, ordered, and smooth mapping of high-dimensional input data manifolds onto the elements of a regular, low-dimensional array [23]. The algorithm converts non-linear statistical relationships between data elements in a high-dimensional space into geometrical relationships between elements in a two-dimensional map (lattice), called the Self-Organizing Map (SOM)[24]. A SOM can then be used to visualize the clusters, of an input space. Each element at SOM is a neuron, and is a representation of a multidimensional vector with a cartographic position denoted with x and y. If elements in the input space are characterized using $k$ parameters and represented by $k$-dimensional vectors, each neuron in the SOM lattice is also specified as $k$-dimensional vector.
 
 	\begin{center}\includegraphics[scale=0.08]{som} \end{center}
 
@@ -197,7 +197,7 @@ The SOM algorithm uses a set of neurons or units which are arranged in a network
 After the SOM lattice is already setup, by the initialization stage, SOM training takes place in a specified interval of time $T$. Each time step $t$, an input vector $v$, is randomly chosen and a neuron $r$ whose weight $w_r$ is metrically closest to the pattern $v$ is chosen as the BMU. As SOM algorithm is not just a classification algorithm but also a clustering algorithm, a way of maintaining the dimensional relationships between elements in the same geometrical area is to get their $k$-dimensional values $w_s$ updated at the same time as the BMU does. This update process is known as a cooperative schema, and it only works on neurons that are in the vicinity of the BMU defined by a neighborhood function.
 
 \paragraph{Neighborhood and Learning functions} % level 4
-During SOM training each time a BMU is found, it's weight and the neurons in its vicinity get their weights vectors updated according to the features updated rule [25].
+During SOM training each time a BMU is found, it's weight and the neurons in its vicinity get their weights vectors updated according to the features updated rule [22].
 
 \begin{equation}
 w_s(t + 1) = w_s(t) + \omega h(r,s)(v(t) -w_s(t))
@@ -208,9 +208,9 @@ Where $\omega$ is the learning step width and its value is a constant $(0 < \ome
 
 
 \subsubsection{Networks classification} % level 3
-Traditional authors like Stalling [28] defines three types of network: Local Area Network (LAN), Metropolitan Area Networks (MAN) and Wide Area Networks (WAN); based on the geographical scope of the network.
+Traditional authors like Stalling [25] defines three types of network: Local Area Network (LAN), Metropolitan Area Networks (MAN) and Wide Area Networks (WAN); based on the geographical scope of the network.
 
-Modern authors like Edwards Wade [29] defines new types of network like the Campus Area Network(CAN), which is defined as a group of LAN Segments interconnected within a building or group of buildings that form one network. Typically, the company owns the entire network, including the wiring between buildings, in contrast to Metropolitan Area Networks.
+Modern authors like Edwards Wade [26] defines new types of network like the Campus Area Network(CAN), which is defined as a group of LAN Segments interconnected within a building or group of buildings that form one network. Typically, the company owns the entire network, including the wiring between buildings, in contrast to Metropolitan Area Networks.
 
 \subsubsection{Network topology} % level 3
 
@@ -226,28 +226,28 @@ OSI layers are designed to communicate with only one layer above and below it, a
 The physical layer describes the electric and optical signals used for communicating between two hosts, is concerned with the transmission and reception of the unstructured raw bit stream over the physical medium, and carries those signals to for all the higher layers.
 
 \paragraph{Data Link layer} % level 4
-This layer takes care of the verification that bit sequences are passed correctly between two nodes, If errors occur, this level request the retransmission of the corrupted sequence, providing the upper layers an error free transmission over the link. To do this, data link layer provides: a) link control, in which logical establishment and termination between nodes is done, b) frame control, which defines the transmission rate, establish the sequence of the received data, verifies data integrity and c) determines when the node is allowed to use the physical medium. Common protocols of this layer are: HDCL for point to point and point to multipoint connections, and IEEE 802 for local networks [30]. 
+This layer takes care of the verification that bit sequences are passed correctly between two nodes, If errors occur, this level request the retransmission of the corrupted sequence, providing the upper layers an error free transmission over the link. To do this, data link layer provides: a) link control, in which logical establishment and termination between nodes is done, b) frame control, which defines the transmission rate, establish the sequence of the received data, verifies data integrity and c) determines when the node is allowed to use the physical medium. Common protocols of this layer are: HDCL for point to point and point to multipoint connections, and IEEE 802 for local networks [27]. 
 
 \paragraph{Network layer} % level 4
-Network layer role is to deliver a packet form one logical address (in the case of an IP, an IP) to another. Router devices use the generated frames to send packets through the network, depending on several key field of the datagram header such as: the source and destination IP address, Time To Live counter (TTL), and the checksum [31].
+Network layer role is to deliver a packet form one logical address (in the case of an IP, an IP) to another. Router devices use the generated frames to send packets through the network, depending on several key field of the datagram header such as: the source and destination IP address, Time To Live counter (TTL), and the checksum [28].
 
 \paragraph{Transport layer} % level 4
-According to [32] In the Open Systems Interconnection (OSI) communications model, the Transport layer ensures the reliable arrival of messages and provides error checking mechanisms and data flow controls. The Transport layer provides services for both connection-mode transmissions and for connectionless-mode transmissions. Two transport protocols are used over the internet: TCP [33] and UDP [34]. TCP ensures the delivery of the packages due the implementation of re transmission mechanisms such as error checking and numbering for check the sequence of the packages, however UDP is more often used for network transmissions where the lost of any package is not critical.
+According to [29] In the Open Systems Interconnection (OSI) communications model, the Transport layer ensures the reliable arrival of messages and provides error checking mechanisms and data flow controls. The Transport layer provides services for both connection-mode transmissions and for connectionless-mode transmissions. Two transport protocols are used over the internet: TCP [30] and UDP [31]. TCP ensures the delivery of the packages due the implementation of re transmission mechanisms such as error checking and numbering for check the sequence of the packages, however UDP is more often used for network transmissions where the lost of any package is not critical.
 
 \paragraph{Session layer} % level 4
-Session layer facilitates the exchange of data between applications, by organizing and structuring the the processes among them. The basic unit of this layer is the protocol data unit (PDU) [30].
+Session layer facilitates the exchange of data between applications, by organizing and structuring the the processes among them. The basic unit of this layer is the protocol data unit (PDU) [27].
 
 \paragraph{Presentation layer} % level 4
-The presentation layer is in charge of formatting the data to be presented to the application layer. this layer acts as a translator, changing from a custom format used by the application to a common format used in the receiver station [30].
+The presentation layer is in charge of formatting the data to be presented to the application layer. this layer acts as a translator, changing from a custom format used by the application to a common format used in the receiver station [27].
 
 \paragraph{Application layer} % level 4
 This layer is used as window to network services by users and application processes through network applications and application protocols. Some common protocols in this model are HTTP, FTP, DNS, and SMTP.
 
 \subsubsection{Network Security} % level 3
-The NIST Computer Security Handbook defines the the term of computer security as: The protection afforded to an automated information system in order to attain the applicable objectives of preserving the integrity, availability and confidentiality of information system resources (includes hardware, software, firmware information/data and telecommunications) [35].
+The NIST Computer Security Handbook defines the the term of computer security as: The protection afforded to an automated information system in order to attain the applicable objectives of preserving the integrity, availability and confidentiality of information system resources (includes hardware, software, firmware information/data and telecommunications) [32].
 
 \subsubsection{Intrusion Detection Systems} % level 3
-According to [5] Intrusion detection is the process of monitoring the events occurring in a computer system or network and analyzing them for signs of possible incidents, which are violations or imminent threats of violation of computer security policies, acceptable use policies or standard security policies.
+According to [4] Intrusion detection is the process of monitoring the events occurring in a computer system or network and analyzing them for signs of possible incidents, which are violations or imminent threats of violation of computer security policies, acceptable use policies or standard security policies.
 
 An Intrusion Detection System (IDS) is a device or software application that automates the intrusion detection process and is primarily focused on identifying possible incidents. However it cannot provide completely accurate detection as it captures packets in real time, but works on copies of data traffic to detect suspicious activity by using signatures. 
 
@@ -267,7 +267,7 @@ To define what is normal in the network, an initial profile is generated over a 
 
 There is a big concern with this methodology, referred to the sanitization of the collected data. If during the training phase, any of the evaluated hosts is victim of an attack, and it's not detected, the IDS will interpret this malicious traffic as normal, and no alarm or connection refuse will be triggered next time the same attack or a variation takes place.
 
-Along with the problem of making profiles completely clean of malicious activity, creating accurate profiles can be very challenging because of computing activity and edge cases that are not considered. For example, if a particular maintenance activity that takes place once a month, involving large file transfers or network consumption and it was not seen over the training period it will cause an alert as it was not part of the normal behavior [36].
+Along with the problem of making profiles completely clean of malicious activity, creating accurate profiles can be very challenging because of computing activity and edge cases that are not considered. For example, if a particular maintenance activity that takes place once a month, involving large file transfers or network consumption and it was not seen over the training period it will cause an alert as it was not part of the normal behavior [33].
 
 The major benefit of anomaly-based detection methods is that they can be very effective at detecting previously unknown threats. For example, suppose that a computer becomes infected with a new type of malware. the malware starts sending emails, or processing downloaded information causing a rise in the CPU usage, this behavior will be significantly different form the normal stablished behavior profile.
 
@@ -323,7 +323,7 @@ As explained in section 3.3 Self Organizing Map algorithm is a not supervised al
 
 
 \paragraph{Data set creation} % level 4
-Using TCP package as the working unit is not possible due the great volume of packages, and time consuming for processing each one individually [37].
+Using TCP package as the working unit is not possible due the great volume of packages, and time consuming for processing each one individually [34].
 
 Instead, package sets $[\beta,\gamma,\phi]$ are individually processed and turned into chunks. The obtained chunks are the the working units and conform the different data sets, Build data set $\beta_1$, the Train data set $\gamma_1$ and the Evaluation data set $\phi_1$ respectively.
 
@@ -440,7 +440,7 @@ The automatic creation of a dataset which defines correctly what is the normal b
 The main improvements could be done in the data processing stage, mainly in three big areas: 1) Feature selection, 2) SOM algorithm implementation and experimentation and 3) Dataset improvement.
 
 \subsubsection{Feature selection} % level 3
-In this work, three main features are evaluated, however [27] combines different approaches, which are also obtained from the web traffic of the user, as conversation time, specific used services and connection times, obtaining more data to process and submit into the SOM lattice, to improve user characterization.
+In this work, three main features are evaluated, however [24] combines different approaches, which are also obtained from the web traffic of the user, as conversation time, specific used services and connection times, obtaining more data to process and submit into the SOM lattice, to improve user characterization.
 
 \subsubsection{SOM algorithm implementation and experimentation} % level 3
 Due reduced computational power, SOM algorithm was executed only with 25 epochs in the training phase, giving correct matches, however scaling to 1000 epochs could improve cluster definition which will define better user characteristics and idle behavior. SOM algorithm was implemented using a square lattice and a circular neighborhood function, using a different form of lattice and neighborhood function, could improve the training processing time and the convergence of the algorithm.
@@ -457,72 +457,68 @@ The selected evaluated users, all they belong to one single department of the co
 
 [3] Al-Jarrah, O. Y., Siddiqui, A., Elsalamouny, M., Yoo, P. D., Muhaidat, S., and Kim, K. (2014, June). Machine-learning-based feature selection techniques for large-scale network intrusion detection. In Distributed Computing Systems Workshops (ICDCSW), 2014 IEEE 34th International Conference on (pp. 177-181). IEEE.
 
-[4] Masduki, B. W., Ramli, K., Saputra, F. A., and Sugiarto, D. (2015, August). Study on implementation of machine learning methods combination for improving attacks detection accuracy on Intrusion Detection System (IDS). In Quality in Research (QiR), 2015 International Conference on (pp. 56-64). IEEE.
+[4] Tian, W., and Liu, J. (2010, March). A new network intrusion detection identification model research. In Informatics in Control, Automation and Robotics (CAR), 2010 2nd International Asia Conference on (Vol. 2, pp. 9-12). IEEE.
 
-[5] Tian, W., and Liu, J. (2010, March). A new network intrusion detection identification model research. In Informatics in Control, Automation and Robotics (CAR), 2010 2nd International Asia Conference on (Vol. 2, pp. 9-12). IEEE.
+[5] L. Portnoy, E. Eskin, Salvatore J. Stolfo, Intrusion detection with unlabeled data using clustering, in: Proc. ACM CSS Workshop on Data Mining Applied to Security (DMSA-2001). Philadelphia, PA, 2001, pp. 5?8.
 
-[6] Al-Jarrah, O. Y., Siddiqui, A., Elsalamouny, M., Yoo, P. D., Muhaidat, S., and Kim, K. (2014, June). Machine-learning-based feature selection techniques for large-scale network intrusion detection. In Distributed Computing Systems Workshops (ICDCSW), 2014 IEEE 34th International Conference on (pp. 177-181). IEEE.
+[6] Lakhina, A., Crovella, M., and Diot, C. (2004, August). Diagnosing network-wide traffic anomalies. In ACM SIGCOMM Computer Communication Review (Vol. 34, No. 4, pp. 219-230). ACM.
 
-[8] L. Portnoy, E. Eskin, Salvatore J. Stolfo, Intrusion detection with unlabeled data using clustering, in: Proc. ACM CSS Workshop on Data Mining Applied to Security (DMSA-2001). Philadelphia, PA, 2001, pp. 5?8.
+[7] S. Staniford, J. Hoagland, J. McAlerney, Practical automated detection of stealthy portscans, Journal of Computer Security 10 (2002) 105?136.
 
-[9] Lakhina, A., Crovella, M., and Diot, C. (2004, August). Diagnosing network-wide traffic anomalies. In ACM SIGCOMM Computer Communication Review (Vol. 34, No. 4, pp. 219-230). ACM.
+[8] Marin, J., Ragsdale, D., and Sirdu, J. (2001). A hybrid approach to the profile creation and intrusion detection. In DARPA Information Survivability Conference \& Exposition II, 2001. DISCEX'01. Proceedings (Vol. 1, pp. 69-76). IEEE.
 
-[10] S. Staniford, J. Hoagland, J. McAlerney, Practical automated detection of stealthy portscans, Journal of Computer Security 10 (2002) 105?136.
+[9] Anderson, D., Lunt, T. F., Javitz, H., Tamaru, A., and Valdes, A. (1995). Detecting Unusual Program Behavior Using the Statistical Component of the Next-generation Intrusion Detection Expert Systems (NIDES). SRI International. Computer Science Laboratory.
 
-[11] Marin, J., Ragsdale, D., and Sirdu, J. (2001). A hybrid approach to the profile creation and intrusion detection. In DARPA Information Survivability Conference \& Exposition II, 2001. DISCEX'01. Proceedings (Vol. 1, pp. 69-76). IEEE.
+[10] Badea, A., Croitoru, V., and Gheorghic?, D. (2015, May). Computer networks security based on the detection of user's behavior. In Advanced Topics in Electrical Engineering (ATEE), 2015 9th International Symposium on (pp. 55-60). IEEE.
 
-[12] Anderson, D., Lunt, T. F., Javitz, H., Tamaru, A., and Valdes, A. (1995). Detecting Unusual Program Behavior Using the Statistical Component of the Next-generation Intrusion Detection Expert Systems (NIDES). SRI International. Computer Science Laboratory.
+[11] Xu, K., Wang, F., and Gu, L. (2014). Behavior analysis of internet traffic via bipartite graphs and one-mode projections. IEEE/ACM Transactions on Networking (TON), 22(3), 931-942.
 
-[13] Badea, A., Croitoru, V., and Gheorghic?, D. (2015, May). Computer networks security based on the detection of user's behavior. In Advanced Topics in Electrical Engineering (ATEE), 2015 9th International Symposium on (pp. 55-60). IEEE.
+[12] Qin, T., Guan, X., Wang, C., and Liu, Z. (2015). MUCM: multilevel user cluster mining based on behavior profiles for network monitoring. IEEE Systems Journal, 9(4), 1322-1333.
 
-[14] Xu, K., Wang, F., and Gu, L. (2014). Behavior analysis of internet traffic via bipartite graphs and one-mode projections. IEEE/ACM Transactions on Networking (TON), 22(3), 931-942.
+[13] Kevin L. Priddy, ?Paul E. Keller - Artificial Neural Networks: An Introduction 2005.
 
-[15] Qin, T., Guan, X., Wang, C., and Liu, Z. (2015). MUCM: multilevel user cluster mining based on behavior profiles for network monitoring. IEEE Systems Journal, 9(4), 1322-1333.
+[14] Weinberger, K. Q., Blitzer, J., and Saul, L. K. (2006). Distance metric learning for large margin nearest neighbor classification. In Advances in neural information processing systems (pp. 1473-1480).
 
-[16] Kevin L. Priddy, ?Paul E. Keller - Artificial Neural Networks: An Introduction 2005.
+[15] Muda, Z., Yassin, W., Sulaiman, M. N., and Udzir, N. I. (2011, December). Intrusion detection based on k-means clustering and OneR classification. In Information Assurance and Security (IAS), 2011 7th International Conference on (pp. 192-197). IEEE.
 
-[17] Weinberger, K. Q., Blitzer, J., and Saul, L. K. (2006). Distance metric learning for large margin nearest neighbor classification. In Advances in neural information processing systems (pp. 1473-1480).
+[16] Vapnik, V. N., and Vapnik, V. (1998). Statistical learning theory (Vol. 1). New York: Wiley.
 
-[18] Muda, Z., Yassin, W., Sulaiman, M. N., and Udzir, N. I. (2011, December). Intrusion detection based on k-means clustering and OneR classification. In Information Assurance and Security (IAS), 2011 7th International Conference on (pp. 192-197). IEEE.
+[17] Hearst, M. A., Dumais, S. T., Osuna, E., Platt, J., and Scholkopf, B. (1998). Support vector machines. IEEE Intelligent Systems and their applications, 13(4), 18-28.
 
-[19] Vapnik, V. N., and Vapnik, V. (1998). Statistical learning theory (Vol. 1). New York: Wiley.
+[18] McCulloch, W. S., and Pitts, W. (1943). A logical calculus of the ideas immanent in nervous activity. Bulletin of mathematical biology, 5(4), 115-133.
 
-[20] Hearst, M. A., Dumais, S. T., Osuna, E., Platt, J., and Scholkopf, B. (1998). Support vector machines. IEEE Intelligent Systems and their applications, 13(4), 18-28.
+[19] del Brío, B. M., y Molina, A. S. (2002). Redes Neuronales y Sistemas Difusos, Alfaomega. Zaragoza, España.
 
-[21] McCulloch, W. S., and Pitts, W. (1943). A logical calculus of the ideas immanent in nervous activity. Bulletin of mathematical biology, 5(4), 115-133.
+[20] Rahmat-Samii, Y., and Michielssen, E. (1999). Electromagnetic optimization by genetic algorithms. Microwave Journal, 42(11), 232-232.
 
-[22] del Brío, B. M., y Molina, A. S. (2002). Redes Neuronales y Sistemas Difusos, Alfaomega. Zaragoza, España.
+[21] Reeves, C. R. (1995). A genetic algorithm for flowshop sequencing. Computers and operations research, 22(1), 5-13.
 
-[23] Rahmat-Samii, Y., and Michielssen, E. (1999). Electromagnetic optimization by genetic algorithms. Microwave Journal, 42(11), 232-232.
+[22] Shon, T., and Moon, J. (2007). A hybrid machine learning approach to network anomaly detection. Information Sciences, 177(18), 3799-3821.
 
-[24] Reeves, C. R. (1995). A genetic algorithm for flowshop sequencing. Computers and operations research, 22(1), 5-13.
+[23] T.Kohonen. Self Organizing Maps. Springer, third edition, 2001.
 
-[25] Shon, T., and Moon, J. (2007). A hybrid machine learning approach to network anomaly detection. Information Sciences, 177(18), 3799-3821.
+[24] Ramadas, M., Ostermann, S.,  Tjaden, B. Detecting Anomalous Network Traffic with Self-organizing Maps.
 
-[26] T.Kohonen. Self Organizing Maps. Springer, third edition, 2001.
+[25] W. Stallings, Data and Computer Communications, International Ed. Pearson Education Limited, 2015.
 
-[27] Ramadas, M., Ostermann, S.,  Tjaden, B. Detecting Anomalous Network Traffic with Self-organizing Maps.
+[26] W. Edwards, T. Jack, T. Lammle, T. Skandier, R. Padjen, A. Pfund, and C. Timm, CCNP Complete Study Guide: Exams 642-801, 642-811, 642-821, 642-831. John Wiley and Sons, 2006.
 
-[28] W. Stallings, Data and Computer Communications, International Ed. Pearson Education Limited, 2015.
+[27] Zimmermann, Hubert. 1990. «OSI Reference Model - The ISO Model of Architecture for Open Systems Interconnection.» IEEE Transactions 425-432.
 
-[29] W. Edwards, T. Jack, T. Lammle, T. Skandier, R. Padjen, A. Pfund, and C. Timm, CCNP Complete Study Guide: Exams 642-801, 642-811, 642-821, 642-831. John Wiley and Sons, 2006.
-
-[30] Zimmermann, Hubert. 1990. «OSI Reference Model - The ISO Model of Architecture for Open Systems Interconnection.» IEEE Transactions 425-432.
-
-[31]Kurose, James, y Keith Ross. 2012. Computer Networking: a top down approach. New
+[28]Kurose, James, y Keith Ross. 2012. Computer Networking: a top down approach. New
 Jersey: Pearon.
 
-[32] http://searchnetworking.techtarget.com/definition/Transport-layer
+[29] http://searchnetworking.techtarget.com/definition/Transport-layer
 
-[33] https://www.rfc-es.org/rfc/rfc0793-es.txt
+[30] https://www.rfc-es.org/rfc/rfc0793-es.txt
 
-[34] https://www.ietf.org/rfc/rfc768.txt
+[31] https://www.ietf.org/rfc/rfc768.txt
 
-[35] Guttman, B., and Roback, E. A. (1995). An introduction to computer security: the NIST handbook. DIANE Publishing.
+[32] Guttman, B., and Roback, E. A. (1995). An introduction to computer security: the NIST handbook. DIANE Publishing.
 
-[36] Scarfone, K., and Mell, P. (2007). Guide to intrusion detection and prevention systems (idps). NIST special publication, 800(2007), 94.
+[33] Scarfone, K., and Mell, P. (2007). Guide to intrusion detection and prevention systems (idps). NIST special publication, 800(2007), 94.
 
-[37] Lakhina, A., Crovella, M., and Diot, C. (2004, October). Characterization of network-wide anomalies in traffic flows. In Proceedings of the 4th ACM SIGCOMM conference on Internet measurement (pp. 201-206). ACM.
+[34] Lakhina, A., Crovella, M., and Diot, C. (2004, October). Characterization of network-wide anomalies in traffic flows. In Proceedings of the 4th ACM SIGCOMM conference on Internet measurement (pp. 201-206). ACM.
 
 
 
@@ -541,20 +537,20 @@ Jersey: Pearon.
 
 %[3] Baker, David W. ?Communications and Networking? Using Java 1.1, Third Edition
 
-%[8] Dozono, H., Itou, S., and Nakakuni, M. (2007). Comparison of the adaptive authentication systems for behavior biometrics using the variations of self organizing maps. International 
+%[5] Dozono, H., Itou, S., and Nakakuni, M. (2007). Comparison of the adaptive authentication systems for behavior biometrics using the variations of self organizing maps. International 
 %Journal of Computers and Communications, 1(4), 108-116.
 
-%[11] L. Zhe, S. Weiqing and W. Lingfeng, "A neural network based distributed intrusion detection system on cloud platform," IEEE 2nd International Conference on Cloud Computing and Intelligence Systems, vol. 1, pp. 75-79, 2012.
+%[8] L. Zhe, S. Weiqing and W. Lingfeng, "A neural network based distributed intrusion detection system on cloud platform," IEEE 2nd International Conference on Cloud Computing and Intelligence Systems, vol. 1, pp. 75-79, 2012.
 
-%[21] Tsai, C. F., Hsu, Y. F., Lin, C. Y., and Lin, W. Y. (2009). Intrusion detection by machine learning: A review. Expert Systems with Applications, 36(10), 11994-12000.
+%[18] Tsai, C. F., Hsu, Y. F., Lin, C. Y., and Lin, W. Y. (2009). Intrusion detection by machine learning: A review. Expert Systems with Applications, 36(10), 11994-12000.
 
-%[22] Michalski, R. S., Bratko, I., and Bratko, A. (1998). Machine learning and data mining; methods and applications. John Wiley and Sons, Inc.
+%[19] Michalski, R. S., Bratko, I., and Bratko, A. (1998). Machine learning and data mining; methods and applications. John Wiley and Sons, Inc.
 
-%[23] Theodoridis, S., and Koutroumbas, K. (2006). Clustering: basic concepts. Pattern Recognition, 483-516.s
+%[20] Theodoridis, S., and Koutroumbas, K. (2006). Clustering: basic concepts. Pattern Recognition, 483-516.s
 
-%[34] https://www.symantec.com/connect/articles/network-intrusion-detection-signatures-part-one
+%[31] https://www.symantec.com/connect/articles/network-intrusion-detection-signatures-part-one
 
-%[35] http://www.ciscopress.com/articles/article.asp?p=1336425
+%[32] http://www.ciscopress.com/articles/article.asp?p=1336425
 
 %[42] CHAUDHARI, M. B. S., and PRASAD, D. R. S. Particle Swarm Optimization Based Intrusion Detection for Mobile Ad-hoc Networks.
 
