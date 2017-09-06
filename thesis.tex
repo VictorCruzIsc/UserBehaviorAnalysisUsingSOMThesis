@@ -9,6 +9,7 @@
 \usepackage[]{algorithm2e}
 \usepackage[table,xcdraw]{xcolor}
  \usepackage{booktabs}
+ \usepackage{float}
 
 %\setcounter{tocdepth}{5}
 \setcounter{secnumdepth}{5}
@@ -163,8 +164,6 @@ The idea behind hybrid classifiers is to combine several machine learning techni
 \subsection{Self-organizing Maps} % level 2
 The Self-Organizing Map algorithm performs a nonlinear, ordered, and smooth mapping of high-dimensional input data manifolds onto the elements of a regular, low-dimensional array [23]. The algorithm converts non-linear statistical relationships between data elements in a high-dimensional space into geometrical relationships between elements in a two-dimensional map (lattice), called the Self-Organizing Map (SOM)[24]. A SOM can then be used to visualize the clusters, of an input space. Each element at SOM is a neuron, and is a representation of a multidimensional vector with a cartographic position denoted with x and y. If elements in the input space are characterized using $k$ parameters and represented by $k$-dimensional vectors, each neuron in the SOM lattice is also specified as $k$-dimensional vector.
 
-	\begin{center}\includegraphics[scale=0.08]{som} \end{center}
-
 \subsubsection{Learning} % level 3
 In the learning, or training phase, the neurons in SOM algorithm try to model the input space. 
 SOM algorithm differs from other artificial neuronal networks as they apply competitive learning and use a cooperative schema. 
@@ -200,9 +199,15 @@ After the SOM lattice is already setup, by the initialization stage, SOM trainin
 During SOM training each time a BMU is found, it's weight and the neurons in its vicinity get their weights vectors updated according to the features updated rule [22].
 
 \begin{equation}
-w_s(t + 1) = w_s(t) + \omega h(r,s)(v(t) -w_s(t))
+N(t + 1) = N(t) + \omega h(r,s)(v(t) - N(t))
 \end{equation}
-Where $\omega$ is the learning step width and its value is a constant $(0 < \omega \ll 1)$. The function $h(r,s)$ is the neighborhood function, which determines the size and the nature of the neighborhood around the BMU. $h(r,s)$ is illustrated in Fig. 1. For most applications it has the maximum value of one when $s = r$ and decreases when the distance between $s$ and $r$ increment.
+Where $\omega$ is the learning step width and its value is a constant $(0 < \omega \ll 1)$. The function $h(r,s)$ is the neighborhood function, which determines the size and the nature of the neighborhood around the BMU. $h(r,s)$ is illustrated in Figure 1. For most applications it has the maximum value of one when $s = r$ and decreases when the distance between $s$ and $r$ increment.
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=.25]{som}
+		\caption{SOM neighborhood radius}
+\end{figure}
 
 \subsection{Computer networks} % level 2
 
@@ -217,9 +222,14 @@ Modern authors like Edwards Wade [26] defines new types of network like the Camp
 \subsubsection{OSI Model} % level 3
 The Open Systems Interconnection (OSI), is an ISO standard for worldwide communications, that defines networking in terms of a vertical stack of seven layers [25]. Control is passed from one layer to the next.
 
-Starting at the top layer, information is passed to the lower layer until it reaches the bottom, once the information reaches the bottom (the physical medium), the information make its way to the destination. Just after the information reaches its destination, it travels up each layer until it reaches the appropriate level for translation. During data transmission among the layers, relevant information of that layer is attached (encapsulation), binding this information allows each layer to communicate with its relevant layer at destination. Fig 1 illustrates the information flow.
+Starting at the top layer, information is passed to the lower layer until it reaches the bottom, once the information reaches the bottom (the physical medium), the information make its way to the destination. Just after the information reaches its destination, it travels up each layer until it reaches the appropriate level for translation. During data transmission among the layers, relevant information of that layer is attached (encapsulation), binding this information allows each layer to communicate with its relevant layer at destination. Figure 2 illustrates the information flow.
 
-	\begin{center}\includegraphics[scale=0.4]{osi} \end{center}
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.35]{osi}
+		\caption{OSI Model}
+\end{figure}
+
 OSI layers are designed to communicate with only one layer above and below it, and are developed independently, allowing flexibility and modularity. As mentioned before, there are seven layers in the OSI model 1) Physical, 2) Data Link, 3) Network, 4) Transport, 5) Session, 6) Presentation and 7) Application. A brief explanation of what is done, the process of communication, and the used protocols on each layer will be explained above.
 
 \paragraph{Physical layer} % level 4
@@ -286,16 +296,20 @@ Five full-time professors (hereafter denoted as users) were selected for the exp
 \subsection{Explanation} % level 2
 Self Organizing Maps algorithm was used to create an user pattern inside a Campus Area Network. Experiments are divided in three phases: 1) network data capture, 2) data processing and 3) pattern evaluation.
 
-For network data capture phase, a set of raw packages is obtained for each user through tcpdump library, process is explained in [Parres, XX].
+For network data capture phase, a set of raw packages is obtained for each user through tcpdump library.
 
 For data processing phase, each set of the raw packages is arbitrary divided in build, train and evaluate sets.
 Each set is processed to compress raw packages into chunks of a five minutes window $t$ represented by three metrics that involve communication protocol, origin and destination ip and total transmitted bytes.
 From the obtained build data set, a fixed number of elements $n$ is randomly selected, this number defines the size of the Self Organizing Map lattice $(n x n)$.
 For lattice training, a fixed number of elements $e$ is randomly selected from train data set. Self Organizing Map is considered to be fully trained, after a cycle of ten epochs, as a result of this phase an user network behavior pattern is obtained.
 
-Evaluation phase is done by joining different user network behavior patterns in one lattice, similar to a blanket filled of patches in which each patch is represented by an user network behavior pattern, creating what we define as the organization pattern. An organization evaluation set is build by all the user evaluation sets that belong to each user that conforms the organizational pattern. Each element of the organization evaluation set is shown to the organization pattern, resulting best matching unit is compared against the original user of the shown element to the lattice. Correct match of the user attribute of the shown element and user attribute of the best matching verifies that the shown element is able to recognize it's original user among others. The complete process of an experiments is shown in Fig. 1.
+Evaluation phase is done by joining different user network behavior patterns in one lattice, similar to a blanket filled of patches in which each patch is represented by an user network behavior pattern, creating what we define as the organization pattern. An organization evaluation set is build by all the user evaluation sets that belong to each user that conforms the organizational pattern. Each element of the organization evaluation set is shown to the organization pattern, resulting best matching unit is compared against the original user of the shown element to the lattice. Correct match of the user attribute of the shown element and user attribute of the best matching verifies that the shown element is able to recognize it's original user among others. The complete process of an experiments is shown in Figure 3.
 
-	\begin{center}\includegraphics[scale=0.2]{fig-two} \end{center}
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.23]{fig-two}
+		\caption{SDM Based user behavior characterization}
+\end{figure}
 
 For each phase in the process one or more modules were build, each module's output is used as an input for the next phase corresponding module.
 
@@ -325,9 +339,13 @@ As explained in section 3.3 Self Organizing Map algorithm is a not supervised al
 \paragraph{Data set creation} % level 4
 Using TCP package as the working unit is not possible due the great volume of packages, and time consuming for processing each one individually [33].
 
-Instead, package sets $[\beta,\gamma,\phi]$ are individually processed and turned into chunks. The obtained chunks are the the working units and conform the different data sets, Build data set $\beta_1$, the Train data set $\gamma_1$ and the Evaluation data set $\phi_1$ respectively.
+Instead, package sets $[\beta,\gamma,\phi]$ are individually processed and turned into chunks. The obtained chunks are the the working units and conform the different data sets, Build data set $\beta_1$, the Train data set $\gamma_1$ and the Evaluation data set $\phi_1$ respectively, for better understanding check Figure 4.
 
-	\begin{center}\includegraphics[scale=0.2]{fig-three} \end{center}
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.2]{fig-three}
+		\caption{Data set module}
+\end{figure}
 	
 Each chunk $C$ is defined with the following characteristics: a) It is conformed by one or more packages $C_n(p_1, p_2,...,p_n)$ that have a continuity in their timestamp field, b) It has a fixed time window $w$ but does not have a fixed number of packages, c) The difference between $p_n$ timestamp and $p_1$ timestamp is less or equal to the fixed time window $w$ and d) The difference between start timestamps of consecutive chunks is a fixed time $h$.
 
@@ -360,26 +378,38 @@ Self Organizing Map basic algorithm is defined as follows.
 
 Each element in the SOM lattice has a weights vector $V(v_1, v_2,..., v_n)$ of three elements, $v_1$ represents the TCP/UDP metric, $v_2$ represents the Internal IP metric and $v_3$ represents the Web traffic metric.
 
-To define the the size $n\times n$ of the lattice, ten experiments were evaluated with 50, 75, 100, 125 and 150 neurons. Graphic 1. Shows the average of the results by user.
+To define the the size $n\times n$ of the lattice, ten experiments were evaluated with 50, 75, 100, 125 and 150 neurons. Figure 5. Shows the average of the results by user.
 
-\begin{center}\includegraphics[scale=.3]{results} \end{center}
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.32]{results}
+		\caption{Average results}
+\end{figure}
 
 Results show that the best experiments results were obtained using lattices of $75 \times 75$.Elements for building the SOM lattice are obtained randomly form the build data set $\beta_1$ and ordered in a square distribution.
 Best matching unit evaluation is obtained using Euclidean distance. The gaussian neighborhood function was used with an initial neighborhood radius of ($\frac{n}{2}$), decreasing linearly to 1 at the end of the training. The learning rate was chosen to be 1 and reduced to 0 at the end of the training.
 
 \paragraph{User network behavior pattern creation} % level 4
-The train module implements the SOM-based approach for user characterization. In the training phase 10 epochs are used to process the lattice. After this phase, an user network behavior pattern is obtained. This pattern may differ between patterns obtained from the same user, because of the random selection of the build elements. Fig 3 shows lattice training during it's initial phases until it get's completely trained.
+The train module implements the SOM-based approach for user characterization. In the training phase 10 epochs are used to process the lattice. After this phase, an user network behavior pattern is obtained. This pattern may differ between patterns obtained from the same user, because of the random selection of the build elements. Figure 6 shows lattice training during it's initial phases until it get's completely trained.
 
-\begin{center}\includegraphics[scale=0.2]{fig-training} \end{center}
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.2]{fig-training}
+		\caption{Pattern creation}
+\end{figure}
 
 \subsubsection{Pattern evaluation} % level 3
 When SOM lattice is completely trained, the elements with the same characteristics in their weights vector are grouped in the same area, denoting clusters of elements and a inherent classification. This obtained distribution of the elements along the SOM lattice, allows to classify easily new vectors, even if them were not in the the build or the train dataset.
 
 The pattern evaluation module use the capacity of the SOM lattice, of matching new input vectors to their similar ones, not for classifying a new element, but for deciding if an user behavior can be identified among others. To perform this evaluation, new elements are needed: a) an organizational pattern and b) an organization evaluation dataset. An organizational pattern is defined as a matrix of user patterns $P$, which represent an user with it's own behavior in an environment where different users with common or completely different behaviors are present. The organization evaluation pattern is a collection of evaluation data sets $\phi_n$ of the users that conform the organizational pattern, acting as a labeled evaluation data set.
 
-Evaluation is done by showing each element of the organization evaluation data set to the organizational pattern, once every element is evaluated the SOM lattice is processed in order to identify which neurons in the SOM lattice correctly match to the vector $V_n$ in the organizational dataset. As we already know the origin of the vector $V_n$, is easy to find out if the match is correct or not. Fig 4. shows how an organizational pattern is conformed and how it is evaluated.
+Evaluation is done by showing each element of the organization evaluation data set to the organizational pattern, once every element is evaluated the SOM lattice is processed in order to identify which neurons in the SOM lattice correctly match to the vector $V_n$ in the organizational dataset. As we already know the origin of the vector $V_n$, is easy to find out if the match is correct or not. Figure 7. shows how an organizational pattern is conformed and how it is evaluated.
 
-\begin{center}\includegraphics[scale=0.3]{evaluation} \end{center}
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.3]{evaluation}
+		\caption{Pattern evaluation}
+\end{figure}
 
 The organizational patterns were conformed by four users, one of them representing the idle behavior. As there was a need of evaluating each of the users against others, a combination was performed, evaluating CABD, CABE, CBDE, CADE, in which each letter is the identifier of one user pattern and C represents the idle pattern. The elements that match the idle patterns were considered as correct matches for the current evaluated user.
 
@@ -389,10 +419,8 @@ As explained in section 4.2.2.3, SOM lattices of different $n$ sizes were evalua
 % Please add the following required packages to your document preamble:
 % \usepackage[table,xcdraw]{xcolor}
 % If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
-\begin{table}[]
+\begin{table}[H]
 \centering
-\caption{My caption}
-\label{my-label}
 \begin{tabular}{|r|c|c|c|c|}
 \hline
 \rowcolor[HTML]{9B9B9B} 
@@ -410,6 +438,7 @@ As explained in section 4.2.2.3, SOM lattices of different $n$ sizes were evalua
 \cellcolor[HTML]{C0C0C0}\textbf{Correct user E}                          & \cellcolor[HTML]{EFEFEF}- & 37.85                     & 53.48                     & 70.18                     \\ \hline
 \cellcolor[HTML]{C0C0C0}\textbf{Incorrect user E}                        & \cellcolor[HTML]{EFEFEF}- & 62.15                     & 46.52                     & 29.82                     \\ \hline
 \end{tabular}
+\caption{Results}
 \end{table}
 
 Table 1 shows the average of results of every user. It is possible to see that results are constant over the experiments, having an average of 60\% of correct matching.
@@ -420,9 +449,13 @@ User D and B present a particular pattern when the SOM lattice dimensions change
 
 When user A and D are compared, experiment CBDE for user D, is completely different from CABD and CADE where correct matches are 14.9\% and 20.98\% respectively and CBDE results show a raise to 80.71\%, suggesting that, when user A is evaluated in the same pattern along with user D, both behaviors are mixed, giving an incorrect match. Similar behavior could denote the use of the same services, spend time in the computer or similar usage schedules.
 
-To address this finding, experiments with different dimension of SOM lattices were performed avoiding comparing users A and D at the same time. Fig. 4 shows results of user A and D respectively.
+To address this finding, experiments with different dimension of SOM lattices were performed avoiding comparing users A and D at the same time. Figure. 8 shows results of user A and D respectively.
 
-\begin{center}\includegraphics[scale=0.6]{fig-four} \end{center}
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.75]{fig-four} 
+		\caption{User A and user D results comparison}
+\end{figure}
 
 For user A, the results raise from a correct average of 63.34\% to a 73.98\% of correct match, instead for user D, the graphic shows that results are stable and constant, with a raise from 38\% to 82.66\%.
 
